@@ -1,4 +1,5 @@
 import { SectionHeading } from "@/app/_components/custom/section-heading";
+import { asset } from "@/lib/base-path";
 import { getScopedI18n } from "@/packages/locales/server";
 import Image from "next/image";
 import { DemoSlot } from "./demo-slot";
@@ -28,7 +29,7 @@ export const Visione = async () => {
           <p className="mb-5">{t("p3")}</p>
           <p className="mb-5 overflow-hidden">
             <Image
-              src="/images/about-images/tree-bonsai.png"
+              src={asset("/images/about-images/tree-bonsai.png")}
               alt={t("bonsaiAlt")}
               width={160}
               height={160}

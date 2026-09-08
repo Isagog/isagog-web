@@ -1,3 +1,4 @@
+import { asset } from "@/lib/base-path";
 import { getScopedI18n } from "@/packages/locales/server";
 import Image from "next/image";
 
@@ -20,7 +21,7 @@ export const Persone = async () => {
         <div className="mt-10 grid gap-9 md:grid-cols-2">
           <div className="flex items-start gap-6">
             <Image
-              src="/images/team-images/Guido.avif"
+              src={asset("/images/team-images/Guido.avif")}
               alt={t("guido.name")}
               width={240}
               height={240}
@@ -37,7 +38,7 @@ export const Persone = async () => {
 
           <div className="flex items-start gap-6">
             <Image
-              src="/images/team-images/Robert.avif"
+              src={asset("/images/team-images/Robert.avif")}
               alt={t("robert.name")}
               width={240}
               height={240}

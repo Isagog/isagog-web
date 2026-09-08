@@ -1,0 +1,37 @@
+/**
+ * Where this build is served from.
+ *
+ * The site deploys first to https://isagog.com/isagog-web/ so it can be
+ * reviewed live while isagog.com keeps serving the old site; at cutover
+ * NEXT_PUBLIC_BASE_PATH is removed and everything moves to the domain root.
+ * Next prefixes next/link and next/image on its own — these helpers cover
+ * the raw strings it does not touch.
+ */
+const raw = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const normalise = (value: string): string => {
+  const trimmed = value.trim();
+  if (trimmed === "" || trimmed === "/") return "";
+  const withLeading = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return withLeading.endsWith("/") ? withLeading.slice(0, -1) : withLeading;
+};
+
+export const BASE_PATH = normalise(raw);
+
+export const IS_STAGING = BASE_PATH !== "";
+
+const ORIGIN = "https://isagog.com";
+
+export const SITE_URL = `${ORIGIN}${BASE_PATH}`;
+
+/**
+ * Prefix a root-relative asset path with the deployment's base path.
+ * Use for fetch() URLs, <iframe src>, and any other raw string Next does
+ * not rewrite. Absolute URLs and non-path hrefs pass through unchanged.
+ */
+export const asset = (path: string): string => {
+  if (!path.startsWith("/")) return path;
+  if (BASE_PATH === "") return path;
+  if (path === BASE_PATH || path.startsWith(`${BASE_PATH}/`)) return path;
+  return `${BASE_PATH}${path}`;
+};

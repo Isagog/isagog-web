@@ -1,3 +1,4 @@
+import { asset } from "@/lib/base-path";
 import { getScopedI18n } from "@/packages/locales/server";
 import Image from "next/image";
 import { ContactForm } from "./contact-form";
@@ -24,7 +25,7 @@ export const Contatto = async () => {
         {TREES.map((tree) => (
           <Image
             key={tree.src}
-            src={tree.src}
+            src={asset(tree.src)}
             alt=""
             width={400}
             height={500}
