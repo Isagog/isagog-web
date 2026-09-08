@@ -4,6 +4,8 @@ import { buildMailtoHref } from "@/lib/contact-mailto";
 import { useScopedI18n } from "@/packages/locales/client";
 import { useState } from "react";
 
+const inputClass = "rounded-[4px] border border-card-border bg-transparent px-3 py-2.5 text-[15px]";
+
 export const ContactForm = () => {
   const t = useScopedI18n("home.contatto");
   const [draft, setDraft] = useState({
@@ -38,7 +40,7 @@ export const ContactForm = () => {
             value={draft.name}
             onChange={(event) => update("name")(event.target.value)}
             placeholder={t("fieldNamePlaceholder")}
-            className="rounded-[4px] border border-card-border bg-white px-3 py-2.5 text-[15px]"
+            className={inputClass}
           />
         </label>
         <label className="flex flex-col gap-2 text-[13px] text-forest">
@@ -49,7 +51,7 @@ export const ContactForm = () => {
             value={draft.email}
             onChange={(event) => update("email")(event.target.value)}
             placeholder={t("fieldEmailPlaceholder")}
-            className="rounded-[4px] border border-card-border bg-white px-3 py-2.5 text-[15px]"
+            className={inputClass}
           />
         </label>
       </div>
@@ -61,7 +63,7 @@ export const ContactForm = () => {
           value={draft.organisation}
           onChange={(event) => update("organisation")(event.target.value)}
           placeholder={t("fieldOrgPlaceholder")}
-          className="rounded-[4px] border border-card-border bg-white px-3 py-2.5 text-[15px]"
+          className={inputClass}
         />
       </label>
 
@@ -73,7 +75,7 @@ export const ContactForm = () => {
           value={draft.message}
           onChange={(event) => update("message")(event.target.value)}
           placeholder={t("fieldMessagePlaceholder")}
-          className="rounded-[4px] border border-card-border bg-white px-3 py-2.5 text-[15px]"
+          className={inputClass}
         />
       </label>
 

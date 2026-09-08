@@ -39,4 +39,35 @@ describe("buildMailtoHref", () => {
     expect(body).not.toContain("Organizzazione");
     expect(body).toContain("Anna Rossi");
   });
+
+  // The assertions above all read the body back through
+  // `new URL(...).searchParams.get("body")`, which decodes "+" as a space —
+  // exactly the ambiguity `URLSearchParams`-based encoding relies on. A
+  // regression to `URLSearchParams` (encoding spaces as "+" instead of
+  // "%20") would pass every test above unnoticed. These assertions inspect
+  // the raw, undecoded href instead, so that regression cannot hide.
+
+  it("encodes spaces in the raw href as %20, never as +", () => {
+    const href = buildMailtoHref(draft);
+    expect(href).toContain("Anna%20Rossi");
+    expect(href).not.toContain("Anna+Rossi");
+    expect(href).not.toContain("+");
+  });
+
+  it("keeps a newline inside a field as %0A in the raw href, not stripped or merged", () => {
+    const href = buildMailtoHref({ ...draft, message: "a&b c=d\nsecond line" });
+    // Exact encoding of "a&b c=d\nsecond line": the newline must survive as
+    // %0A between "d" and "second" — a stripped-newline regression would
+    // still satisfy a plain `toContain("second line")` on the decoded body,
+    // since "...dsecond line" contains that substring too.
+    expect(href).toContain("a%26b%20c%3Dd%0Asecond%20line");
+  });
+
+  it("encodes non-ASCII characters (as the shipped Italian copy uses)", () => {
+    const href = buildMailtoHref({ ...draft, message: "Città è pronta" });
+    expect(href).toContain("Citt%C3%A0%20%C3%A8%20pronta");
+
+    const body = new URL(href).searchParams.get("body") ?? "";
+    expect(body).toContain("Città è pronta");
+  });
 });
