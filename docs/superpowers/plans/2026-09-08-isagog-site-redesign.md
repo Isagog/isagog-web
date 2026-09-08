@@ -145,7 +145,6 @@ cp ../isagog.github.io/.gitignore .gitignore
     "@tanstack/react-query": "^5.74.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "embla-carousel-react": "^8.6.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.503.0",
     "markdown-to-jsx": "^7.7.6",
@@ -2569,7 +2568,6 @@ Claude-Session: https://claude.ai/code/session_014iy942nkTUWpqwymBiPdUm"
 
 **Files:**
 - Create: `src/app/[locale]/(pages)/platform/page.tsx`, `src/app/[locale]/(pages)/platform/components/text-carousel.tsx`
-- Create: `src/app/_components/ui/carousel.tsx`
 - Modify: `src/packages/locales/lang/{it,en}.ts`, `scripts/check-export.mjs`
 
 **Interfaces:**
@@ -2578,7 +2576,7 @@ Claude-Session: https://claude.ai/code/session_014iy942nkTUWpqwymBiPdUm"
 
 - [ ] **Step 1: Port the carousel primitive and its copy**
 
-Copy `src/app/_components/ui/carousel.tsx` verbatim from `../isagog.github.io/src/app/_components/ui/carousel.tsx`. Copy the `platform-page` scope (hero title/description, diagram `mobileNotice`/`mobileCta`, and the carousel entries) verbatim from `../isagog.github.io/src/packages/locales/lang/it.ts` and `en.ts` into the new locale files under `platform`.
+**Do not vendor `ui/carousel.tsx`.** `text-carousel.tsx` is hand-rolled with `useState`/`useRef` and never imports the shadcn carousel primitive — the old site vendored it and never used it either. Vendoring it also drags in `ui/button.tsx` (its only consumer) and the `embla-carousel-react` dependency, all dead. Copy the `platform-page` scope (hero title/description, diagram `mobileNotice`/`mobileCta`, and the carousel entries) verbatim from `../isagog.github.io/src/packages/locales/lang/it.ts` and `en.ts` into the new locale files under `platform`.
 
 Adapt `text-carousel.tsx` from `../isagog.github.io/src/app/[locale]/(pages)/platform/components/text-carousel.tsx`, replacing old colour classes with the new tokens (`text-forest`, `bg-paper`, `border-card-border`).
 
@@ -2867,7 +2865,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
 
 Wrap the layout's children in `<Providers>` (inside `I18nProviderClient`, outside `BodyWrapper`'s children).
 
-Copy `skeleton.tsx` from `../isagog.github.io/src/app/_components/ui/skeleton.tsx`. `button.tsx` was already vendored in Task 11 — `carousel.tsx` imports and uses it for `CarouselPrevious`/`CarouselNext`, so it is a hard compile dependency, not optional. Do not copy `card.tsx`; nothing in this design uses it.
+Copy `skeleton.tsx` from `../isagog.github.io/src/app/_components/ui/skeleton.tsx`. Do not copy `card.tsx` or `button.tsx`; nothing in this design uses either. (`button.tsx` is only a dependency of the shadcn `carousel.tsx`, which is itself unused — see Task 11.)
 
 `src/app/_components/custom/markdown-render.tsx` — adapt from the old site's version, changing the class overrides to the new tokens: headings `text-forest` in `font-serif`, body `text-[16.5px] leading-[1.6] text-prose-muted`, links `text-terracotta hover:underline`, blockquote `border-l-4 border-divider pl-4 italic text-muted-ink`, code `bg-tecnologia`.
 
