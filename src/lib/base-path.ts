@@ -9,16 +9,11 @@
  * out unprefixed). These helpers cover that plus every raw string Next never
  * touches: fetch() URLs, <iframe src>, and anything under public/.
  */
+import { normaliseBasePath } from "./normalise-base-path.mjs";
+
 const raw = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
-const normalise = (value: string): string => {
-  const trimmed = value.trim();
-  if (trimmed === "" || trimmed === "/") return "";
-  const withLeading = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
-  return withLeading.endsWith("/") ? withLeading.slice(0, -1) : withLeading;
-};
-
-export const BASE_PATH = normalise(raw);
+export const BASE_PATH = normaliseBasePath(raw);
 
 export const IS_STAGING = BASE_PATH !== "";
 

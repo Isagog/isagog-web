@@ -1,4 +1,6 @@
-const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+import { normaliseBasePath } from "./src/lib/normalise-base-path.mjs";
+
+const basePath = normaliseBasePath(process.env.NEXT_PUBLIC_BASE_PATH ?? "");
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

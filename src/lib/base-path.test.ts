@@ -61,6 +61,16 @@ describe("asset", () => {
     expect(asset("/isagog-web/favicon.ico")).toBe("/isagog-web/favicon.ico");
   });
 
+  it("does not double-prefix the base path with nothing after it", async () => {
+    const { asset } = await load("/isagog-web");
+    expect(asset("/isagog-web")).toBe("/isagog-web");
+  });
+
+  it("prefixes a path that merely shares the base path as a string prefix", async () => {
+    const { asset } = await load("/isagog-web");
+    expect(asset("/isagog-webbing/x")).toBe("/isagog-web/isagog-webbing/x");
+  });
+
   it("leaves absolute URLs and data URIs untouched", async () => {
     const { asset } = await load("/isagog-web");
     expect(asset("https://example.com/a.png")).toBe("https://example.com/a.png");
