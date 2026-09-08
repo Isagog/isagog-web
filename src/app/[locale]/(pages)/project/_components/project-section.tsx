@@ -4,13 +4,18 @@ import { LocaleLink as Link } from "@/app/_components/custom/locale-link";
 import { Skeleton } from "@/app/_components/ui/skeleton";
 import { asset } from "@/lib/base-path";
 import { fetchProjects } from "@/packages/action/projects/project.action";
-import { useCurrentLocale } from "@/packages/locales/client";
+import { useCurrentLocale, useScopedI18n } from "@/packages/locales/client";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 
 export const ProjectSection = () => {
   const locale = useCurrentLocale();
-  const { data: projects, isLoading } = useQuery({
+  const t = useScopedI18n("project");
+  const {
+    data: projects,
+    isLoading,
+    isError,
+  } = useQuery({
     queryKey: ["projects", locale],
     queryFn: () => fetchProjects(locale),
   });
@@ -30,6 +35,10 @@ export const ProjectSection = () => {
         ))}
       </div>
     );
+  }
+
+  if (isError) {
+    return <p className="text-[15px] text-prose-muted">{t("loadError")}</p>;
   }
 
   return (

@@ -231,5 +231,11 @@ export default {
   project: {
     notFound: "Progetto non trovato",
     backToProjects: "Torna ai progetti",
+    loadError: "Non è stato possibile caricare i progetti. Riprova più tardi.",
+  },
+  blog: {
+    notFound: "Articolo non trovato",
+    backToBlog: "Torna al blog",
+    loadError: "Non è stato possibile caricare gli articoli. Riprova più tardi.",
   },
 } as const;

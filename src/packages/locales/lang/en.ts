@@ -228,5 +228,11 @@ export default {
   project: {
     notFound: "Project not found",
     backToProjects: "Go back to projects",
+    loadError: "We couldn't load the projects. Please try again later.",
+  },
+  blog: {
+    notFound: "Article not found",
+    backToBlog: "Go back to blog",
+    loadError: "We couldn't load the articles. Please try again later.",
   },
 } as const;
