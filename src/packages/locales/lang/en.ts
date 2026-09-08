@@ -121,6 +121,22 @@ export default {
       badge: "La conoscenza resta un bene dell'organizzazione.",
       cta: "Esplorate la piattaforma",
     },
+    persone: {
+      eyebrow: "LE PERSONE DI ISAGOG",
+      titleLine1: "Esperienza profonda.",
+      titleEm: "Un confronto diretto.",
+      lead: "Dalla ricerca all'impresa, fino al vostro prossimo progetto.",
+      guido: {
+        name: "Guido Vetere",
+        role: "Fondatore e CEO — già Director of Center for Advanced Studies IBM Italy",
+        bio: "Guido ha guidato per anni la ricerca IBM in Italia su linguaggio, logica e rappresentazione della conoscenza. Oggi insegna Intelligenza Artificiale all'Università Marconi, e porta in Isagog la stessa idea che ha guidato la sua ricerca: un'intelligenza artificiale che ragiona su basi esplicite, non solo su correlazioni statistiche.",
+      },
+      robert: {
+        name: "Robert J. Alexander",
+        role: "Co-fondatore — già Executive Health and Research IBM, Medical doctor",
+        bio: "Bob applica l'intelligenza artificiale alla pratica clinica da quarant'anni. Un'esperienza maturata dove un errore ha conseguenze reali — ed è la ragione per cui, in Isagog, la tracciabilità delle risposte non è un dettaglio tecnico ma un requisito.",
+      },
+    },
     card: {
       org: "MUSEO AURORA",
       sample: "SCENARIO INVENTATO",
