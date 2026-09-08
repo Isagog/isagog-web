@@ -2584,6 +2584,7 @@ Adapt `text-carousel.tsx` from `../isagog.github.io/src/app/[locale]/(pages)/pla
 - [ ] **Step 2: Write the page**
 
 ```tsx
+import { asset } from "@/lib/base-path";
 import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
 import { Monitor, Network } from "lucide-react";
 import { TextCarousel } from "./components/text-carousel";
@@ -2604,7 +2605,7 @@ const PlatformPage = async ({ params }: { params: Promise<{ locale: string }> })
       </section>
 
       <iframe
-        src={`/platform-explorer/${locale === "it" ? "it" : "en"}.html`}
+        src={asset(`/platform-explorer/${locale === "it" ? "it" : "en"}.html`)}
         title={t("explorerTitle")}
         className="hidden aspect-[1280/886] w-full border-0 sm:block"
       />
@@ -2828,11 +2829,12 @@ export type ProjectType = z.infer<typeof zProjectSchema>;
 `src/packages/action/projects/project.action.ts`:
 
 ```ts
+import { asset } from "@/lib/base-path";
 import type { ProjectType } from "./project.model";
 import { zProjectsSchema } from "./project.model";
 
 export const fetchProjects = async (locale: string): Promise<ProjectType[]> => {
-  const res = await fetch(`/projects-data/list.${locale}.json`);
+  const res = await fetch(asset(`/projects-data/list.${locale}.json`));
   if (!res.ok) throw new Error("Failed to fetch projects");
 
   const json: unknown = await res.json();
@@ -3112,11 +3114,12 @@ export type ArticleType = z.infer<typeof zArticleSchema>;
 `src/packages/action/articles/article.action.ts`:
 
 ```ts
+import { asset } from "@/lib/base-path";
 import type { ArticleType } from "./article.model";
 import { zArticlesSchema } from "./article.model";
 
 export const fetchArticles = async (): Promise<ArticleType[]> => {
-  const res = await fetch("/articles-data/list.json");
+  const res = await fetch(asset("/articles-data/list.json"));
   if (!res.ok) throw new Error("Failed to fetch articles");
 
   const json: unknown = await res.json();
@@ -3281,12 +3284,13 @@ Claude-Session: https://claude.ai/code/session_014iy942nkTUWpqwymBiPdUm"
 - [ ] **Step 1: Write the sitemap**
 
 ```ts
+import { SITE_URL } from "@/lib/base-path";
 import { locales } from "@/lib/locale-href";
 import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const SITE = "https://isagog.com";
+const SITE = SITE_URL;
 const PATHS = [
   { path: "", priority: 1, changeFrequency: "monthly" as const },
   { path: "/platform", priority: 0.9, changeFrequency: "monthly" as const },
@@ -3315,12 +3319,19 @@ import type { MetadataRoute } from "next";
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
+  // A staging build lives at a subpath, where /robots.txt is not read by
+  // crawlers at all — the noindex meta tag in the layout is what actually
+  // keeps it out of the index. This still refuses politely at the root.
   return {
-    rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://isagog.com/sitemap.xml",
+    rules: IS_STAGING
+      ? { userAgent: "*", disallow: "/" }
+      : { userAgent: "*", allow: "/" },
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
 ```
+
+Import `IS_STAGING` and `SITE_URL` from `@/lib/base-path` at the top of the file.
 
 - [ ] **Step 3: Complete the layout metadata**
 
@@ -3355,6 +3366,16 @@ Extend the `metadata` object in `src/app/[locale]/layout.tsx` with the social ca
     languages: { it: "/it", en: "/en" },
   },
 ```
+
+Also add, in the same `metadata` object, the guard that actually keeps a
+staging build out of search results — `robots.txt` at a subpath is ignored by
+crawlers, so a meta tag is the only mechanism that works there:
+
+```ts
+  robots: IS_STAGING ? { index: false, follow: false } : undefined,
+```
+
+with `import { IS_STAGING } from "@/lib/base-path";` at the top of the layout.
 
 - [ ] **Step 4: Verify and commit**
 
@@ -3438,6 +3459,10 @@ jobs:
 
       - name: Build static export
         run: pnpm build
+        env:
+          # Staging lives at https://isagog.com/isagog-web/. At cutover this
+          # env block is deleted and the site rebuilds for the domain root.
+          NEXT_PUBLIC_BASE_PATH: /isagog-web
 
       - name: Generate timestamp
         id: ts
@@ -3524,6 +3549,277 @@ git commit -m "ci: build, test and deploy to GitHub Pages
 
 Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
 Claude-Session: https://claude.ai/code/session_014iy942nkTUWpqwymBiPdUm"
+```
+
+---
+
+### Task 16: Subpath deployment support
+
+> **Execution order:** dispatch this immediately after Task 10 and BEFORE
+> Task 11. It is numbered 16 only so the earlier task numbers — already
+> executed and recorded in the ledger — keep their identities. Tasks 11–15
+> consume the `asset()` and `SITE_URL` helpers this task creates.
+
+**Why:** the site deploys first to `https://isagog.com/isagog-web/` (a GitHub
+Pages *project* site under the org's existing custom domain) so the new design
+can be reviewed live while `isagog.com` itself keeps serving the current site.
+That subpath requires Next's `basePath`. Next prefixes `next/link` hrefs and
+`next/image` sources automatically, but it does **not** touch raw strings —
+`fetch()` URLs, `<iframe src>`, or anything inside `public/`. Each of those
+would 404 silently on the staging deploy. At cutover the base path becomes
+empty and every one of these paths must keep working unchanged.
+
+**Files:**
+- Create: `src/lib/base-path.ts`
+- Test: `src/lib/base-path.test.ts`
+- Modify: `next.config.mjs`, `public/index.html`
+- Modify: `scripts/check-export.mjs`
+
+**Interfaces:**
+- Consumes: nothing.
+- Produces:
+  - `BASE_PATH: string` — `""` or a leading-slash path with no trailing slash
+  - `IS_STAGING: boolean` — true when `BASE_PATH` is non-empty
+  - `asset(path: string): string` — prefixes a root-relative asset path
+  - `SITE_URL: string` — the absolute origin+path this build is served from
+
+- [ ] **Step 1: Write the failing test**
+
+Create `src/lib/base-path.test.ts`. The module reads an env var at import
+time, so each case re-imports it with `vi.resetModules()`:
+
+```ts
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+const load = async (basePath: string | undefined) => {
+  vi.resetModules();
+  if (basePath === undefined) {
+    delete process.env.NEXT_PUBLIC_BASE_PATH;
+  } else {
+    process.env.NEXT_PUBLIC_BASE_PATH = basePath;
+  }
+  return import("./base-path");
+};
+
+afterEach(() => {
+  delete process.env.NEXT_PUBLIC_BASE_PATH;
+});
+
+describe("BASE_PATH", () => {
+  it("is empty when the env var is unset", async () => {
+    const { BASE_PATH, IS_STAGING } = await load(undefined);
+    expect(BASE_PATH).toBe("");
+    expect(IS_STAGING).toBe(false);
+  });
+
+  it("is empty when the env var is blank", async () => {
+    const { BASE_PATH, IS_STAGING } = await load("");
+    expect(BASE_PATH).toBe("");
+    expect(IS_STAGING).toBe(false);
+  });
+
+  it("normalises a bare segment to a leading slash", async () => {
+    const { BASE_PATH } = await load("isagog-web");
+    expect(BASE_PATH).toBe("/isagog-web");
+  });
+
+  it("strips a trailing slash", async () => {
+    const { BASE_PATH } = await load("/isagog-web/");
+    expect(BASE_PATH).toBe("/isagog-web");
+  });
+
+  it("reports staging when a base path is set", async () => {
+    const { IS_STAGING } = await load("/isagog-web");
+    expect(IS_STAGING).toBe(true);
+  });
+});
+
+describe("asset", () => {
+  it("returns the path unchanged at the domain root", async () => {
+    const { asset } = await load(undefined);
+    expect(asset("/articles-data/list.json")).toBe("/articles-data/list.json");
+  });
+
+  it("prefixes the path under a base path", async () => {
+    const { asset } = await load("/isagog-web");
+    expect(asset("/articles-data/list.json")).toBe(
+      "/isagog-web/articles-data/list.json"
+    );
+  });
+
+  it("does not double-prefix an already-prefixed path", async () => {
+    const { asset } = await load("/isagog-web");
+    expect(asset("/isagog-web/favicon.ico")).toBe("/isagog-web/favicon.ico");
+  });
+
+  it("leaves absolute URLs and data URIs untouched", async () => {
+    const { asset } = await load("/isagog-web");
+    expect(asset("https://example.com/a.png")).toBe("https://example.com/a.png");
+    expect(asset("mailto:info@isagog.com")).toBe("mailto:info@isagog.com");
+  });
+});
+
+describe("SITE_URL", () => {
+  it("is the bare origin at the domain root", async () => {
+    const { SITE_URL } = await load(undefined);
+    expect(SITE_URL).toBe("https://isagog.com");
+  });
+
+  it("includes the base path on a staging build", async () => {
+    const { SITE_URL } = await load("/isagog-web");
+    expect(SITE_URL).toBe("https://isagog.com/isagog-web");
+  });
+});
+```
+
+- [ ] **Step 2: Run it to verify it fails**
+
+Run: `pnpm test src/lib/base-path.test.ts`
+Expected: FAIL — cannot resolve `./base-path`.
+
+- [ ] **Step 3: Implement `src/lib/base-path.ts`**
+
+```ts
+/**
+ * Where this build is served from.
+ *
+ * The site deploys first to https://isagog.com/isagog-web/ so it can be
+ * reviewed live while isagog.com keeps serving the old site; at cutover
+ * NEXT_PUBLIC_BASE_PATH is removed and everything moves to the domain root.
+ * Next prefixes next/link and next/image on its own — these helpers cover
+ * the raw strings it does not touch.
+ */
+const raw = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+const normalise = (value: string): string => {
+  const trimmed = value.trim();
+  if (trimmed === "" || trimmed === "/") return "";
+  const withLeading = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
+  return withLeading.endsWith("/") ? withLeading.slice(0, -1) : withLeading;
+};
+
+export const BASE_PATH = normalise(raw);
+
+export const IS_STAGING = BASE_PATH !== "";
+
+const ORIGIN = "https://isagog.com";
+
+export const SITE_URL = `${ORIGIN}${BASE_PATH}`;
+
+/**
+ * Prefix a root-relative asset path with the deployment's base path.
+ * Use for fetch() URLs, <iframe src>, and any other raw string Next does
+ * not rewrite. Absolute URLs and non-path hrefs pass through unchanged.
+ */
+export const asset = (path: string): string => {
+  if (!path.startsWith("/")) return path;
+  if (BASE_PATH === "") return path;
+  if (path === BASE_PATH || path.startsWith(`${BASE_PATH}/`)) return path;
+  return `${BASE_PATH}${path}`;
+};
+```
+
+- [ ] **Step 4: Run the test to verify it passes**
+
+Run: `pnpm test src/lib/base-path.test.ts`
+Expected: PASS — 11 tests.
+
+- [ ] **Step 5: Wire the base path into the Next config**
+
+In `next.config.mjs`, add `basePath` above `images`:
+
+```js
+const basePath = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/\/$/, "");
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Empty at the domain root; "/isagog-web" for the staging deploy.
+  basePath,
+  // Static export has no image optimizer; emit plain <img> tags.
+  images: { unoptimized: true },
+  output: "export",
+  trailingSlash: true,
+};
+```
+
+- [ ] **Step 6: Make the root redirect base-path agnostic**
+
+`public/index.html` is copied verbatim into the export, so Next never rewrites
+its URLs. Its redirect is currently absolute (`/it/`), which would jump out of
+the subpath and land on the *old* site. Relative URLs are correct at both the
+domain root and a subpath, because the file always sits at the deployment root.
+
+In `public/index.html`, change the three absolute URLs to relative:
+
+- `<link rel="icon" href="/favicon.ico" />` → `href="./favicon.ico"`
+- `window.location.replace("/" + locale + "/")` → `window.location.replace("./" + locale + "/")`
+- `<meta http-equiv="refresh" content="0; url=/it/" />` → `url=./it/`
+- the visible fallback link `<a href="/it/">` → `<a href="./it/">`
+
+- [ ] **Step 7: Verify the export empirically**
+
+This is the step that matters: Next's documented behaviour for `next/image`
+under `basePath` with `unoptimized: true` is worth confirming rather than
+trusting. Build both ways and inspect the emitted HTML.
+
+```bash
+pnpm build
+grep -o 'src="[^"]*tree[^"]*"' out/it/index.html | head -3
+grep -o 'href="[^"]*"' out/index.html | head -3
+
+NEXT_PUBLIC_BASE_PATH=/isagog-web pnpm build
+grep -o 'src="[^"]*tree[^"]*"' out/isagog-web/it/index.html | head -3
+```
+
+Note that with `basePath` set, the export nests under `out/isagog-web/`.
+
+Expected: at the root, image `src` values start with `/images/`; under the base
+path they start with `/isagog-web/images/`. **If `next/image` does NOT prefix
+them**, that is the finding this step exists to catch — report it as a concern
+and wrap the affected `src` values in `asset()` the same way the raw strings
+are wrapped. Do not assume either outcome; report what you actually observed,
+with the grep output.
+
+- [ ] **Step 8: Teach the export checker about the base path**
+
+`scripts/check-export.mjs` currently looks under `out/<locale>/`. Under a base
+path the export nests one level deeper. At the top of the file:
+
+```js
+const BASE = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/^\/|\/$/g, "");
+const OUT = BASE === "" ? "out" : join("out", BASE);
+```
+
+and remove the old `const OUT = "out";`. Everything else already builds its
+paths from `OUT`.
+
+- [ ] **Step 9: Full verification, both ways**
+
+```bash
+pnpm test && pnpm typecheck && pnpm lint
+pnpm build
+NEXT_PUBLIC_BASE_PATH=/isagog-web pnpm build
+```
+
+Expected: both builds succeed and both print `check-export: ok`. Finish with a
+plain `pnpm build` so the working tree holds a root-relative export.
+
+- [ ] **Step 10: Commit**
+
+```bash
+git add -A
+git commit -m "$(cat <<'EOF'
+feat: support deployment under a subpath
+
+Staging serves from https://isagog.com/isagog-web/ so the new site can be
+reviewed live while isagog.com keeps serving the old one. Next prefixes
+next/link and next/image; asset() covers the raw strings it does not, and
+public/index.html now redirects relatively so it works at either location.
+
+Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>
+Claude-Session: https://claude.ai/code/session_014iy942nkTUWpqwymBiPdUm
+EOF
+)"
 ```
 
 ---
