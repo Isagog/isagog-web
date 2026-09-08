@@ -14,4 +14,12 @@ export default {
     street: "Via Faà di Bruno 52",
     zip: "00195 Roma (IT)",
   },
+  rail: {
+    visione: "Vision",
+    metodologia: "Method",
+    tecnologia: "Technology",
+    persone: "People",
+    contatto: "Contact",
+    label: "Page sections",
+  },
 } as const;

@@ -1,4 +1,7 @@
 import { BodyWrapper } from "@/app/_components/custom/body-wrapper";
+import { Footer } from "@/app/_components/custom/footer";
+import { Header } from "@/app/_components/custom/header";
+import { SectionRail } from "@/app/_components/custom/section-rail";
 import { I18nProviderClient } from "@/packages/locales/client";
 import { getStaticParams } from "@/packages/locales/server";
 import type { Metadata } from "next";
@@ -44,7 +47,12 @@ export default async function RootLayout({
       className={`${inter.variable} ${fraunces.variable} font-sans`}
     >
       <I18nProviderClient locale={locale}>
-        <BodyWrapper>{children}</BodyWrapper>
+        <BodyWrapper className="pt-[72px]">
+          <Header />
+          <SectionRail />
+          {children}
+          <Footer />
+        </BodyWrapper>
       </I18nProviderClient>
     </html>
   );
