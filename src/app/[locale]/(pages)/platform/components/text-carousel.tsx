@@ -96,7 +96,7 @@ export const TextCarousel = () => {
               key={slide.title}
               type="button"
               onClick={() => setCurrentSlide(index)}
-              aria-label={`Go to slide ${index + 1}`}
+              aria-label={t("dotLabel", { n: String(index + 1) })}
               className={`h-3 w-3 rounded-full transition-colors ${
                 currentSlide === index ? "bg-forest" : "bg-forest/25 hover:bg-forest/60"
               }`}

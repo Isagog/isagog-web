@@ -194,6 +194,7 @@ export default {
     mobileCta: "Visit this page from a tablet or computer to explore it",
   },
   textCarousel: {
+    dotLabel: "Go to slide {n}",
     slide1: {
       title: "Knowledge Augmented Generation",
       subtitle: "Beyond RAG: answers grounded in facts, not just text",
