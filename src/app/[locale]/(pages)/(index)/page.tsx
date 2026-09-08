@@ -1,11 +1,16 @@
-import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
+import { setStaticParamsLocale } from "@/packages/locales/server";
+import { Apertura, Hero } from "./components";
 
 const HomePage = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;
   setStaticParamsLocale(locale);
-  const t = await getScopedI18n("nav");
 
-  return <main>{t("wordmark")}</main>;
+  return (
+    <main>
+      <Hero />
+      <Apertura />
+    </main>
+  );
 };
 
 export default HomePage;
