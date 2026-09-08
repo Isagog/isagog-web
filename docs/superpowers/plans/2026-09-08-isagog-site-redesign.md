@@ -457,6 +457,7 @@ export default {
     project: "Progetti",
     blog: "Approfondimenti",
     cta: "Valutiamo il vostro caso",
+    menu: "Menu di navigazione",
   },
   footer: {
     platform: "La Piattaforma",
@@ -479,6 +480,7 @@ export default {
     project: "Projects",
     blog: "Insights",
     cta: "Let's assess your case",
+    menu: "Navigation menu",
   },
   footer: {
     platform: "The Platform",
@@ -1339,7 +1341,7 @@ export const Header = () => {
 
         <DropdownMenu open={open} onOpenChange={setOpen}>
           <DropdownMenuTrigger
-            aria-label={t("cta")}
+            aria-label={t("menu")}
             className="lg:hidden flex h-8 w-8 items-center justify-center"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
