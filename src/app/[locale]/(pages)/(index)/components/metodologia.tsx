@@ -6,12 +6,6 @@ import { Brain, Database, ScanText } from "lucide-react";
 export const Metodologia = async () => {
   const t = await getScopedI18n("home.metodologia");
 
-  const capabilities = [
-    { number: "01", key: "cap1", icon: <ScanText size={24} strokeWidth={2} /> },
-    { number: "02", key: "cap2", icon: <Database size={24} strokeWidth={2} /> },
-    { number: "03", key: "cap3", icon: <Brain size={24} strokeWidth={2} /> },
-  ] as const;
-
   return (
     <section id="metodologia" className="scroll-anchor bg-page px-6 py-20">
       <div className="mx-auto max-w-[1224px]">
@@ -35,21 +29,21 @@ export const Metodologia = async () => {
         <div className="grid gap-6 md:grid-cols-3">
           <CapabilityCard
             number="01"
-            icon={capabilities[0].icon}
+            icon={<ScanText size={24} strokeWidth={2} />}
             title={t("cap1.title")}
             body={t("cap1.body")}
             result={t("cap1.result")}
           />
           <CapabilityCard
             number="02"
-            icon={capabilities[1].icon}
+            icon={<Database size={24} strokeWidth={2} />}
             title={t("cap2.title")}
             body={t("cap2.body")}
             result={t("cap2.result")}
           />
           <CapabilityCard
             number="03"
-            icon={capabilities[2].icon}
+            icon={<Brain size={24} strokeWidth={2} />}
             title={t("cap3.title")}
             body={t("cap3.body")}
             result={t("cap3.result")}
