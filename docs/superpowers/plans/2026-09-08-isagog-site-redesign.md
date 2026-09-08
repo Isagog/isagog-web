@@ -20,7 +20,7 @@ These apply to every task; each task's requirements implicitly include them.
 - **TypeScript strict** with `noUncheckedIndexedAccess` — indexed access yields `T | undefined` and must be narrowed.
 - **ESLint errors (not warnings):** `@typescript-eslint/no-explicit-any`, `@typescript-eslint/consistent-type-imports` (use `import type`), `eqeqeq`, `no-console` except `console.error`, unused vars unless `_`-prefixed.
 - **Every internal link uses `LocaleLink`**, never a bare `next/link`. External links (`http`, `mailto:`, `#…`) pass through unchanged.
-- **Copy never lives in components.** All user-visible strings live in `src/packages/locales/lang/{it,en}.ts`. `it.ts` and `en.ts` must stay structurally identical or the typed `t()` keys break. Italian is copied **verbatim** from `bozzacompleta.html`, including its typographic apostrophes (`'`) and en/em dashes; English homepage keys are filled with the Italian text for now (deferred translation), except where an English string already exists in `../isagog.github.io/src/packages/locales/lang/en.ts`.
+- **Copy never lives in components.** All user-visible strings live in `src/packages/locales/lang/{it,en}.ts`. `it.ts` and `en.ts` must stay structurally identical or the typed `t()` keys break. Italian is copied **verbatim** from `bozzacompleta.html`. Verified: the draft uses **plain ASCII apostrophes** (26 of them, zero U+2019) — transcribe them as ASCII `'`, do not "upgrade" them to typographic quotes. Its `·` separators and arrow glyphs (`↗`, `→`, `↓`) are transcribed as-is. English homepage keys are filled with the Italian text for now (deferred translation), except where an English string already exists in `../isagog.github.io/src/packages/locales/lang/en.ts`.
 - **Design tokens live in `src/app/globals.css`**, never in `tailwind.config.ts`.
 - **Colours are only ever referenced through tokens** (`text-forest`, `bg-visione`), never as raw hex in a component.
 - **Commit after every task**, conventional-commits style (`feat:`, `fix:`, `chore:`, `docs:`, `test:`), and end every commit message with these two trailers:
@@ -1555,7 +1555,7 @@ export const Hero = async () => {
         alt={t("imageAlt")}
         width={320}
         height={320}
-        priority
+        preload
         className="h-auto w-[220px] sm:w-[280px]"
       />
       <h1 className="mt-8 text-[clamp(34px,5vw,56px)] leading-[1.1] text-forest">
