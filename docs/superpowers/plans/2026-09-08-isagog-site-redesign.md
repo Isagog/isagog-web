@@ -2865,7 +2865,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
 
 Wrap the layout's children in `<Providers>` (inside `I18nProviderClient`, outside `BodyWrapper`'s children).
 
-Copy `skeleton.tsx` from `../isagog.github.io/src/app/_components/ui/skeleton.tsx`. Do not copy `card.tsx` or `button.tsx`; nothing in this design uses either. (`button.tsx` is only a dependency of the shadcn `carousel.tsx`, which is itself unused — see Task 11.)
+Copy `skeleton.tsx` from `../isagog.github.io/src/app/_components/ui/skeleton.tsx`, but change its `bg-accent` to `bg-mist` — this project defines no `--color-accent`, so `bg-accent` emits no rule and the skeleton would be invisible. Error strings in the `[slug]` pages come from the locale files like all other copy, not hardcoded in JSX. Do not copy `card.tsx` or `button.tsx`; nothing in this design uses either. (`button.tsx` is only a dependency of the shadcn `carousel.tsx`, which is itself unused — see Task 11.)
 
 `src/app/_components/custom/markdown-render.tsx` — adapt from the old site's version, changing the class overrides to the new tokens: headings `text-forest` in `font-serif`, body `text-[16.5px] leading-[1.6] text-prose-muted`, links `text-terracotta hover:underline`, blockquote `border-l-4 border-divider pl-4 italic text-muted-ink`, code `bg-tecnologia`.
 
@@ -3000,9 +3000,9 @@ const ProjectPostPage = async ({
   if (post === null) {
     return (
       <main className="flex min-h-[70vh] flex-col items-center justify-center gap-4 text-center">
-        <h1 className="text-2xl text-forest">Project not found</h1>
+        <h1 className="text-2xl text-forest">{t("notFound")}</h1>
         <Link href="/project" className="text-terracotta">
-          Go back to projects
+          {t("backToProjects")}
         </Link>
       </main>
     );
@@ -3232,9 +3232,9 @@ const BlogPostPage = async ({ params }: { params: Promise<{ slug: string }> }) =
   if (post === null) {
     return (
       <main className="flex min-h-[70vh] flex-col items-center justify-center gap-4 text-center">
-        <h1 className="text-2xl text-forest">Article not found</h1>
+        <h1 className="text-2xl text-forest">{t("notFound")}</h1>
         <Link href="/blog" className="text-terracotta">
-          Go back to blog
+          {t("backToBlog")}
         </Link>
       </main>
     );
