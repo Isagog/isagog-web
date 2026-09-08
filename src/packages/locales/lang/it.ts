@@ -57,6 +57,30 @@ export default {
       caseTitleLine2: "alla domanda del visitatore.",
       caseBody: "Collegare mostre, opere, autori e testi aiuta a costruire un'assistenza che orienta il pubblico e rende consultabile il patrimonio informativo del museo.",
     },
+    metodologia: {
+      eyebrow: "02 / METODOLOGIA",
+      titleLine1: "Agli agenti l'analisi.",
+      titleEm: "Agli esperti il giudizio.",
+      lead: "Dai vostri documenti e dai vostri dati, una conoscenza che ragiona. In giorni, sotto la vostra supervisione.",
+      p1: "Isagog ha un metodo per costruire la base di conoscenza di un'organizzazione a partire da ciò che già possiede, e per ragionarci sopra. I nostri agenti, basati su modelli linguistici specializzati, leggono documenti e dati, riconoscono concetti e relazioni impliciti e ne propongono i modelli, pronti per la revisione; altri agenti estraggono poi informazione strutturata, dato per dato, in modo tracciabile. Sono processi ripetibili: nuovi documenti, nuovi dati, stessi procedimenti.",
+      p2: "Agli esperti di dominio resta il compito che solo loro possono svolgere: supervisionare. Leggono ciò che gli agenti hanno proposto, correggono, approvano — ciò che prima richiedeva mesi di analisi e colloqui si ottiene in giorni. È questo che rende il metodo scalabile e ne tiene i costi sotto controllo.",
+      cap1: {
+        title: "Rappresentare",
+        body: "Individuiamo concetti e relazioni del vostro dominio. Gli agenti ne propongono il modello; i vostri esperti lo validano.",
+        result: "Concetti condivisi prima dei contenuti",
+      },
+      cap2: {
+        title: "Raccogliere",
+        body: "Secondo il modello condiviso, gli agenti estraggono informazioni e le collegano alle fonti. Nuovi documenti alimentano la conoscenza attraverso procedimenti ripetibili.",
+        result: "Nuovi dati, un metodo riutilizzabile",
+      },
+      cap3: {
+        title: "Ragionare",
+        body: "Il modello linguistico porta la comprensione del linguaggio, il grafo di conoscenza porta la struttura, la coerenza e la prova. È l'integrazione che chiamiamo neurosimbolica, ed è il cuore del nostro metodo.",
+        result: "La conoscenza nei processi quotidiani",
+      },
+      closing: "Questa divisione del lavoro ha una conseguenza importante: quando i contenuti stanno nel grafo e il modello si occupa del linguaggio, anche un modello di piccole dimensioni è all'altezza del compito. Ragiona su ciò che è scritto, e ciò che è scritto si può leggere, correggere e approvare, senza addestrare né riaddestrare nulla.",
+    },
     card: {
       org: "MUSEO AURORA",
       sample: "SCENARIO INVENTATO",
