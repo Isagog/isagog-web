@@ -225,4 +225,8 @@ export default {
       point4: "Cost control: choose your models, set usage limits, no vendor lock-in.",
     },
   },
+  project: {
+    notFound: "Project not found",
+    backToProjects: "Go back to projects",
+  },
 } as const;

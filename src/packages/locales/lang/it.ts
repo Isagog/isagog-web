@@ -228,4 +228,8 @@ export default {
         "Costi sotto controllo: scegli i modelli, fissa i limiti d'uso, nessun vincolo con un fornitore.",
     },
   },
+  project: {
+    notFound: "Progetto non trovato",
+    backToProjects: "Torna ai progetti",
+  },
 } as const;

@@ -1,6 +1,7 @@
 import { BodyWrapper } from "@/app/_components/custom/body-wrapper";
 import { Footer } from "@/app/_components/custom/footer";
 import { Header } from "@/app/_components/custom/header";
+import { Providers } from "@/app/_components/providers";
 import { SectionRail } from "@/app/_components/custom/section-rail";
 import { I18nProviderClient } from "@/packages/locales/client";
 import { getStaticParams } from "@/packages/locales/server";
@@ -48,10 +49,12 @@ export default async function RootLayout({
     >
       <I18nProviderClient locale={locale}>
         <BodyWrapper className="pt-[72px]">
-          <Header />
-          <SectionRail />
-          {children}
-          <Footer />
+          <Providers>
+            <Header />
+            <SectionRail />
+            {children}
+            <Footer />
+          </Providers>
         </BodyWrapper>
       </I18nProviderClient>
     </html>
