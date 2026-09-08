@@ -185,4 +185,46 @@ export default {
         "Questo prototipo prepara una bozza email. Potrete rivederla e inviarla dal vostro programma di posta. Nessun dato viene inviato dal modulo.",
     },
   },
+  platform: {
+    heroTitle: "La piattaforma Isagog",
+    heroDescription:
+      "L'AI generativa scrive bene, ma non sa cosa è vero. La piattaforma Isagog ancora i modelli linguistici a un grafo di conoscenza costruito dai tuoi documenti: ogni risposta è fondata sui fatti, verificabile, e gira dove decidi tu.",
+    explorerTitle: "Esplora la piattaforma Isagog",
+    mobileNotice:
+      "Il diagramma interattivo della piattaforma non è disponibile su schermi piccoli.",
+    mobileCta: "Visita questa pagina da tablet o computer per esplorarlo",
+  },
+  textCarousel: {
+    slide1: {
+      title: "Knowledge Augmented Generation",
+      subtitle: "Oltre la RAG: risposte fondate su fatti, non solo su testi",
+      point1:
+        "Gli agenti analitici leggono i tuoi documenti e li trasformano in un grafo di conoscenza: entità, fatti, relazioni.",
+      point2:
+        "Il grafo lavora insieme alla ricerca vettoriale: la precisione del ragionamento più l'ampiezza della ricerca.",
+      point3:
+        "Le risposte sono generate dal modello linguistico, ma ancorate e verificate sui fatti del grafo.",
+    },
+    slide2: {
+      title: "Agenti su misura, senza codice",
+      subtitle: "Definisci e orchestri i tuoi agenti in modalità no-code",
+      point1:
+        "Agenti che analizzano i documenti e popolano la conoscenza, agenti che cercano, agenti che dialogano.",
+      point2:
+        "Li componi e li coordini dall'interfaccia, senza scrivere una riga di codice.",
+      point3: "Ogni progetto ha i suoi agenti, i suoi strumenti, il suo spazio di lavoro.",
+    },
+    slide3: {
+      title: "Il controllo resta a te",
+      subtitle: "Trasparenza, sovranità e conformità fin dalla progettazione",
+      point1:
+        "Trasparenza: ogni risposta è verificabile — puoi ispezionare fonti, passaggi e strumenti usati dall'AI.",
+      point2:
+        "Sovranità dei dati: la piattaforma gira sulla tua infrastruttura, anche con modelli piccoli e aperti.",
+      point3:
+        "Conformità (EU AI Act, GDPR): accessi basati sui ruoli, autenticazione forte, dati isolati per ogni spazio di lavoro.",
+      point4:
+        "Costi sotto controllo: scegli i modelli, fissa i limiti d'uso, nessun vincolo con un fornitore.",
+    },
+  },
 } as const;
