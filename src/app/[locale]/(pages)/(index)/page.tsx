@@ -1,5 +1,5 @@
 import { setStaticParamsLocale } from "@/packages/locales/server";
-import { Apertura, Hero, Metodologia, Visione } from "./components";
+import { Apertura, Hero, Metodologia, Tecnologia, Visione } from "./components";
 
 const HomePage = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;
@@ -11,6 +11,7 @@ const HomePage = async ({ params }: { params: Promise<{ locale: string }> }) => 
       <Apertura />
       <Visione />
       <Metodologia />
+      <Tecnologia />
     </main>
   );
 };

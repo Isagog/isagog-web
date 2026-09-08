@@ -81,6 +81,46 @@ export default {
       },
       closing: "Questa divisione del lavoro ha una conseguenza importante: quando i contenuti stanno nel grafo e il modello si occupa del linguaggio, anche un modello di piccole dimensioni è all'altezza del compito. Ragiona su ciò che è scritto, e ciò che è scritto si può leggere, correggere e approvare, senza addestrare né riaddestrare nulla.",
     },
+    tecnologia: {
+      eyebrow: "03 / TECNOLOGIA",
+      titleLine1: "Una piattaforma",
+      titleEm: "nelle vostre mani.",
+      lead: "Sui vostri sistemi, con i vostri dati, ai vostri costi.",
+      p1: "Isagog ha sviluppato una piattaforma che mette il metodo nelle mani di chi lo deve usare. Gli agenti leggono i vostri dati e propongono la conoscenza; i vostri esperti la supervisionano e la approvano; la piattaforma la interroga, la fa ragionare e la porta nei compiti quotidiani.",
+      p2: "La conoscenza resta un bene dell'organizzazione, esplicito e modificabile, e con essa la trasparenza che le norme richiedono: ogni risposta risale alla sua fonte, ogni inferenza si può ripercorrere.",
+      usecasesLabel: "LE ESIGENZE SONO DIVERSE QUANTO LE FORME DELLA CONOSCENZA",
+      uc1: {
+        title: "Un ufficio legale",
+        body: "Ha bisogno di tracciabilità.",
+      },
+      uc2: {
+        title: "Un servizio clienti",
+        body: "Ha bisogno di velocità.",
+      },
+      uc3: {
+        title: "Un oncologo",
+        body: "Ha bisogno di un quadro completo del paziente, e di risposte di cui risalire alla fonte, dato per dato.",
+      },
+      uc4: {
+        title: "Una guida museale",
+        body: "Ha bisogno quasi dell'opposto: ampiezza, per collegare un'opera alla storia, ai luoghi e alle persone che la circondano.",
+      },
+      usecasesClose: "La stessa piattaforma serve entrambi gli estremi, perché consente di scegliere quale strumento usare e in quale misura.",
+      ctrl1: {
+        title: "Infrastruttura vostra.",
+        body: "Si installa sulla vostra infrastruttura o sul Cloud e lavora con modelli aperti.",
+      },
+      ctrl2: {
+        title: "Costi noti in anticipo.",
+        body: "I dati restano in casa, e i costi sono noti in anticipo.",
+      },
+      ctrl3: {
+        title: "Ogni dimensione.",
+        body: "Anche una piccola organizzazione ha un mondo intero da rappresentare.",
+      },
+      badge: "La conoscenza resta un bene dell'organizzazione.",
+      cta: "Esplorate la piattaforma",
+    },
     card: {
       org: "MUSEO AURORA",
       sample: "SCENARIO INVENTATO",
