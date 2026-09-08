@@ -1492,7 +1492,7 @@ Claude-Session: https://claude.ai/code/session_014iy942nkTUWpqwymBiPdUm"
 - Modify: `src/packages/locales/lang/{it,en}.ts`
 
 **Interfaces:**
-- Consumes: `SectionHeading`, `LocaleLink`, `getScopedI18n`, `setStaticParamsLocale`.
+- Consumes: `LocaleLink`, `getScopedI18n`, `setStaticParamsLocale`. (Not `SectionHeading` — the hero and apertura have bespoke heading markup in the draft; `SectionHeading` serves the four numbered sections in Tasks 6–8.)
 - Produces: `Hero`, `Apertura`, `KnowledgeCard` — all server components taking no props; re-exported from `./components`.
 
 - [ ] **Step 1: Add the copy keys**
