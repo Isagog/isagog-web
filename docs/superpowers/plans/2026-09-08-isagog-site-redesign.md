@@ -635,7 +635,7 @@ EOF
 
 **Interfaces:**
 - Consumes: `cn` from `@/lib/utils`.
-- Produces: Tailwind utility names available to every later task — colours `paper`, `page`, `forest`, `forest-deep`, `sage`, `olive`, `terracotta`, `cream`, `cream-soft`, `mist`, `visione`, `tecnologia`, `persone`, `card-bg`, `card-border`, `divider`, `num`, `result`, `prose-muted`, `muted-ink`; fonts `font-serif` (Fraunces) and `font-sans` (Inter); `BodyWrapper({ children, className }: { children: ReactNode; className?: string })`.
+- Produces: Tailwind utility names available to every later task — colours `paper`, `page`, `forest`, `forest-deep`, `sage`, `olive`, `terracotta`, `cream`, `cream-soft`, `mist`, `visione`, `tecnologia`, `persone`, `card-border`, `divider`, `num`, `result`, `prose-muted`, `muted-ink`; fonts `font-serif` (Fraunces) and `font-sans` (Inter); `BodyWrapper({ children, className }: { children: ReactNode; className?: string })`.
 
 - [ ] **Step 1: Write the failing token test**
 
