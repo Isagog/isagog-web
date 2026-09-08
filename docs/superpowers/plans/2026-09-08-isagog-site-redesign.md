@@ -3772,27 +3772,29 @@ NEXT_PUBLIC_BASE_PATH=/isagog-web pnpm build
 grep -o 'src="[^"]*tree[^"]*"' out/isagog-web/it/index.html | head -3
 ```
 
-Note that with `basePath` set, the export nests under `out/isagog-web/`.
+**Verified on Next 16.3.4 — both points are the opposite of what this plan
+first assumed:**
 
-Expected: at the root, image `src` values start with `/images/`; under the base
-path they start with `/isagog-web/images/`. **If `next/image` does NOT prefix
-them**, that is the finding this step exists to catch — report it as a concern
-and wrap the affected `src` values in `asset()` the same way the raw strings
-are wrapped. Do not assume either outcome; report what you actually observed,
-with the grep output.
+1. `next/image` does **not** prefix its `src` under `basePath`, though
+   `next/link` hrefs are prefixed. Every `next/image` `src` must be wrapped
+   in `asset()` — eight of them: hero 1, visione 1, persone 2, contatto 4.
+   Without this, every image on the staging deploy 404s.
+2. The export does **not** nest under `out/isagog-web/`. Next always writes
+   to `./out`; `basePath` only rewrites values baked into the emitted HTML.
+
+Confirm both against your own build output rather than trusting this note.
 
 - [ ] **Step 8: Teach the export checker about the base path**
 
-`scripts/check-export.mjs` currently looks under `out/<locale>/`. Under a base
-path the export nests one level deeper. At the top of the file:
+No change is needed here after all: Next writes the export to `./out`
+regardless of `basePath`, so the existing `const OUT = "out";` is already
+correct. Add a comment recording that, so a future reader does not "fix" it:
 
 ```js
-const BASE = (process.env.NEXT_PUBLIC_BASE_PATH ?? "").replace(/^\/|\/$/g, "");
-const OUT = BASE === "" ? "out" : join("out", BASE);
+// Next (output: "export") always writes to ./out regardless of `basePath` —
+// basePath only rewrites the href/src values baked into the emitted HTML.
+const OUT = "out";
 ```
-
-and remove the old `const OUT = "out";`. Everything else already builds its
-paths from `OUT`.
 
 - [ ] **Step 9: Full verification, both ways**
 
