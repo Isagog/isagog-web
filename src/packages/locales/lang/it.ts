@@ -5,6 +5,7 @@ export default {
     project: "Progetti",
     blog: "Approfondimenti",
     cta: "Valutiamo il vostro caso",
+    menu: "Menu di navigazione",
   },
   footer: {
     platform: "La Piattaforma",

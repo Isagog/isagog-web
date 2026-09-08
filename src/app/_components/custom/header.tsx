@@ -55,7 +55,7 @@ export const Header = () => {
 
         <DropdownMenu open={open} onOpenChange={setOpen}>
           <DropdownMenuTrigger
-            aria-label={t("cta")}
+            aria-label={t("menu")}
             className="lg:hidden flex h-8 w-8 items-center justify-center"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
