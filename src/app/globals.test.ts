@@ -9,6 +9,7 @@ const TOKENS: ReadonlyArray<readonly [string, string]> = [
   ["--color-forest", "#173c31"],
   ["--color-forest-deep", "#1a4939"],
   ["--color-sage", "#688151"],
+  ["--color-em-dark", "#c0d78c"],
   ["--color-olive", "#668f3e"],
   ["--color-terracotta", "#ce4e27"],
   ["--color-cream", "#f1f5e7"],

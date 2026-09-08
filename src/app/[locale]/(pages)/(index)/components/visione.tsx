@@ -16,7 +16,7 @@ export const Visione = async () => {
             <>
               {t("titleLine1")}
               <br />
-              <em className="not-italic text-sage">{t("titleEm")}</em>
+              <em className="not-italic text-em-dark">{t("titleEm")}</em>
             </>
           }
           lead={t("lead")}
