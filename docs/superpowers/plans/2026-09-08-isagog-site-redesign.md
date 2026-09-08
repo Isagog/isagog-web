@@ -2867,7 +2867,7 @@ export const Providers = ({ children }: PropsWithChildren) => {
 
 Wrap the layout's children in `<Providers>` (inside `I18nProviderClient`, outside `BodyWrapper`'s children).
 
-Copy `skeleton.tsx` from `../isagog.github.io/src/app/_components/ui/skeleton.tsx`. Do not copy `card.tsx` or `button.tsx` — nothing in this design uses them.
+Copy `skeleton.tsx` from `../isagog.github.io/src/app/_components/ui/skeleton.tsx`. `button.tsx` was already vendored in Task 11 — `carousel.tsx` imports and uses it for `CarouselPrevious`/`CarouselNext`, so it is a hard compile dependency, not optional. Do not copy `card.tsx`; nothing in this design uses it.
 
 `src/app/_components/custom/markdown-render.tsx` — adapt from the old site's version, changing the class overrides to the new tokens: headings `text-forest` in `font-serif`, body `text-[16.5px] leading-[1.6] text-prose-muted`, links `text-terracotta hover:underline`, blockquote `border-l-4 border-divider pl-4 italic text-muted-ink`, code `bg-tecnologia`.
 
