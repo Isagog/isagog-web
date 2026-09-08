@@ -1,4 +1,5 @@
 export { Apertura } from "./apertura";
+export { Contatto } from "./contatto";
 export { DemoSlot } from "./demo-slot";
 export { Hero } from "./hero";
 export { KnowledgeCard } from "./knowledge-card";
