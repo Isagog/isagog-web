@@ -100,6 +100,10 @@ not an approximation.
 | tecnologia ground | `#e8eedf` | — |
 | persone ground | `#f0f3e9` | — |
 
+The dark section needs its own emphasis colour: `--em-dark #c0d78c`. The
+light-section sage (`#688151`) measures only 2.77:1 against the visione ground
+and fails WCAG AA; `--em-dark` measures 7.63:1.
+
 Plus the draft's supporting values: `--forest-deep #1a4939`, `--muted #536157`,
 `--prose-muted #5d6c55`, `--olive #668f3e`, `--border #d8dfd3`,
 `--divider #adbd9e`, `--cream #f1f5e7`, `--card-bg #fafbf7`,

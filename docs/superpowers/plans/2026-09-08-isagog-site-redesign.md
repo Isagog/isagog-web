@@ -659,6 +659,7 @@ const TOKENS: ReadonlyArray<readonly [string, string]> = [
   ["--color-terracotta", "#ce4e27"],
   ["--color-cream", "#f1f5e7"],
   ["--color-cream-soft", "#d1ddca"],
+  ["--color-em-dark", "#c0d78c"],
   ["--color-visione", "#183d30"],
   ["--color-tecnologia", "#e8eedf"],
   ["--color-persone", "#f0f3e9"],
@@ -707,6 +708,7 @@ Values are transcribed from `bozzacompleta.html:3–33`. `--color-page` is the d
   --color-terracotta: var(--color-terracotta);
   --color-cream: var(--color-cream);
   --color-cream-soft: var(--color-cream-soft);
+  --color-em-dark: var(--color-em-dark);
   --color-mist: var(--color-mist);
   --color-visione: var(--color-visione);
   --color-tecnologia: var(--color-tecnologia);
@@ -740,6 +742,8 @@ Values are transcribed from `bozzacompleta.html:3–33`. `--color-page` is the d
   --color-terracotta: #ce4e27;
   --color-cream: #f1f5e7;
   --color-cream-soft: #d1ddca;
+  /* emphasis inside the dark section: sage on #183d30 is only 2.77:1 */
+  --color-em-dark: #c0d78c;
   --color-mist: #ccd8c8;
 
   /* section grounds — the page's light/dark rhythm */
@@ -1829,7 +1833,8 @@ export const Visione = async () => {
             <>
               {t("titleLine1")}
               <br />
-              <em className="not-italic text-sage">{t("titleEm")}</em>
+              {/* text-em-dark, not text-sage: sage on the dark ground is 2.77:1 */}
+              <em className="not-italic text-em-dark">{t("titleEm")}</em>
             </>
           }
           lead={t("lead")}
