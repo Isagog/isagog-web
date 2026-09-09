@@ -1,6 +1,7 @@
 export default {
   nav: {
     wordmark: "Isagog",
+    home: "Inizio",
     platform: "La Piattaforma",
     project: "Progetti",
     blog: "Approfondimenti",

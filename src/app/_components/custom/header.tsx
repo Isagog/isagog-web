@@ -14,12 +14,20 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LocaleLink as Link } from "./locale-link";
 
+/**
+ * "/" is a prefix of every pathname, so the home entry needs an exact match
+ * or it would render as active on every page.
+ */
+const isActive = (pathname: string, href: string): boolean =>
+  href === "/" ? pathname === "/" : pathname.startsWith(href);
+
 export const Header = () => {
   const t = useScopedI18n("nav");
   const pathname = stripLocale(usePathname());
   const [open, setOpen] = useState(false);
 
   const navItems = [
+    { href: "/", label: t("home") },
     { href: "/platform", label: t("platform") },
     { href: "/project", label: t("project") },
     { href: "/blog", label: t("blog") },
@@ -39,7 +47,7 @@ export const Header = () => {
               href={item.href}
               className={cn(
                 "text-[15px] text-forest/80 hover:text-forest transition-colors",
-                pathname.startsWith(item.href) && "text-forest font-medium"
+                isActive(pathname, item.href) && "text-forest font-medium"
               )}
             >
               {item.label}
