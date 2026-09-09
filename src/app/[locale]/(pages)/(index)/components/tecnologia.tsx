@@ -32,19 +32,19 @@ export const Tecnologia = async () => {
           </span>
           <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <h5 className="mb-2 font-serif text-[18px] text-forest">{t("uc1.title")}</h5>
+              <h4 className="mb-2 font-serif text-[18px] text-forest">{t("uc1.title")}</h4>
               <p className="text-[14.5px] leading-[1.5] text-prose-muted">{t("uc1.body")}</p>
             </div>
             <div>
-              <h5 className="mb-2 font-serif text-[18px] text-forest">{t("uc2.title")}</h5>
+              <h4 className="mb-2 font-serif text-[18px] text-forest">{t("uc2.title")}</h4>
               <p className="text-[14.5px] leading-[1.5] text-prose-muted">{t("uc2.body")}</p>
             </div>
             <div>
-              <h5 className="mb-2 font-serif text-[18px] text-forest">{t("uc3.title")}</h5>
+              <h4 className="mb-2 font-serif text-[18px] text-forest">{t("uc3.title")}</h4>
               <p className="text-[14.5px] leading-[1.5] text-prose-muted">{t("uc3.body")}</p>
             </div>
             <div>
-              <h5 className="mb-2 font-serif text-[18px] text-forest">{t("uc4.title")}</h5>
+              <h4 className="mb-2 font-serif text-[18px] text-forest">{t("uc4.title")}</h4>
               <p className="text-[14.5px] leading-[1.5] text-prose-muted">{t("uc4.body")}</p>
             </div>
           </div>
