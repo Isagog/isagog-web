@@ -4,7 +4,7 @@ import { getScopedI18n } from "@/packages/locales/server";
 import { Brain, Database, ScanText } from "lucide-react";
 
 export const Metodologia = async () => {
-  const t = await getScopedI18n("home.metodologia");
+  const t = await getScopedI18n("approach.metodologia");
 
   return (
     <section id="metodologia" className="scroll-anchor bg-page px-6 py-20">

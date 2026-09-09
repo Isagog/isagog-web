@@ -1,9 +1,6 @@
 export { Apertura } from "./apertura";
 export { Contatto } from "./contatto";
-export { DemoSlot } from "./demo-slot";
 export { Hero } from "./hero";
 export { KnowledgeCard } from "./knowledge-card";
-export { Metodologia } from "./metodologia";
 export { Persone } from "./persone";
 export { Tecnologia } from "./tecnologia";
-export { Visione } from "./visione";

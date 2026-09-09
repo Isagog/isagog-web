@@ -5,7 +5,7 @@ import Image from "next/image";
 import { DemoSlot } from "./demo-slot";
 
 export const Visione = async () => {
-  const t = await getScopedI18n("home.visione");
+  const t = await getScopedI18n("approach.visione");
 
   return (
     <section id="visione" className="scroll-anchor bg-visione px-6 py-20">
