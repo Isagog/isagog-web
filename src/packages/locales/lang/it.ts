@@ -3,7 +3,6 @@ export default {
     wordmark: "Isagog",
     home: "Inizio",
     approach: "Approccio",
-    about: "Chi siamo",
     platform: "La Piattaforma",
     project: "Progetti",
     blog: "Approfondimenti",
@@ -16,7 +15,6 @@ export default {
     platform: "La Piattaforma",
     project: "Progetti",
     blog: "Approfondimenti",
-    about: "Chi siamo",
     contact: "Contatti",
     email: "info@isagog.com",
     copyright: "(c) {year} Isagog Srl",
@@ -42,12 +40,6 @@ export default {
       eyebrow: "TRE DOMINI, UNA PIATTAFORMA",
       tablistLabel: "Scegli un dominio",
       questionPickerLabel: "Scegli una domanda",
-      questionLabel: "DOMANDA",
-      answerLabel: "RISPOSTA",
-      evidenceLabel: "FONTE",
-      classLabel: "classe",
-      propertyLabel: "proprietà",
-      traversalLabel: "percorso",
       lineLabel: "riga",
       refusalCaption: "Il sistema non generalizza",
       ctaTitle: "Una piattaforma. Tre domini.",
@@ -55,36 +47,103 @@ export default {
       museo: {
         tabLabel: "MUSEO",
         disclosure:
-          "Istanze illustrative su schema reale: opera, mostra e testi sono inventati; le classi e le proprietà attraversate — WallText, ExhibitionCatalogue, CuratorialNote, about, described_in — sono quelle della piattaforma MAXXI.",
-        sharedClassCaption: "Classi diverse, tutte {className}",
-        valueKind: "VALORE",
-        noOutgoingEdges: "Nessun arco `described_in` in uscita da quest'opera.",
+          "Istanze illustrative su schema reale: la mostra, le opere e le sale sono inventate; le classi e le proprietà attraversate — Exhibition, Painting, Installation, VideoArtwork, Hall, exhibited_in, located_in, adjacent_to — sono quelle dell'ontologia MAXXI (v2.8) e della top ontology Isagog che essa importa.",
+        resolutionLabel: "COME È STATA RISOLTA",
+        resultsLabel: "RISPOSTA DAL GRAFO",
+        axiomsLabel: "SU QUALI ASSIOMI",
+        graphStepLabel: "QUERY SUL GRAFO",
+        inferenceStepLabel: "INFERENZA",
         nodes: {
-          artwork1: "Controluce (1987)",
-          artwork2: "Notturno (1991)",
-          artwork3: "Grande vetrata (senza scheda)",
-          wallText1: "Testo di sala — Controluce",
-          exhibitionCatalogue1: "Catalogo — Linee di luce",
-          curatorialNote1: "Nota curatoriale sull'autrice",
-          exhibition1: "Mostra — Linee di luce",
-          techniqueValue: "olio su tela",
+          rottaDiTerra: "Rotta di terra (2021)",
+          attraverso: "Attraverso (2019)",
+          veleDiSale: "Vele di sale (2022)",
+          terraFerma: "Terra ferma (2020)",
+          senzaTitolo: "Senza titolo (1998)",
+          sala3: "Sala 3",
+          gallerie: "Gallerie",
         },
         questions: {
-          gather: {
-            question: "Cosa posso leggere su quest'opera?",
+          conjunctive: {
+            pickerLabel: "Visitatore",
+            question:
+              "Quali opere di artisti italiani nati dopo il 1980 posso vedere nella mostra «La luce della migrazione»?",
+            steps: {
+              findExhibition: "Individua la mostra a partire dal titolo.",
+              worksInExhibition: "Raccogli le opere esposte in quella mostra.",
+              authors: "Da ogni opera risali al suo autore, quando è un artista.",
+              filterAuthors: "Tieni gli autori italiani nati dopo il 1980.",
+              subsumption:
+                "«Opere» non è stato cercato una classe alla volta: un dipinto e un'opera video rientrano perché le loro classi sono sottoclassi di Artwork.",
+              collectiveOut:
+                "L'opera firmata da un collettivo esce dal risultato senza una regola scritta a mano: la domanda chiede artisti, e Artist è dichiarata sottoclasse di Person.",
+            },
+            details: {
+              rottaDiTerra: "Nadia Ferri — italiana, 1988",
+              attraverso: "Marco Sabbatini — italiano, 1985",
+              veleDiSale: "Collettivo Mareo — un Collective, non una Person: la domanda chiedeva artisti",
+              terraFerma: "Giulio Neri — italiano, 1979: fuori per data di nascita",
+              senzaTitolo: "Hélène Roux — francese, 1962: fuori per nazionalità e data di nascita",
+            },
+            axioms: {
+              artworkUnion:
+                "Painting e VideoArtwork sono sottoclassi di Artwork: la domanda dice «opere», e il sistema le raccoglie per sussunzione, senza che nessuno abbia elencato le classi da cercare.",
+              artistIsPerson:
+                "Artist è dichiarata sottoclasse di Person; Collective no, pur essendo anch'esso un autore. A escludere il collettivo è l'ontologia, non un caso particolare nel codice.",
+            },
             answer:
-              "Tre testi diversi — un testo di sala, una voce di catalogo e una nota curatoriale. Nessun fatto memorizzato dice che parlano tutti di quest'opera: il sistema li trova risalendo alla classe che condividono.",
+              "Due opere sulle cinque in mostra: «Rotta di terra» (2021) di Nadia Ferri e «Attraverso» (2019) di Marco Sabbatini.",
+            note: "Una domanda in italiano è diventata quattro condizioni congiunte sul grafo — la mostra, le opere esposte, il loro autore, nazionalità e data di nascita — più due passaggi che nessun fatto memorizzato contiene: la sussunzione delle classi e l'esclusione del collettivo.",
           },
-          technique: {
-            question: "Quali altre opere usano la stessa tecnica?",
+          allestimento: {
+            pickerLabel: "Allestimento",
+            question:
+              "Quali opere di questa mostra hanno bisogno di uno spazio dedicato o di attrezzatura?",
+            steps: {
+              worksInExhibition: "Raccogli le cinque opere esposte nella mostra.",
+              classes: "Leggi la classe di ciascuna opera.",
+              noSuchProperty:
+                "Nessuna proprietà dello schema dice «richiede attrezzatura»: non c'è un campo da leggere.",
+              fromClassDefinitions:
+                "La risposta viene da come l'ontologia definisce quelle classi: una occupa uno spazio proprio, l'altra non ha forma fisica.",
+            },
+            details: {
+              veleDiSale: "Sala dedicata: l'opera occupa uno spazio suo",
+              attraverso: "Proiezione e sorgente video: senza attrezzatura l'opera non è in mostra",
+              rottaDiTerra: "Parete: nessuna attrezzatura",
+            },
+            axioms: {
+              installationOccupiesSpace:
+                "È così che l'ontologia definisce Installation. La sala dedicata discende da questa frase, non da un campo compilato a mano opera per opera.",
+              immaterialHasNoForm:
+                "VideoArtwork è sottoclasse di ImmaterialArtwork: senza forma fisica, l'opera esiste in mostra solo attraverso l'attrezzatura che la riproduce.",
+            },
             answer:
-              "Notturno (1991) condivide con Controluce (1987) lo stesso valore della proprietà `technique`.",
+              "Due opere sulle cinque in mostra: l'installazione «Vele di sale» e il video «Attraverso».",
+            note: "Nessun fatto memorizzato dice che un'opera richiede attrezzatura. Il sistema lo deriva dalle classi delle opere e dalle definizioni che l'ontologia dà di quelle classi — e quelle definizioni può mostrarle.",
           },
-          refusal: {
-            question: "Cosa posso leggere su quest'opera?",
-            answer: "Nessuna informazione testuale trovata per quest'opera.",
-            explanation:
-              "La mostra ha un catalogo, ma in questo schema non esistono catene di proprietà: un testo relativo alla mostra non diventa automaticamente relativo a ciascuna opera esposta.",
+          orientamento: {
+            pickerLabel: "Orientamento",
+            question: "In quale sala trovo «Rotta di terra»?",
+            steps: {
+              noLocationOnArtwork: "Cerca un luogo sull'opera: dall'opera non parte alcun arco di ubicazione.",
+              toExhibition: "Risali alla mostra che la espone.",
+              toHall: "Dalla mostra, all'ambiente in cui è allestita.",
+              hallInBuilding: "Dalla sala, allo spazio espositivo e all'edificio di cui è parte.",
+              symmetry:
+                "Il grafo registra una sola volta «Sala 2 adiacente alla Sala 3»: adjacent_to è simmetrica, quindi vale anche nell'altro verso.",
+            },
+            details: {
+              sala3: "Secondo piano, subito dopo la Sala 2",
+              gallerie: "Lo spazio espositivo di cui la sala fa parte",
+            },
+            axioms: {
+              hallIsAPlace:
+                "Una sala è parte di un edificio, e quindi un Luogo: soddisfa il range di located_in senza che l'ontologia del museo debba ridichiararlo.",
+              adjacencyIsSymmetric:
+                "Nella top ontology adjacent_to è dichiarata owl:SymmetricProperty: un'adiacenza registrata una volta sola risponde nei due versi.",
+            },
+            answer: "Nella Sala 3, al secondo piano: dalla Sala 2 si prosegue nella sala successiva.",
+            note: "L'opera non ha un luogo proprio. Il sistema lo compone risalendo alla mostra che la espone e alla sala in cui è allestita — e sa che la Sala 3 confina con la Sala 2 anche se il grafo registra l'adiacenza nel verso opposto.",
           },
         },
       },
@@ -152,13 +211,21 @@ export default {
         },
       },
     },
-    teasers: {
-      approach:
-        "Dai vostri documenti e dai vostri dati, una conoscenza che ragiona. In giorni, sotto la vostra supervisione.",
-      platform: "Sui vostri sistemi, con i vostri dati, ai vostri costi.",
-      project: "Musei, archivi giornalistici, servizio clienti: la conoscenza al lavoro.",
-      blog: "Il pensiero che sta dietro al metodo.",
-      about: "Dalla ricerca all'impresa, fino al vostro prossimo progetto.",
+    persone: {
+      eyebrow: "LE PERSONE DI ISAGOG",
+      titleLine1: "Esperienza profonda.",
+      titleEm: "Un confronto diretto.",
+      lead: "Dalla ricerca all'impresa, fino al vostro prossimo progetto.",
+      guido: {
+        name: "Guido Vetere",
+        role: "Fondatore e CEO — già Director of Center for Advanced Studies IBM Italy",
+        bio: "Guido ha guidato per anni la ricerca IBM in Italia su linguaggio, logica e rappresentazione della conoscenza. Oggi insegna Intelligenza Artificiale all'Università Marconi, e porta in Isagog la stessa idea che ha guidato la sua ricerca: un'intelligenza artificiale che ragiona su basi esplicite, non solo su correlazioni statistiche.",
+      },
+      robert: {
+        name: "Robert J. Alexander",
+        role: "Co-fondatore — già Executive Health and Research IBM, Medical doctor",
+        bio: "Bob applica l'intelligenza artificiale alla pratica clinica da quarant'anni. Un'esperienza maturata dove un errore ha conseguenze reali — ed è la ragione per cui, in Isagog, la tracciabilità delle risposte non è un dettaglio tecnico ma un requisito.",
+      },
     },
   },
   approach: {
@@ -298,24 +365,6 @@ export default {
     nextArticle: "Prossimo articolo",
     loadError: "Non è stato possibile caricare gli articoli. Riprova più tardi.",
   },
-  about: {
-    persone: {
-      eyebrow: "LE PERSONE DI ISAGOG",
-      titleLine1: "Esperienza profonda.",
-      titleEm: "Un confronto diretto.",
-      lead: "Dalla ricerca all'impresa, fino al vostro prossimo progetto.",
-      guido: {
-        name: "Guido Vetere",
-        role: "Fondatore e CEO — già Director of Center for Advanced Studies IBM Italy",
-        bio: "Guido ha guidato per anni la ricerca IBM in Italia su linguaggio, logica e rappresentazione della conoscenza. Oggi insegna Intelligenza Artificiale all'Università Marconi, e porta in Isagog la stessa idea che ha guidato la sua ricerca: un'intelligenza artificiale che ragiona su basi esplicite, non solo su correlazioni statistiche.",
-      },
-      robert: {
-        name: "Robert J. Alexander",
-        role: "Co-fondatore — già Executive Health and Research IBM, Medical doctor",
-        bio: "Bob applica l'intelligenza artificiale alla pratica clinica da quarant'anni. Un'esperienza maturata dove un errore ha conseguenze reali — ed è la ragione per cui, in Isagog, la tracciabilità delle risposte non è un dettaglio tecnico ma un requisito.",
-      },
-    },
-  },
   contact: {
     contatto: {
       eyebrow: "DALLA DIMOSTRAZIONE AL LAVORO QUOTIDIANO",
@@ -370,11 +419,6 @@ export default {
     blog: {
       title: "Approfondimenti — Isagog",
       description: "Il pensiero che sta dietro al metodo di Isagog.",
-    },
-    about: {
-      title: "Chi siamo — Isagog",
-      description:
-        "Le persone di Isagog: dalla ricerca all'impresa, fino al vostro prossimo progetto.",
     },
     contact: {
       title: "Contatti — Isagog",

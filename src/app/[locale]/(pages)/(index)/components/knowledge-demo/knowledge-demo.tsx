@@ -71,7 +71,7 @@ export const KnowledgeDemo = () => {
         <p className="text-[12.5px] leading-snug text-prose-muted">{tr(t, museoDisclosureKey)}</p>
         <div className="mt-4">
           <QuestionPicker
-            options={museoQuestions.map((q) => ({ id: q.id, question: tr(t, q.questionKey) }))}
+            options={museoQuestions.map((q) => ({ id: q.id, question: tr(t, q.pickerLabelKey) }))}
             activeId={museoQuestionId}
             onChange={setMuseoQuestionId}
             groupLabel={t("knowledgeDemo.questionPickerLabel")}

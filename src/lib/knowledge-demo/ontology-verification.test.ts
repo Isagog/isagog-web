@@ -21,9 +21,19 @@ import { clinicaDocuments, clinicaQuestions, clinicaStatements } from "./data/cl
  */
 
 const excerptsDir = path.join(__dirname, "ontology-excerpts");
-const maxxi = fs.readFileSync(path.join(excerptsDir, "maxxi-excerpt.ttl"), "utf-8");
 const mema = fs.readFileSync(path.join(excerptsDir, "mema-excerpt.ttl"), "utf-8");
 const onco = fs.readFileSync(path.join(excerptsDir, "onco-excerpt.ttl"), "utf-8");
+
+/**
+ * The MUSEO tab draws on two files, not one: MAXXI's own ontology and the
+ * Isagog top-level ontology it `owl:imports`. A museum question that walks
+ * `located_in` / `part_of` / `adjacent_to` is using terms the domain
+ * ontology never redeclares, so both excerpts count as its source.
+ */
+const maxxi = [
+  fs.readFileSync(path.join(excerptsDir, "maxxi-excerpt.ttl"), "utf-8"),
+  fs.readFileSync(path.join(excerptsDir, "isagog-top-excerpt.ttl"), "utf-8"),
+].join("\n");
 
 /** True if `needle` occurs in `haystack` as a whole token (not as a substring of a longer identifier). */
 const hasTerm = (haystack: string, needle: string): boolean => {
@@ -41,32 +51,40 @@ const oncoBlockFor = (id: string): string => {
   return block;
 };
 
-describe("MUSEO tab against maxxi-excerpt.ttl", () => {
+describe("MUSEO tab against maxxi-excerpt.ttl + isagog-top-excerpt.ttl", () => {
   for (const question of museoQuestions) {
     describe(`question "${question.id}"`, () => {
-      for (const node of question.nodes) {
-        it(`class "${node.className}" (node ${node.id}) exists in the excerpt`, () => {
-          expect(hasTerm(maxxi, node.className)).toBe(true);
+      for (const step of question.steps) {
+        for (const term of step.terms) {
+          it(`term "${term}" (step ${step.id}) exists in the excerpts`, () => {
+            expect(hasTerm(maxxi, term)).toBe(true);
+          });
+        }
+      }
+
+      for (const result of question.results) {
+        it(`class "${result.className}" (result ${result.id}) exists in the excerpts`, () => {
+          expect(hasTerm(maxxi, result.className)).toBe(true);
         });
       }
 
-      for (const edge of question.edges) {
-        it(`property "${edge.propertyName}" (${edge.from} -> ${edge.to}) exists in the excerpt`, () => {
-          expect(hasTerm(maxxi, edge.propertyName)).toBe(true);
+      for (const axiom of question.axioms) {
+        for (const term of axiom.terms) {
+          it(`term "${term}" (axiom ${axiom.id}) exists in the excerpts`, () => {
+            expect(hasTerm(maxxi, term)).toBe(true);
+          });
+        }
+
+        it(`quote for axiom "${axiom.id}" is verbatim in the excerpts`, () => {
+          expect(maxxi.includes(axiom.quote)).toBe(true);
         });
       }
 
-      for (const term of question.traversalTerms) {
-        it(`traversal term "${term}" exists in the excerpt`, () => {
-          expect(hasTerm(maxxi, term)).toBe(true);
-        });
-      }
-
-      if (question.sharedClassName !== undefined) {
-        it(`shared class "${question.sharedClassName}" exists in the excerpt`, () => {
-          expect(hasTerm(maxxi, question.sharedClassName as string)).toBe(true);
-        });
-      }
+      it("resolves at least one step on the graph and at least one by inference", () => {
+        const sources = new Set(question.steps.map((step) => step.source));
+        expect(sources.has("graph")).toBe(true);
+        expect(sources.has("inference")).toBe(true);
+      });
     });
   }
 });

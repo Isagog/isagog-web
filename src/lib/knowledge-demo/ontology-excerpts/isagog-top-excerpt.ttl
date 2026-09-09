@@ -1,0 +1,78 @@
+# Excerpt from the Isagog top-level ontology, v4.4.
+# Copied verbatim from
+# ~/code/isagog-core/src/isagog/models/knowledge/ontology/data/isagog-top-4.4.ttl —
+# only the terms the MUSEO tab displays. The MAXXI ontology owl:imports this
+# ontology, which is why a museum question can traverse `located_in`,
+# `part_of` and `adjacent_to` without the domain ontology redeclaring them.
+
+@prefix : <https://isagog.com/ontology/top#> .
+
+:adjacent_to rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :connectedness ;
+             rdf:type owl:SymmetricProperty ;
+             rdfs:domain :Location ;
+             rdfs:range :Location ;
+             rdfs:comment "Connessione spaziale"@it ,
+                          "Spatial connectedness"@en ;
+             rdfs:label "adiacente a"@it ,
+                        "adjacent to"@en .
+
+:part_of rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :composition ;
+         rdfs:comment "Composizione funzionale (parte - tutto)"@it ,
+                      "Functional parthood (part - whole)"@en ;
+         rdfs:label "part of"@en ,
+                    "parte di"@it .
+
+:element_of rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :composition ;
+            owl:inverseOf :has_element ;
+            rdfs:domain :Continuant ;
+            rdfs:range :Continuant ;
+            rdfs:comment "Composizione non funzionale"@it ,
+                         "Non-functional composition"@en ;
+            rdfs:label "element of"@en ,
+                       "elemento di"@it .
+
+:located_in rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :collocation ;
+            rdfs:domain [ rdf:type owl:Class ;
+                          owl:unionOf ( :Occurrent
+                                        :Tangible
+                                      )
+                        ] ;
+            rdfs:range :Location ;
+            rdfs:comment "Location relation from entity to place"@en ,
+                         "Relazione di ubicazione dall'entità al luogo"@it ;
+            rdfs:label "located in"@en ,
+                       "ubicato in"@it .
+
+:is_location_of rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :collocation ;
+                owl:inverseOf :located_in ;
+                rdfs:domain :Location ;
+                rdfs:range [ rdf:type owl:Class ;
+                             owl:unionOf ( :Occurrent
+                                           :Tangible
+                                         )
+                           ] ;
+                rdfs:comment "Location relation from place to entity or event"@en ,
+                             "Relazione di ubicazione dal luogo all'entità o all'evento"@it ;
+                rdfs:label "is location of"@en ,
+                           "è ubicazione di"@it .
+
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf :Continuant ;
+          rdfs:comment "Identified region of space"@en ,
+                       "Regione identificata di spazio"@it ;
+          rdfs:label "Location"@en ,
+                     "Luogo"@it .
+
+:Person rdf:type owl:Class ;
+        rdfs:subClassOf :Agent ,
+                        :Animate ;
+        rdfs:comment "Agente razionale intenzionale - essere umano"@it ,
+                     "Rational intentional agent - human being"@en ;
+        rdfs:label "Person"@en ,
+                   "Persona"@it ;
+        :schema "https://schema.org/Person" .

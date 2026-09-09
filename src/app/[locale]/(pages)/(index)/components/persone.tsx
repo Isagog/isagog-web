@@ -3,7 +3,7 @@ import { getScopedI18n } from "@/packages/locales/server";
 import Image from "next/image";
 
 export const Persone = async () => {
-  const t = await getScopedI18n("about.persone");
+  const t = await getScopedI18n("home.persone");
 
   return (
     <section id="persone" className="scroll-anchor bg-persone px-6 py-20">
@@ -11,11 +11,11 @@ export const Persone = async () => {
         <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-forest">
           {t("eyebrow")}
         </span>
-        <h1 className="mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
+        <h2 className="mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
           {t("titleLine1")}
           <br />
           <em className="not-italic text-sage">{t("titleEm")}</em>
-        </h1>
+        </h2>
         <p className="mt-5 max-w-[640px] text-[19px] leading-[1.5] text-forest/85">{t("lead")}</p>
 
         <div className="mt-10 grid gap-9 md:grid-cols-2">

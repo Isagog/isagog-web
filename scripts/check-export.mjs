@@ -8,7 +8,7 @@ import { join } from "node:path";
 // build` still produced out/it/index.html, not out/isagog-web/it/index.html.
 const OUT = "out";
 const LOCALES = ["it", "en"];
-const ROUTES = ["", "approach", "platform", "project", "blog", "about", "contact"];
+const ROUTES = ["", "approach", "platform", "project", "blog", "contact"];
 
 const SLUG_ROUTES = [
   ["project", ["maxxi-case-study", "manifesto-case-study", "teleperformance-case-study"]],

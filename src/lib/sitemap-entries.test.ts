@@ -9,13 +9,12 @@ const TOP_LEVEL_PATHS = [
   { path: "/platform", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/project", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/blog", priority: 0.8, changeFrequency: "monthly" as const },
-  { path: "/about", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
 ];
 const LAST_MODIFIED = new Date("2026-01-01T00:00:00Z");
 
 describe("buildSitemapEntries", () => {
-  it("produces 30 entries for 7 routes, 5 shared articles and 3 per-locale projects across 2 locales", () => {
+  it("produces 28 entries for 6 routes, 5 shared articles and 3 per-locale projects across 2 locales", () => {
     const entries = buildSitemapEntries({
       siteUrl: SITE_URL,
       locales: LOCALES,
@@ -25,7 +24,7 @@ describe("buildSitemapEntries", () => {
       getProjectSlugs: () => ["p1", "p2", "p3"],
     });
 
-    expect(entries).toHaveLength(30);
+    expect(entries).toHaveLength(28);
   });
 
   it("gives every URL a trailing slash, including the home path", () => {
