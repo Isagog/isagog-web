@@ -2,7 +2,6 @@ import { BodyWrapper } from "@/app/_components/custom/body-wrapper";
 import { Footer } from "@/app/_components/custom/footer";
 import { Header } from "@/app/_components/custom/header";
 import { Providers } from "@/app/_components/providers";
-import { SectionRail } from "@/app/_components/custom/section-rail";
 import { asset, IS_STAGING, SITE_URL } from "@/lib/base-path";
 import { I18nProviderClient } from "@/packages/locales/client";
 import { getStaticParams } from "@/packages/locales/server";
@@ -108,7 +107,6 @@ export default async function RootLayout({
         <BodyWrapper className="pt-[72px]">
           <Providers>
             <Header />
-            <SectionRail />
             {children}
             <Footer year={buildYear} />
           </Providers>

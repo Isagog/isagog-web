@@ -16,14 +16,6 @@ export default {
     street: "Via Faà di Bruno 52",
     zip: "00195 Roma (IT)",
   },
-  rail: {
-    visione: "Visione",
-    metodologia: "Metodologia",
-    tecnologia: "Tecnologia",
-    persone: "Persone",
-    contatto: "Contatto",
-    label: "Sezioni della pagina",
-  },
   home: {
     hero: {
       imageAlt: "Illustrazione di un albero, Isagog",
