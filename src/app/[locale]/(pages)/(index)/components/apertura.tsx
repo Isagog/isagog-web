@@ -31,7 +31,7 @@ export const Apertura = async () => {
               {t("ctaPrimary")}
             </Link>
             <Link
-              href="/#visione"
+              href="/approach"
               className="rounded-[5px] border border-forest/25 px-5 py-3.5 text-[15px] text-forest"
             >
               {t("ctaSecondary")}

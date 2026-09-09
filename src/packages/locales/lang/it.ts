@@ -57,6 +57,14 @@ export default {
       answerLink: "Esplorate il percorso e le schede →",
       disclaimer: "Museo, persone, opere e documenti sono interamente inventati.",
     },
+    teasers: {
+      approach:
+        "Dai vostri documenti e dai vostri dati, una conoscenza che ragiona. In giorni, sotto la vostra supervisione.",
+      platform: "Sui vostri sistemi, con i vostri dati, ai vostri costi.",
+      project: "Musei, archivi giornalistici, servizio clienti: la conoscenza al lavoro.",
+      blog: "Il pensiero che sta dietro al metodo.",
+      about: "Dalla ricerca all'impresa, fino al vostro prossimo progetto.",
+    },
   },
   approach: {
     visione: {

@@ -1,3 +1,4 @@
+import { LocaleLink } from "@/app/_components/custom/locale-link";
 import { getScopedI18n } from "@/packages/locales/server";
 import { ArrowUpRight, Check, Network, Palette, User } from "lucide-react";
 
@@ -83,8 +84,8 @@ export const KnowledgeCard = async () => {
         </div>
       </div>
 
-      <a
-        href="#visione"
+      <LocaleLink
+        href="/approach"
         className="mt-8 flex items-center gap-4 rounded-[5px] bg-paper px-5 py-4 text-forest"
       >
         <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-persone">
@@ -95,7 +96,7 @@ export const KnowledgeCard = async () => {
           <span className="text-[14px] text-prose-muted">{t("answerLink")}</span>
         </span>
         <ArrowUpRight size={20} strokeWidth={2} />
-      </a>
+      </LocaleLink>
 
       <p className="mt-4 text-[13px] text-prose-muted">{t("disclaimer")}</p>
     </div>
