@@ -11,11 +11,11 @@ export const Persone = async () => {
         <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-forest">
           {t("eyebrow")}
         </span>
-        <h3 className="mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
+        <h1 className="mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
           {t("titleLine1")}
           <br />
           <em className="not-italic text-sage">{t("titleEm")}</em>
-        </h3>
+        </h1>
         <p className="mt-5 max-w-[640px] text-[19px] leading-[1.5] text-forest/85">{t("lead")}</p>
 
         <div className="mt-10 grid gap-9 md:grid-cols-2">

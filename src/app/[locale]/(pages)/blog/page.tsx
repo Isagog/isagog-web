@@ -22,9 +22,13 @@ export async function generateMetadata({
 const BlogPage = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;
   setStaticParamsLocale(locale);
+  const t = await getScopedI18n("blog");
 
   return (
     <main className="mx-auto flex min-h-[70vh] max-w-[900px] flex-col items-center gap-6 px-6 py-16">
+      <h1 className="self-start font-serif text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
+        {t("heading")}
+      </h1>
       <BlogCard />
     </main>
   );

@@ -191,11 +191,13 @@ export default {
     },
   },
   project: {
+    heading: "Progetti",
     notFound: "Progetto non trovato",
     backToProjects: "Torna ai progetti",
     loadError: "Non è stato possibile caricare i progetti. Riprova più tardi.",
   },
   blog: {
+    heading: "Approfondimenti",
     notFound: "Articolo non trovato",
     backToBlog: "Torna al blog",
     nextArticle: "Prossimo articolo",

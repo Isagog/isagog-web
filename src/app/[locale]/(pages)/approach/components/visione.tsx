@@ -11,6 +11,7 @@ export const Visione = async () => {
     <section id="visione" className="scroll-anchor bg-visione px-6 py-20">
       <div className="mx-auto max-w-[1224px]">
         <SectionHeading
+          as="h1"
           tone="dark"
           eyebrow={t("eyebrow")}
           title={

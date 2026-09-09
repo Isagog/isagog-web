@@ -66,12 +66,12 @@ export const TextCarousel = () => {
           >
             <div className="md:space-y-6">
               <div>
-                <h2 className="text-start font-sans text-xl font-medium text-terracotta">
+                <h3 className="text-start font-sans text-xl font-medium text-terracotta">
                   {slide.title}
-                </h2>
-                <h3 className="mt-2 text-start font-serif text-2xl text-forest">
-                  {slide.subtitle}
                 </h3>
+                <h4 className="mt-2 text-start font-serif text-2xl text-forest">
+                  {slide.subtitle}
+                </h4>
               </div>
 
               <ul className="space-y-4 md:space-y-6 md:pl-8">

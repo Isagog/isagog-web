@@ -9,6 +9,7 @@ export const Tecnologia = async () => {
     <section id="tecnologia" className="scroll-anchor bg-tecnologia px-6 py-20">
       <div className="mx-auto max-w-[1224px]">
         <SectionHeading
+          as="h1"
           eyebrow={t("eyebrow")}
           title={
             <>

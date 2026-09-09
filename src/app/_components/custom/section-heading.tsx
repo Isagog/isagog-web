@@ -7,12 +7,14 @@ export const SectionHeading = ({
   lead,
   tone = "light",
   className,
+  as: HeadingTag = "h3",
 }: {
   eyebrow: string;
   title: ReactNode;
   lead?: ReactNode;
   tone?: "light" | "dark";
   className?: string;
+  as?: "h1" | "h2" | "h3";
 }) => (
   <div
     className={cn(
@@ -29,14 +31,14 @@ export const SectionHeading = ({
       >
         {eyebrow}
       </span>
-      <h3
+      <HeadingTag
         className={cn(
           "mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15]",
           tone === "dark" ? "text-cream" : "text-forest"
         )}
       >
         {title}
-      </h3>
+      </HeadingTag>
     </div>
     {lead !== undefined && (
       <p

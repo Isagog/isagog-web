@@ -39,11 +39,11 @@ export const Contatto = async () => {
           <span className="block max-w-[400px] text-[12px] font-semibold uppercase tracking-[0.1em] text-forest">
             {t("eyebrow")}
           </span>
-          <h3 className="mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
+          <h1 className="mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
             {t("titleLine1")}
             <br />
             {t("titleLine2")} <em className="not-italic text-sage">{t("titleEm")}</em>
-          </h3>
+          </h1>
           <p className="mt-6 max-w-[425px] text-[16px] text-prose-muted">{t("p1")}</p>
           <p className="mt-6 max-w-[425px] text-[16px] text-prose-muted">
             <strong className="font-bold text-forest">{t("p2Strong")}</strong>

@@ -188,11 +188,13 @@ export default {
     },
   },
   project: {
+    heading: "Projects",
     notFound: "Project not found",
     backToProjects: "Go back to projects",
     loadError: "We couldn't load the projects. Please try again later.",
   },
   blog: {
+    heading: "Insights",
     notFound: "Article not found",
     backToBlog: "Go back to blog",
     nextArticle: "Next article",
