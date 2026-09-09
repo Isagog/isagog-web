@@ -32,11 +32,11 @@ export const MarkdownRenderer = ({ content, imageClassName = "" }: MarkdownRende
             },
           },
           img: {
-            component: ({ src }: { src?: string }) => (
+            component: ({ src, alt }: { src?: string; alt?: string }) => (
               <Image
                 src={asset(src ?? "")}
                 className={`${imageClassName} block mx-auto my-6 w-auto h-auto`}
-                alt="article-image"
+                alt={alt ?? ""}
                 width={500}
                 height={500}
               />
