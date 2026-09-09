@@ -17,7 +17,7 @@ export default {
     project: "Progetti",
     blog: "Approfondimenti",
     about: "Chi siamo",
-    contact: "Valutiamo il vostro caso",
+    contact: "Contatti",
     email: "info@isagog.com",
     copyright: "(c) {year} Isagog Srl",
     street: "Via Faà di Bruno 52",

@@ -17,7 +17,7 @@ export default {
     project: "Projects",
     blog: "Insights",
     about: "About",
-    contact: "Let's assess your case",
+    contact: "Contact",
     email: "info@isagog.com",
     copyright: "(c) {year} Isagog Srl",
     street: "Via Faà di Bruno 52",
