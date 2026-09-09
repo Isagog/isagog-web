@@ -29,13 +29,16 @@ export const SectionRail = () => {
     };
   }, []);
 
+  const isRailHidden = active === null;
+
   return (
     <nav
       aria-label={t("label")}
+      aria-hidden={isRailHidden ? true : undefined}
       className={cn(
         "hidden lg:flex fixed left-6 top-1/2 -translate-y-1/2 z-40 flex-col gap-3",
         "transition-opacity duration-500",
-        active === null ? "opacity-0 pointer-events-none" : "opacity-100"
+        isRailHidden ? "opacity-0 invisible pointer-events-none" : "opacity-100"
       )}
     >
       {SECTIONS.map((section) => {
@@ -45,6 +48,7 @@ export const SectionRail = () => {
             key={section.id}
             href={`#${section.id}`}
             aria-current={isActive ? "true" : undefined}
+            tabIndex={isRailHidden ? -1 : undefined}
             className="group flex items-center gap-3 text-[12px] tracking-[0.1em] uppercase"
           >
             <span
