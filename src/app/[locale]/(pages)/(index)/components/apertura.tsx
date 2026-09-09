@@ -25,7 +25,7 @@ export const Apertura = async () => {
           </p>
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
-              href="/#contatto"
+              href="/contact"
               className="rounded-[5px] bg-forest-deep px-5 py-3.5 text-[15px] font-medium text-white"
             >
               {t("ctaPrimary")}

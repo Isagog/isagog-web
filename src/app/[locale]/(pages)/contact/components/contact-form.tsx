@@ -7,7 +7,7 @@ import { useState } from "react";
 const inputClass = "rounded-[4px] border border-card-border bg-transparent px-3 py-2.5 text-[15px]";
 
 export const ContactForm = () => {
-  const t = useScopedI18n("home.contatto");
+  const t = useScopedI18n("contact.contatto");
   const [draft, setDraft] = useState({
     name: "",
     email: "",

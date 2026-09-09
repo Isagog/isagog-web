@@ -1,4 +1,5 @@
-import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
+import { setStaticParamsLocale } from "@/packages/locales/server";
+import { Contatto } from "./components";
 
 const ContactPage = async ({
   params,
@@ -7,13 +8,10 @@ const ContactPage = async ({
 }) => {
   const { locale } = await params;
   setStaticParamsLocale(locale);
-  const t = await getScopedI18n("footer");
 
   return (
-    <main className="mx-auto max-w-[1224px] px-6 py-20">
-      <h1 className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-forest">
-        {t("contact")}
-      </h1>
+    <main>
+      <Contatto />
     </main>
   );
 };

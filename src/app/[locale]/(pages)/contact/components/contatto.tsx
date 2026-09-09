@@ -17,7 +17,7 @@ const TREES = [
 ] as const;
 
 export const Contatto = async () => {
-  const t = await getScopedI18n("home.contatto");
+  const t = await getScopedI18n("contact.contatto");
 
   return (
     <section id="contatto" className="scroll-anchor relative overflow-hidden bg-page px-6 py-16">
