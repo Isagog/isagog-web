@@ -2,6 +2,8 @@ export default {
   nav: {
     wordmark: "Isagog",
     home: "Inizio",
+    approach: "Approccio",
+    about: "Chi siamo",
     platform: "La Piattaforma",
     project: "Progetti",
     blog: "Approfondimenti",
@@ -9,9 +11,14 @@ export default {
     menu: "Menu di navigazione",
   },
   footer: {
+    home: "Inizio",
+    approach: "Approccio",
     platform: "La Piattaforma",
     project: "Progetti",
     blog: "Approfondimenti",
+    about: "Chi siamo",
+    contact: "Valutiamo il vostro caso",
+    email: "info@isagog.com",
     copyright: "(c) {year} Isagog Srl",
     street: "Via Faà di Bruno 52",
     zip: "00195 Roma (IT)",

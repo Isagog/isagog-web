@@ -28,9 +28,11 @@ export const Header = () => {
 
   const navItems = [
     { href: "/", label: t("home") },
+    { href: "/approach", label: t("approach") },
     { href: "/platform", label: t("platform") },
     { href: "/project", label: t("project") },
     { href: "/blog", label: t("blog") },
+    { href: "/about", label: t("about") },
   ];
 
   return (
@@ -54,7 +56,7 @@ export const Header = () => {
             </Link>
           ))}
           <Link
-            href="/#contatto"
+            href="/contact"
             className="rounded-[5px] bg-forest-deep px-5 py-3 text-[15px] font-medium text-white"
           >
             {t("cta")}
@@ -77,7 +79,7 @@ export const Header = () => {
               </DropdownMenuItem>
             ))}
             <DropdownMenuItem asChild>
-              <Link href="/#contatto" className="text-[15px] text-terracotta">
+              <Link href="/contact" className="text-[15px] text-terracotta">
                 {t("cta")}
               </Link>
             </DropdownMenuItem>

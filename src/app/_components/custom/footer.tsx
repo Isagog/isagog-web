@@ -14,6 +14,16 @@ interface FooterProps {
   year: number;
 }
 
+const ROUTE_LINKS = [
+  { href: "/", key: "home" },
+  { href: "/approach", key: "approach" },
+  { href: "/platform", key: "platform" },
+  { href: "/project", key: "project" },
+  { href: "/blog", key: "blog" },
+  { href: "/about", key: "about" },
+  { href: "/contact", key: "contact" },
+] as const;
+
 export const Footer = ({ year }: FooterProps) => {
   const t = useScopedI18n("footer");
 
@@ -24,9 +34,14 @@ export const Footer = ({ year }: FooterProps) => {
           {t("copyright", { year: String(year) })} — {t("street")}, {t("zip")}
         </span>
         <div className="flex flex-wrap gap-6">
-          <Link href="/platform" className="hover:text-forest">{t("platform")}</Link>
-          <Link href="/project" className="hover:text-forest">{t("project")}</Link>
-          <Link href="/blog" className="hover:text-forest">{t("blog")}</Link>
+          {ROUTE_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className="hover:text-forest">
+              {t(link.key)}
+            </Link>
+          ))}
+          <a href="mailto:info@isagog.com" className="hover:text-forest">
+            {t("email")}
+          </a>
         </div>
       </div>
     </footer>
