@@ -87,6 +87,12 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
+// Resolved once, at module load during the build's static render — not
+// per-request — so every page's footer bakes in the same year the client
+// bundle was built with. See Footer's `year` prop for why this must not
+// move into the client component.
+const buildYear = new Date().getFullYear();
+
 export default async function RootLayout({
   children,
   params,
@@ -104,7 +110,7 @@ export default async function RootLayout({
             <Header />
             <SectionRail />
             {children}
-            <Footer />
+            <Footer year={buildYear} />
           </Providers>
         </BodyWrapper>
       </I18nProviderClient>
