@@ -71,9 +71,11 @@ describe("buildPageMetadata", () => {
     // Every page defines its own openGraph object, and Next.js does not
     // deep-merge nested metadata fields across layout and page — a page's
     // openGraph wholly replaces the layout's, per
-    // node_modules/next/dist/docs/.../generate-metadata.md#merging. Without
-    // this, og:site_name would silently disappear from every page despite
-    // layout.tsx still declaring it.
+    // node_modules/next/dist/docs/.../generate-metadata.md#merging. That's
+    // also why layout.tsx does not declare its own openGraph.siteName: it
+    // would be replaced by every page's own openGraph and so would never
+    // reach the rendered output. buildPageMetadata is the one live source
+    // of this field.
     const { buildPageMetadata } = await load(undefined);
     const metadata = buildPageMetadata({
       locale: "it",

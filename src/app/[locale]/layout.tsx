@@ -22,9 +22,6 @@ export const metadata: Metadata = {
   // pointed at /isagog-web/ — the same identity-contradiction hazard as
   // the og:url/image fix.
   metadataBase: new URL(SITE_URL),
-  openGraph: {
-    siteName: "Isagog",
-  },
   // Title, description, canonical and hreflang alternates are per-page —
   // see src/lib/page-metadata.ts and each route's generateMetadata.
 };
