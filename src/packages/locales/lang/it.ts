@@ -248,4 +248,40 @@ export default {
         "Questo prototipo prepara una bozza email. Potrete rivederla e inviarla dal vostro programma di posta. Nessun dato viene inviato dal modulo.",
     },
   },
+  meta: {
+    home: {
+      title: "Isagog — Un'IA che sa dire cosa sa",
+      description:
+        "Isagog rende la conoscenza della vostra organizzazione esplicita, verificabile e utilizzabile da assistenti e applicazioni di intelligenza artificiale.",
+    },
+    approach: {
+      title: "Il nostro approccio — Isagog",
+      description:
+        "Una rappresentazione esplicita del vostro dominio, costruita dagli agenti e supervisionata dai vostri esperti.",
+    },
+    platform: {
+      title: "La piattaforma — Isagog",
+      description:
+        "La piattaforma Isagog: si installa sulla vostra infrastruttura, lavora con i vostri dati, ai vostri costi.",
+    },
+    project: {
+      title: "Progetti — Isagog",
+      description:
+        "Musei, archivi giornalistici, servizio clienti: la conoscenza di Isagog al lavoro.",
+    },
+    blog: {
+      title: "Approfondimenti — Isagog",
+      description: "Il pensiero che sta dietro al metodo di Isagog.",
+    },
+    about: {
+      title: "Chi siamo — Isagog",
+      description:
+        "Le persone di Isagog: dalla ricerca all'impresa, fino al vostro prossimo progetto.",
+    },
+    contact: {
+      title: "Contatti — Isagog",
+      description:
+        "Raccontateci il processo che vorreste migliorare: valutiamo insieme il vostro caso.",
+    },
+  },
 } as const;

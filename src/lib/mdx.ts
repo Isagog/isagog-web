@@ -15,6 +15,16 @@ export const getSlugs = (type: ContentType, locale?: string): string[] =>
     .filter((file) => file.endsWith(".mdx"))
     .map((file) => file.replace(/\.mdx$/, ""));
 
+/**
+ * Extracts the text of the first level-1 (`# `) heading from raw MDX/Markdown
+ * content. Returns null when the content has no such heading, so callers can
+ * fall back to a section title instead of the site title.
+ */
+export const extractHeading = (content: string): string | null => {
+  const match = /^#\s+(.+)$/m.exec(content);
+  return match?.[1]?.trim() ?? null;
+};
+
 export const getMdxBySlug = async (
   slug: string,
   type: ContentType,

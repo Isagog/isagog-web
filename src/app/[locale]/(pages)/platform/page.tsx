@@ -1,7 +1,25 @@
 import { asset } from "@/lib/base-path";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
 import { Monitor, Network } from "lucide-react";
+import type { Metadata } from "next";
 import { Tecnologia, TextCarousel } from "./components";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  setStaticParamsLocale(locale);
+  const t = await getScopedI18n("meta");
+  return buildPageMetadata({
+    locale,
+    path: "/platform",
+    title: t("platform.title"),
+    description: t("platform.description"),
+  });
+}
 
 const PlatformPage = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;

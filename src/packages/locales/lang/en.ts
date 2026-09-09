@@ -245,4 +245,37 @@ export default {
         "Questo prototipo prepara una bozza email. Potrete rivederla e inviarla dal vostro programma di posta. Nessun dato viene inviato dal modulo.",
     },
   },
+  meta: {
+    home: {
+      title: "Isagog — An AI that knows what it knows",
+      description:
+        "Isagog makes your organization's knowledge explicit, verifiable, and usable by AI assistants and applications.",
+    },
+    approach: {
+      title: "Our approach — Isagog",
+      description:
+        "An explicit representation of your domain, built by agents and supervised by your experts.",
+    },
+    platform: {
+      title: "The platform — Isagog",
+      description:
+        "The Isagog platform: runs on your infrastructure, works with your data, at costs you control.",
+    },
+    project: {
+      title: "Projects — Isagog",
+      description: "Museums, news archives, customer service: Isagog's knowledge at work.",
+    },
+    blog: {
+      title: "Insights — Isagog",
+      description: "The thinking behind the method.",
+    },
+    about: {
+      title: "About — Isagog",
+      description: "The people of Isagog: from research to enterprise, and on to your next project.",
+    },
+    contact: {
+      title: "Contact — Isagog",
+      description: "Tell us about the process you'd like to improve: let's assess your case together.",
+    },
+  },
 } as const;
