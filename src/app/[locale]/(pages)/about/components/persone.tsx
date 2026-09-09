@@ -3,7 +3,7 @@ import { getScopedI18n } from "@/packages/locales/server";
 import Image from "next/image";
 
 export const Persone = async () => {
-  const t = await getScopedI18n("home.persone");
+  const t = await getScopedI18n("about.persone");
 
   return (
     <section id="persone" className="scroll-anchor bg-persone px-6 py-20">

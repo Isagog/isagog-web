@@ -1,4 +1,5 @@
-import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
+import { setStaticParamsLocale } from "@/packages/locales/server";
+import { Persone } from "./components";
 
 const AboutPage = async ({
   params,
@@ -7,13 +8,10 @@ const AboutPage = async ({
 }) => {
   const { locale } = await params;
   setStaticParamsLocale(locale);
-  const t = await getScopedI18n("nav");
 
   return (
-    <main className="mx-auto max-w-[1224px] px-6 py-20">
-      <h1 className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-forest">
-        {t("about")}
-      </h1>
+    <main>
+      <Persone />
     </main>
   );
 };
