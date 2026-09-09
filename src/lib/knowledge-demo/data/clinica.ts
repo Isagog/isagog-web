@@ -40,6 +40,8 @@ export interface ClinicaStatement {
   readonly lineEnd: number;
   /** Locale key for a short explanatory caption I wrote about this row. */
   readonly noteKey?: string;
+  /** Explicit onco:supersedes edges; recency alone does not override a statement. */
+  readonly supersedes?: readonly string[];
 }
 
 export interface ClinicaQuestion {
@@ -106,6 +108,7 @@ export const clinicaStatements: readonly ClinicaStatement[] = [
     lineStart: 44,
     lineEnd: 44,
     noteKey: "knowledgeDemo.clinica.notes.deLabelled",
+    supersedes: ["a-L1-penicillina", "a-L2-allergia-penicillina"],
   },
   {
     id: "b-L1-bcl2",

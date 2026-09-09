@@ -38,6 +38,21 @@ export default {
     },
     knowledgeDemo: {
       eyebrow: "TRE DOMINI, UNA PIATTAFORMA",
+      title: "Dalla somiglianza al ragionamento.",
+      intro: "La ricerca testuale o vettoriale, anche per similarità coseno, trova passaggi pertinenti. Un grafo RDF collega affermazioni, fonti e relazioni; l'ontologia esplicita le regole con cui derivare nuove conoscenze.",
+      traceLabel: "Esplora passaggi, risultati e assiomi",
+      proof: {
+        label: "Il ragionamento in evidenza",
+        fact: "NEL GRAFO",
+        rule: "NELL'ONTOLOGIA",
+        conclusion: "PER INFERENZA",
+      },
+      negative: {
+        eyebrow: "CLINICA · CONOSCENZA NEGATIVA",
+        title: "«No» è diverso da «non lo so».",
+        explanation: "«Non eseguito» è un fatto negato, documentato in una fonte. Se mancasse questa informazione, non sapremmo se il test è stato eseguito: l'assenza di un dato non dimostra il contrario.",
+        explore: "Dal fatto negato alla revisione di una diagnosi →",
+      },
       tablistLabel: "Scegli un dominio",
       questionPickerLabel: "Scegli una domanda",
       lineLabel: "riga",
@@ -46,6 +61,7 @@ export default {
       ctaLink: "Scoprite come funziona →",
       museo: {
         tabLabel: "MUSEO",
+        shortDisclosure: "Esempio illustrativo sull'ontologia reale MAXXI e sulla top ontology Isagog.",
         disclosure:
           "Istanze illustrative su schema reale: la mostra, le opere e le sale sono inventate; le classi e le proprietà attraversate — Exhibition, Painting, Installation, VideoArtwork, Hall, exhibited_in, located_in, adjacent_to — sono quelle dell'ontologia MAXXI (v2.8) e della top ontology Isagog che essa importa.",
         resolutionLabel: "COME È STATA RISOLTA",
@@ -65,6 +81,11 @@ export default {
         questions: {
           conjunctive: {
             pickerLabel: "Visitatore",
+            proof: {
+              fact: "«Rotta di terra» è un Painting; «Attraverso» è un VideoArtwork.",
+              rule: "Painting → VisualArtwork → MaterialArtwork → Artwork. VideoArtwork → ImmaterialArtwork → Artwork. Ogni passaggio indica una sottoclasse.",
+              conclusion: "Entrambe sono quindi Artwork: la domanda sulle «opere» le include per inferenza, insieme ai filtri sulla mostra e sugli autori.",
+            },
             question:
               "Quali opere di artisti italiani nati dopo il 1980 posso vedere nella mostra «La luce della migrazione»?",
             steps: {
@@ -75,12 +96,12 @@ export default {
               subsumption:
                 "«Opere» non è stato cercato una classe alla volta: un dipinto e un'opera video rientrano perché le loro classi sono sottoclassi di Artwork.",
               collectiveOut:
-                "L'opera firmata da un collettivo esce dal risultato senza una regola scritta a mano: la domanda chiede artisti, e Artist è dichiarata sottoclasse di Person.",
+                "Il collettivo non ha un tipo Artist dichiarato o derivabile, quindi non soddisfa la condizione positiva della query. Questo non prova una negazione.",
             },
             details: {
               rottaDiTerra: "Nadia Ferri — italiana, 1988",
               attraverso: "Marco Sabbatini — italiano, 1985",
-              veleDiSale: "Collettivo Mareo — un Collective, non una Person: la domanda chiedeva artisti",
+              veleDiSale: "Collettivo Mareo — il tipo Artist non è dichiarato né derivabile dai dati disponibili",
               terraFerma: "Giulio Neri — italiano, 1979: fuori per data di nascita",
               senzaTitolo: "Hélène Roux — francese, 1962: fuori per nazionalità e data di nascita",
             },
@@ -88,14 +109,19 @@ export default {
               artworkUnion:
                 "Painting e VideoArtwork sono sottoclassi di Artwork: la domanda dice «opere», e il sistema le raccoglie per sussunzione, senza che nessuno abbia elencato le classi da cercare.",
               artistIsPerson:
-                "Artist è dichiarata sottoclasse di Person; Collective no, pur essendo anch'esso un autore. A escludere il collettivo è l'ontologia, non un caso particolare nel codice.",
+                "Artist è sottoclasse di Person. Il tipo Collective, da solo, non permette di derivare Artist. La query non include quel risultato, ma l'assenza del tipo non equivale a una negazione: servirebbe un assioma ulteriore.",
             },
             answer:
               "Due opere sulle cinque in mostra: «Rotta di terra» (2021) di Nadia Ferri e «Attraverso» (2019) di Marco Sabbatini.",
-            note: "Una domanda in italiano è diventata quattro condizioni congiunte sul grafo — la mostra, le opere esposte, il loro autore, nazionalità e data di nascita — più due passaggi che nessun fatto memorizzato contiene: la sussunzione delle classi e l'esclusione del collettivo.",
+            note: "La domanda combina relazioni e filtri sul grafo con la sussunzione delle classi. Il collettivo non soddisfa la condizione positiva Artist; non viene derivato che sia una non-Person.",
           },
           allestimento: {
             pickerLabel: "Allestimento",
+            proof: {
+              fact: "«Attraverso» è un VideoArtwork; «Vele di sale» è un'Installation.",
+              rule: "VideoArtwork è sottoclasse di ImmaterialArtwork. Le descrizioni dell'ontologia definiscono un'opera senza forma fisica e un'installazione che occupa uno spazio specifico.",
+              conclusion: "Il tipo immateriale è inferito. Le esigenze di proiezione e spazio sono un'interpretazione di quelle definizioni, da verificare in allestimento: non un vincolo formalizzato in OWL.",
+            },
             question:
               "Quali opere di questa mostra hanno bisogno di uno spazio dedicato o di attrezzatura?",
             steps: {
@@ -104,25 +130,30 @@ export default {
               noSuchProperty:
                 "Nessuna proprietà dello schema dice «richiede attrezzatura»: non c'è un campo da leggere.",
               fromClassDefinitions:
-                "La risposta viene da come l'ontologia definisce quelle classi: una occupa uno spazio proprio, l'altra non ha forma fisica.",
+                "L'ontologia permette di inferire il tipo ImmaterialArtwork. Le indicazioni su spazio e attrezzatura interpretano le descrizioni delle classi, non un assioma OWL sui requisiti.",
             },
             details: {
-              veleDiSale: "Sala dedicata: l'opera occupa uno spazio suo",
-              attraverso: "Proiezione e sorgente video: senza attrezzatura l'opera non è in mostra",
-              rottaDiTerra: "Parete: nessuna attrezzatura",
+              veleDiSale: "Spazio dedicato da valutare in base alla descrizione di Installation",
+              attraverso: "Attrezzatura video da verificare in allestimento",
+              rottaDiTerra: "Opera materiale; requisiti di allestimento non specificati",
             },
             axioms: {
               installationOccupiesSpace:
-                "È così che l'ontologia definisce Installation. La sala dedicata discende da questa frase, non da un campo compilato a mano opera per opera.",
+                "La descrizione di Installation suggerisce di valutare uno spazio dedicato. La frase è un'annotazione dell'ontologia, non un assioma che impone una sala.",
               immaterialHasNoForm:
-                "VideoArtwork è sottoclasse di ImmaterialArtwork: senza forma fisica, l'opera esiste in mostra solo attraverso l'attrezzatura che la riproduce.",
+                "VideoArtwork è sottoclasse di ImmaterialArtwork: questo tipo è derivabile. Il tipo di attrezzatura necessario richiede invece una verifica specifica.",
             },
             answer:
-              "Due opere sulle cinque in mostra: l'installazione «Vele di sale» e il video «Attraverso».",
-            note: "Nessun fatto memorizzato dice che un'opera richiede attrezzatura. Il sistema lo deriva dalle classi delle opere e dalle definizioni che l'ontologia dà di quelle classi — e quelle definizioni può mostrarle.",
+              "Due opere da esaminare per spazio o attrezzatura: l'installazione «Vele di sale» e il video «Attraverso».",
+            note: "L'esempio distingue la sussunzione formale delle classi dall'interpretazione delle loro descrizioni. Lo schema non formalizza requisiti di attrezzatura; la proposta va verificata sul caso concreto.",
           },
           orientamento: {
             pickerLabel: "Orientamento",
+            proof: {
+              fact: "L'opera è esposta nella mostra, allestita nella Sala 3. Il grafo registra Sala 2 adjacent_to Sala 3.",
+              rule: "adjacent_to è dichiarata owl:SymmetricProperty nella top ontology Isagog.",
+              conclusion: "Vale anche Sala 3 adjacent_to Sala 2, senza memorizzare il collegamento inverso. La sala dell'opera si trova seguendo le relazioni con la mostra.",
+            },
             question: "In quale sala trovo «Rotta di terra»?",
             steps: {
               noLocationOnArtwork: "Cerca un luogo sull'opera: dall'opera non parte alcun arco di ubicazione.",
@@ -143,12 +174,14 @@ export default {
                 "Nella top ontology adjacent_to è dichiarata owl:SymmetricProperty: un'adiacenza registrata una volta sola risponde nei due versi.",
             },
             answer: "Nella Sala 3, al secondo piano: dalla Sala 2 si prosegue nella sala successiva.",
-            note: "L'opera non ha un luogo proprio. Il sistema lo compone risalendo alla mostra che la espone e alla sala in cui è allestita — e sa che la Sala 3 confina con la Sala 2 anche se il grafo registra l'adiacenza nel verso opposto.",
+            note: "Il grafo non registra un luogo direttamente sull'opera. La risposta risale alla mostra e alla sala; la simmetria di adjacent_to permette inoltre di derivare l'adiacenza inversa.",
           },
         },
       },
       giornale: {
         tabLabel: "GIORNALE",
+        shortDisclosure: "Esempio illustrativo sullo schema reale MeMa / il manifesto.",
+        traceLabel: "Esplora le definizioni e la provenienza",
         disclosure:
           "Istanza illustrativa su schema reale: il caso è inventato; le classi dei descrittori — HumanDescriptor, AIDescriptor, DBPediaDescriptor, WikipediaDescriptor, ContextualDescriptor — sono quelle della piattaforma MeMa / il manifesto.",
         entity: "Progetto Parco Nord",
@@ -156,7 +189,7 @@ export default {
           archive: {
             question: "Cosa sappiamo di questo progetto?",
             answer:
-              "Quattro fatti, quattro provenienze diverse: un redattore, un modello di IA, una risorsa esterna e una descrizione valida solo al momento dell'articolo.",
+              "Cinque affermazioni con provenienza esplicita: un redattore, un modello di IA, DBpedia, Wikipedia e una descrizione legata al momento dell'articolo.",
             facts: {
               human: "Coordinato dall'assessorato al Verde pubblico",
               ai: "Avviato nel 2019",
@@ -177,6 +210,10 @@ export default {
       },
       clinica: {
         tabLabel: "CLINICA",
+        shortDisclosure: "Caso sintetico e pseudonimizzato; affermazioni e fonti dal grafo clinico.",
+        traceLabel: "Esplora le citazioni e le fonti complete",
+        revision: "L'affermazione di settembre supera esplicitamente quelle precedenti tramite la relazione supersedes: non basta scegliere il testo più simile o più recente.",
+        knowledgeBoundary: "Negated registra un fatto esplicitamente negato; RuledOut una valutazione esclusa. Un fatto mancante resta ignoto e un sospetto resta aperto: non diventano falsi per assenza di conferma.",
         disclosure:
           "Dati reali (sintetici, pseudonimizzati): il caso clinico è sintetico per costruzione, ma le affermazioni, le citazioni e i riferimenti a documento e riga provengono dal grafo di conoscenza.",
         notes: {
@@ -190,7 +227,7 @@ export default {
         polarityGloss: {
           Asserted: "confermato",
           Reported: "riferito, non verificato",
-          Negated: "escluso da verifica diretta",
+          Negated: "esplicitamente negato nella fonte",
           RuledOut: "escluso; supera le valutazioni precedenti",
           Suspected: "ipotesi aperta",
         },

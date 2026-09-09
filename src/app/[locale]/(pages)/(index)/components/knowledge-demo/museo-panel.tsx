@@ -3,6 +3,7 @@ import type { MuseoQuestion, MuseoStep, MuseoResult, MuseoAxiom } from "@/lib/kn
 import type { HomeT } from "./i18n";
 import { tr } from "./i18n";
 import { QuoteBlock, TermBadge } from "./graph-primitives";
+import { TraceDetails } from "./trace-details";
 
 interface MuseoPanelProps {
   readonly question: MuseoQuestion;
@@ -20,43 +21,62 @@ export const MuseoPanel = ({ question, t }: MuseoPanelProps) => (
   <div className="flex flex-col gap-5">
     <p className="font-serif text-[19px] leading-snug text-forest">{tr(t, question.questionKey)}</p>
 
-    <section>
-      <h4 className="text-[10.5px] uppercase tracking-[0.08em] text-sage">
-        {t("knowledgeDemo.museo.resolutionLabel")}
-      </h4>
-      <ol className="mt-2 flex flex-col gap-2">
-        {question.steps.map((step, index) => (
-          <StepRow key={step.id} step={step} index={index + 1} t={t} />
-        ))}
-      </ol>
+    <p className="rounded-[5px] bg-paper px-4 py-3 text-[16px] leading-relaxed text-forest">{tr(t, question.answerKey)}</p>
+
+    <section aria-label={t("knowledgeDemo.proof.label")}>
+      <dl className="flex flex-col gap-3 border-l-2 border-terracotta pl-4">
+        <div>
+          <dt className="text-[12px] font-semibold uppercase tracking-[0.06em] text-sage">{t("knowledgeDemo.proof.fact")}</dt>
+          <dd className="mt-1 text-[14px] leading-relaxed text-forest">{tr(t, question.proof.factKey)}</dd>
+        </div>
+        <div>
+          <dt className="text-[12px] font-semibold uppercase tracking-[0.06em] text-sage">{t("knowledgeDemo.proof.rule")}</dt>
+          <dd className="mt-1 whitespace-pre-line text-[14px] leading-relaxed text-forest">{tr(t, question.proof.ruleKey)}</dd>
+        </div>
+        <div>
+          <dt className="text-[12px] font-semibold uppercase tracking-[0.06em] text-terracotta">{t("knowledgeDemo.proof.conclusion")}</dt>
+          <dd className="mt-1 text-[14px] leading-relaxed text-forest">{tr(t, question.proof.conclusionKey)}</dd>
+        </div>
+      </dl>
     </section>
 
-    <section>
-      <h4 className="text-[10.5px] uppercase tracking-[0.08em] text-sage">
-        {t("knowledgeDemo.museo.resultsLabel")}
-      </h4>
-      <ul className="mt-2 flex flex-col gap-1.5">
-        {question.results.map((result) => (
-          <ResultRow key={result.id} result={result} t={t} />
-        ))}
-      </ul>
-    </section>
+    <TraceDetails key={question.id} label={t("knowledgeDemo.traceLabel")}>
+      <section>
+        <h4 className="text-[12px] uppercase tracking-[0.08em] text-sage">
+          {t("knowledgeDemo.museo.resolutionLabel")}
+        </h4>
+        <ol className="mt-2 flex flex-col gap-2">
+          {question.steps.map((step, index) => (
+            <StepRow key={step.id} step={step} index={index + 1} t={t} />
+          ))}
+        </ol>
+      </section>
 
-    <section>
-      <h4 className="text-[10.5px] uppercase tracking-[0.08em] text-sage">
-        {t("knowledgeDemo.museo.axiomsLabel")}
-      </h4>
-      <ul className="mt-2 flex flex-col gap-3">
-        {question.axioms.map((axiom) => (
-          <AxiomRow key={axiom.id} axiom={axiom} t={t} />
-        ))}
-      </ul>
-    </section>
+      <section>
+        <h4 className="text-[12px] uppercase tracking-[0.08em] text-sage">
+          {t("knowledgeDemo.museo.resultsLabel")}
+        </h4>
+        <ul className="mt-2 flex flex-col gap-1.5">
+          {question.results.map((result) => (
+            <ResultRow key={result.id} result={result} t={t} />
+          ))}
+        </ul>
+      </section>
 
-    <div>
-      <p className="text-[14px] font-medium leading-snug text-forest">{tr(t, question.answerKey)}</p>
-      <p className="mt-2 text-[13px] leading-snug text-prose-muted">{tr(t, question.noteKey)}</p>
-    </div>
+      <section>
+        <h4 className="text-[12px] uppercase tracking-[0.08em] text-sage">
+          {t("knowledgeDemo.museo.axiomsLabel")}
+        </h4>
+        <ul className="mt-2 flex flex-col gap-3">
+          {question.axioms.map((axiom) => (
+            <AxiomRow key={axiom.id} axiom={axiom} t={t} />
+          ))}
+        </ul>
+      </section>
+
+      <p className="text-[14px] leading-relaxed text-prose-muted">{tr(t, question.noteKey)}</p>
+      <p className="text-[12px] leading-relaxed text-prose-muted">{t("knowledgeDemo.museo.disclosure")}</p>
+    </TraceDetails>
   </div>
 );
 

@@ -6,53 +6,49 @@ export const Persone = async () => {
   const t = await getScopedI18n("home.persone");
 
   return (
-    <section id="persone" className="scroll-anchor bg-persone px-6 py-20">
-      <div className="mx-auto max-w-[1224px]">
-        <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-forest">
-          {t("eyebrow")}
-        </span>
-        <h2 className="mt-4 text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
-          {t("titleLine1")}
-          <br />
-          <em className="not-italic text-sage">{t("titleEm")}</em>
-        </h2>
-        <p className="mt-5 max-w-[640px] text-[19px] leading-[1.5] text-forest/85">{t("lead")}</p>
-
-        <div className="mt-10 grid gap-9 md:grid-cols-2">
-          <div className="flex items-start gap-6">
-            <Image
-              src={asset("/images/team-images/Guido.avif")}
-              alt={t("guido.name")}
-              width={240}
-              height={240}
-              className="h-[120px] w-[120px] shrink-0 rounded-[4px] object-cover"
-            />
-            <div>
-              <h4 className="font-serif text-[23px] text-forest">{t("guido.name")}</h4>
-              <p className="mt-1.5 mb-3 text-[13.5px] font-semibold leading-[1.4] text-sage">
-                {t("guido.role")}
-              </p>
-              <p className="text-[15px] leading-[1.55] text-muted-ink">{t("guido.bio")}</p>
-            </div>
+    <section id="persone" aria-labelledby="persone-title" className="scroll-anchor min-w-0 border-t border-divider pt-8 min-[900px]:col-start-1 min-[900px]:row-start-2">
+      <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-forest">
+        {t("eyebrow")}
+      </span>
+      <h2 id="persone-title" className="mt-3 text-[30px] leading-[1.15] text-forest">
+        {t("titleLine1")}
+        <br />
+        <em className="not-italic text-sage">{t("titleEm")}</em>
+      </h2>
+      <div className="mt-8 grid gap-8">
+        <article className="grid grid-cols-[96px_minmax(0,1fr)] items-center gap-x-5 gap-y-4 sm:grid-cols-[112px_minmax(0,1fr)]">
+          <Image
+            src={asset("/images/team-images/Guido.avif")}
+            alt={t("guido.name")}
+            width={240}
+            height={240}
+            className="h-24 w-24 rounded-[4px] object-cover sm:h-28 sm:w-28"
+          />
+          <div>
+            <h3 className="font-serif text-[23px] leading-tight text-forest">{t("guido.name")}</h3>
+            <p className="mt-2 text-[14px] font-medium leading-[1.4] text-sage">
+              {t("guido.role")}
+            </p>
           </div>
+          <p className="col-span-2 text-[16px] leading-[1.6] text-muted-ink">{t("guido.bio")}</p>
+        </article>
 
-          <div className="flex items-start gap-6">
-            <Image
-              src={asset("/images/team-images/Robert.avif")}
-              alt={t("robert.name")}
-              width={240}
-              height={240}
-              className="h-[120px] w-[120px] shrink-0 rounded-[4px] object-cover"
-            />
-            <div>
-              <h4 className="font-serif text-[23px] text-forest">{t("robert.name")}</h4>
-              <p className="mt-1.5 mb-3 text-[13.5px] font-semibold leading-[1.4] text-sage">
-                {t("robert.role")}
-              </p>
-              <p className="text-[15px] leading-[1.55] text-muted-ink">{t("robert.bio")}</p>
-            </div>
+        <article className="grid grid-cols-[96px_minmax(0,1fr)] items-center gap-x-5 gap-y-4 sm:grid-cols-[112px_minmax(0,1fr)]">
+          <Image
+            src={asset("/images/team-images/Robert.avif")}
+            alt={t("robert.name")}
+            width={240}
+            height={240}
+            className="h-24 w-24 rounded-[4px] object-cover sm:h-28 sm:w-28"
+          />
+          <div>
+            <h3 className="font-serif text-[23px] leading-tight text-forest">{t("robert.name")}</h3>
+            <p className="mt-2 text-[14px] font-medium leading-[1.4] text-sage">
+              {t("robert.role")}
+            </p>
           </div>
-        </div>
+          <p className="col-span-2 text-[16px] leading-[1.6] text-muted-ink">{t("robert.bio")}</p>
+        </article>
       </div>
     </section>
   );

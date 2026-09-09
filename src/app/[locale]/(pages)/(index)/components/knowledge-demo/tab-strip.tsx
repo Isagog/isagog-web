@@ -50,7 +50,7 @@ export const TabStrip = ({ tabs, activeTab, onChange, tablistLabel }: TabStripPr
   };
 
   return (
-    <div role="tablist" aria-label={tablistLabel} className="flex gap-2">
+    <div role="tablist" aria-label={tablistLabel} className="flex flex-wrap gap-2">
       {tabs.map((tab, index) => {
         const selected = tab.id === activeTab;
         return (
@@ -69,8 +69,8 @@ export const TabStrip = ({ tabs, activeTab, onChange, tablistLabel }: TabStripPr
             onKeyDown={(event) => handleKeyDown(event, index)}
             className={
               selected
-                ? "rounded-[5px] bg-forest px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-cream"
-                : "rounded-[5px] border border-card-border bg-paper px-4 py-2 text-[13px] font-semibold uppercase tracking-[0.08em] text-forest/70 hover:text-forest"
+                ? "rounded-[5px] bg-forest px-3 py-2 text-[13px] font-semibold uppercase tracking-[0.06em] text-cream"
+                : "rounded-[5px] border border-card-border bg-paper px-3 py-2 text-[13px] font-semibold uppercase tracking-[0.06em] text-forest/70 hover:text-forest"
             }
           >
             {tab.label}

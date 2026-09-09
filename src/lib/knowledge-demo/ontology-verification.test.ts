@@ -54,6 +54,11 @@ const oncoBlockFor = (id: string): string => {
 describe("MUSEO tab against maxxi-excerpt.ttl + isagog-top-excerpt.ttl", () => {
   for (const question of museoQuestions) {
     describe(`question "${question.id}"`, () => {
+      it("uses source-backed terms in the always-visible proof", () => {
+        for (const term of question.proof.terms) {
+          expect(hasTerm(maxxi, term)).toBe(true);
+        }
+      });
       for (const step of question.steps) {
         for (const term of step.terms) {
           it(`term "${term}" (step ${step.id}) exists in the excerpts`, () => {
@@ -85,6 +90,22 @@ describe("MUSEO tab against maxxi-excerpt.ttl + isagog-top-excerpt.ttl", () => {
         expect(sources.has("graph")).toBe(true);
         expect(sources.has("inference")).toBe(true);
       });
+    });
+  }
+});
+
+describe("the default museum proof's subclass chains", () => {
+  const relations = [
+    ["Painting", "VisualArtwork"],
+    ["VisualArtwork", "MaterialArtwork"],
+    ["MaterialArtwork", "Artwork"],
+    ["VideoArtwork", "ImmaterialArtwork"],
+    ["ImmaterialArtwork", "Artwork"],
+  ];
+  for (const [child, parent] of relations) {
+    it(`${child} is declared a subclass of ${parent}`, () => {
+      const declaration = maxxi.split(/\n\s*\n/).find((block) => block.trim().startsWith(`:${child} rdf:type`));
+      expect(declaration).toMatch(new RegExp(`rdfs:subClassOf[^;]*:${parent}\\b`));
     });
   }
 });
@@ -156,5 +177,15 @@ describe("CLINICA tab against onco-excerpt.ttl", () => {
         expect(knownIds.has(statementId)).toBe(true);
       }
     }
+  });
+
+  it("every displayed supersedes edge is explicit in the source statement", () => {
+    for (const statement of clinicaStatements) {
+      for (const target of statement.supersedes ?? []) {
+        expect(clinicaStatements.some((s) => s.id === target)).toBe(true);
+        expect(oncoBlockFor(statement.id)).toMatch(new RegExp(`onco:supersedes[^.]*kb:${target}\\b`));
+      }
+    }
+    expect(clinicaStatements.find((s) => s.id === "s-L3-allergia-penicillina")?.supersedes).toHaveLength(2);
   });
 });

@@ -16,12 +16,13 @@
  *    nationality and birth date). The works returned are instances of
  *    `Painting` and `VideoArtwork`, never queried by name: they arrive
  *    through class subsumption under `Artwork`. And a work by a `Collective`
- *    drops out without a hand-written rule, because `Artist` is declared
- *    `rdfs:subClassOf ig:Person` while `Collective` is not.
+ *    does not match the query's positive Artist condition. This absence of
+ *    a type assertion or entailment is not an inferred negative assertion.
  *
  * 2. `installation-requirements` — a question from whoever installs the
- *    show. No property records "needs equipment"; the answer comes from the
- *    classes of the works and from what the ontology says those classes are.
+ *    show. Class subsumption is formal inference; equipment suggestions
+ *    interpret the class descriptions and require verification. The schema
+ *    does not contain OWL axioms imposing those equipment requirements.
  *
  * 3. `where-is-artwork` — orientation in the building. An artwork carries no
  *    location of its own; the system composes one by walking to the
@@ -64,9 +65,9 @@ export interface MuseoResult {
 }
 
 /**
- * The ontology axiom an inference turns on, shown with the ontology's own
- * words for it: `quote` is a verbatim rdfs:comment from an excerpt, so the
- * claim can be checked against the source rather than taken on trust.
+ * The ontology basis for an explanation. `quote` is a verbatim rdfs:comment,
+ * an annotation rather than a logical axiom. The gloss distinguishes the
+ * formal class/property axioms from interpretations of these descriptions.
  */
 export interface MuseoAxiom {
   readonly id: string;
@@ -85,6 +86,13 @@ export interface MuseoQuestion {
    * the answer they are meant to introduce. Names the asker, not the query.
    */
   readonly pickerLabelKey: string;
+  /** The fact, ontology basis and conclusion stay visible when the trace is closed. */
+  readonly proof: {
+    readonly factKey: string;
+    readonly ruleKey: string;
+    readonly conclusionKey: string;
+    readonly terms: readonly OntologyTerm[];
+  };
   readonly steps: readonly MuseoStep[];
   readonly results: readonly MuseoResult[];
   readonly axioms: readonly MuseoAxiom[];
@@ -103,12 +111,19 @@ const glossKey = (question: string, name: string): string =>
   `knowledgeDemo.museo.questions.${question}.axioms.${name}`;
 const detailKey = (question: string, name: string): string =>
   `knowledgeDemo.museo.questions.${question}.details.${name}`;
+const proof = (question: string, terms: readonly OntologyTerm[]): MuseoQuestion["proof"] => ({
+  factKey: `knowledgeDemo.museo.questions.${question}.proof.fact`,
+  ruleKey: `knowledgeDemo.museo.questions.${question}.proof.rule`,
+  conclusionKey: `knowledgeDemo.museo.questions.${question}.proof.conclusion`,
+  terms,
+});
 
 export const museoQuestions: readonly MuseoQuestion[] = [
   {
     id: "conjunctive-exhibition",
     questionKey: "knowledgeDemo.museo.questions.conjunctive.question",
     pickerLabelKey: "knowledgeDemo.museo.questions.conjunctive.pickerLabel",
+    proof: proof("conjunctive", ["Painting", "VisualArtwork", "MaterialArtwork", "VideoArtwork", "ImmaterialArtwork", "Artwork"]),
     steps: [
       {
         id: "find-exhibition",
@@ -142,7 +157,7 @@ export const museoQuestions: readonly MuseoQuestion[] = [
       },
       {
         id: "collective-out",
-        source: "inference",
+        source: "graph",
         labelKey: stepKey("conjunctive", "collectiveOut"),
         terms: ["Artist", "Person", "Collective"],
       },
@@ -205,6 +220,7 @@ export const museoQuestions: readonly MuseoQuestion[] = [
     id: "installation-requirements",
     questionKey: "knowledgeDemo.museo.questions.allestimento.question",
     pickerLabelKey: "knowledgeDemo.museo.questions.allestimento.pickerLabel",
+    proof: proof("allestimento", ["Installation", "VideoArtwork", "ImmaterialArtwork"]),
     steps: [
       {
         id: "works-in-exhibition",
@@ -275,6 +291,7 @@ export const museoQuestions: readonly MuseoQuestion[] = [
     id: "where-is-artwork",
     questionKey: "knowledgeDemo.museo.questions.orientamento.question",
     pickerLabelKey: "knowledgeDemo.museo.questions.orientamento.pickerLabel",
+    proof: proof("orientamento", ["adjacent_to"]),
     steps: [
       {
         id: "no-location-on-artwork",

@@ -1,7 +1,7 @@
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
 import type { Metadata } from "next";
-import { Apertura, Hero, Persone } from "./components";
+import { Apertura, Hero } from "./components";
 
 export async function generateMetadata({
   params,
@@ -27,7 +27,6 @@ const HomePage = async ({ params }: { params: Promise<{ locale: string }> }) => 
     <main>
       <Hero />
       <Apertura />
-      <Persone />
     </main>
   );
 };

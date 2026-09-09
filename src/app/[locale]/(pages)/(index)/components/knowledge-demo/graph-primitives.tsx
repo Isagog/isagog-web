@@ -14,7 +14,7 @@ interface TermBadgeProps {
 
 /** A verbatim ontology class or property name, rendered as a technical identifier. */
 export const TermBadge = ({ children }: TermBadgeProps) => (
-  <code className="rounded-[4px] bg-forest/10 px-1.5 py-0.5 font-sans text-[11px] font-medium text-forest">
+  <code className="max-w-full break-words rounded-[4px] bg-forest/10 px-1.5 py-0.5 font-sans text-[12px] font-medium text-forest">
     {children}
   </code>
 );

@@ -162,6 +162,20 @@ Third — *"localizzazione ossea?"* — `Suspected`, *"in attesa di conferma ist
 **Placement.** Replaces `knowledge-card.tsx` in the homepage's `Apertura`. The
 `DemoSlot` on `/approach` stays empty and available.
 
+**Compact homepage revision (2026-09-09).** On desktop, the two founders form
+a single column below the introduction's buttons, beside the demo. The source
+order is introduction, demo, people, which is also the mobile reading order.
+The initial museum view keeps the answer and a fact → ontology rule → inference
+explanation visible. A sourced clinical `Negated` statement is also visible
+without switching tabs. Native disclosures retain the full trace, results,
+definitions and source quotes. Changing a question closes its old disclosure.
+
+The clinical view keeps statement polarities, source references and explicit
+`supersedes` edges visible. Missing information is not presented as negation:
+an absent `Artist` type cannot prove `not Person`. Equipment suggestions from
+museum class descriptions are distinguished from formal OWL entailments.
+These distinctions follow the [OWL open-world semantics](https://www.w3.org/TR/owl2-primer/#What_is_OWL_2.3F).
+
 **Rendering.** The tab strip and question picker are client-side (`useState`), but the
 **default tab and its default question are server-rendered**, so the section is
 meaningful before hydration. `/project` and `/blog` already demonstrate what a
