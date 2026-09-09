@@ -20,7 +20,7 @@ export const Contatto = async () => {
   const t = await getScopedI18n("contact.contatto");
 
   return (
-    <section id="contatto" className="scroll-anchor relative overflow-hidden bg-page px-6 py-16">
+    <section id="contatto" className="scroll-anchor relative overflow-hidden bg-page px-6 py-20">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         {TREES.map((tree) => (
           <Image
