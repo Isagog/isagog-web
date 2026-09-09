@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { describe, expect, it } from "vitest";
-import { extractHeading, getMdxBySlug, getSlugs } from "./mdx";
+import { extractHeading, getMdxBySlug, getSlugs, stripLeadingHeading } from "./mdx";
 
 describe("getSlugs", () => {
   it("lists every article", () => {
@@ -69,6 +69,29 @@ describe("extractHeading", () => {
 
   it("trims surrounding whitespace from the heading text", () => {
     expect(extractHeading("#   Titolo con spazi   \n")).toBe("Titolo con spazi");
+  });
+});
+
+describe("stripLeadingHeading", () => {
+  it("removes a leading level-1 heading and its line break", () => {
+    expect(stripLeadingHeading("# Progetti\n\n## MAXXIperTUTTI\n\nBody.")).toBe(
+      "## MAXXIperTUTTI\n\nBody."
+    );
+  });
+
+  it("leaves content unchanged when it doesn't start with a level-1 heading", () => {
+    expect(stripLeadingHeading("## Only a level-2 heading\n\nBody.")).toBe(
+      "## Only a level-2 heading\n\nBody."
+    );
+    expect(stripLeadingHeading("Just a paragraph, no heading at all.")).toBe(
+      "Just a paragraph, no heading at all."
+    );
+  });
+
+  it("only strips the first line, not a heading found later in the content", () => {
+    expect(stripLeadingHeading("Intro line.\n\n# Not first, stays put.")).toBe(
+      "Intro line.\n\n# Not first, stays put."
+    );
   });
 });
 

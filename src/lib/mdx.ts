@@ -25,6 +25,20 @@ export const extractHeading = (content: string): string | null => {
   return match?.[1]?.trim() ?? null;
 };
 
+/**
+ * Removes a leading level-1 (`# `) heading line from raw MDX/Markdown
+ * content, if the content starts with one. Used when a page renders its
+ * own `<h1>` (e.g. a case study's title, composed from project-list data
+ * rather than the MDX's own generic "# Progetti"/"# Projects" heading) and
+ * must avoid also rendering the MDX's leading heading as a second `<h1>`.
+ *
+ * Only strips a heading at the very start of the content — one that isn't
+ * first is left alone, since it isn't the duplicate this exists to remove.
+ * Never mutates the source file; this is a render-time transform only.
+ */
+export const stripLeadingHeading = (content: string): string =>
+  content.replace(/^#\s+.*\n+/, "");
+
 export const getMdxBySlug = async (
   slug: string,
   type: ContentType,

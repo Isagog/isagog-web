@@ -1,7 +1,7 @@
 import { LocaleLink as Link } from "@/app/_components/custom/locale-link";
 import { MarkdownRenderer } from "@/app/_components/custom/markdown-render";
 import { locales } from "@/lib/locale-href";
-import { getMdxBySlug, getSlugs } from "@/lib/mdx";
+import { getMdxBySlug, getSlugs, stripLeadingHeading } from "@/lib/mdx";
 import { buildPageMetadata } from "@/lib/page-metadata";
 import { buildCaseStudyTitle, getProjectListEntry } from "@/lib/project-list";
 import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
@@ -62,6 +62,18 @@ const ProjectPostPage = async ({
     );
   }
 
+  // Every case-study MDX leads with the same generic collection heading
+  // ("# Progetti"/"# Projects"), so rendering post.content as-is would give
+  // every case study the identical visible <h1>. buildCaseStudyTitle (the
+  // same helper generateMetadata above uses) derives the real title from
+  // the project list instead; stripLeadingHeading then drops that generic
+  // heading line from the MDX so the body starts at its own "##" without a
+  // duplicate <h1> ahead of it. content/ itself is never touched.
+  const tMeta = await getScopedI18n("meta");
+  const listEntry = getProjectListEntry(slug, locale);
+  const title = buildCaseStudyTitle(listEntry, post.content, tMeta("project.title"));
+  const body = stripLeadingHeading(post.content);
+
   // No "next case study" link here: getSlugs("projects", locale) walks the
   // content directory in filesystem order (manifesto, maxxi, teleperformance
   // — alphabetical), but the /project index renders the curated order from
@@ -70,7 +82,8 @@ const ProjectPostPage = async ({
   // reader saw as "next" on the index, so this ships the back-link only.
   return (
     <main className="mx-auto max-w-[780px] px-6 py-16">
-      <MarkdownRenderer content={post.content} />
+      <h1 className="mt-8 mb-4 text-center font-serif text-4xl text-forest">{title}</h1>
+      <MarkdownRenderer content={body} />
       <footer className="mt-16 border-t border-card-border pt-8">
         <Link href="/project" className="text-[15px] font-semibold text-terracotta">
           ← {t("backToProjects")}
