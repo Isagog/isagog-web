@@ -1,6 +1,6 @@
 import { LocaleLink as Link } from "@/app/_components/custom/locale-link";
 import { getScopedI18n } from "@/packages/locales/server";
-import { KnowledgeCard } from "./knowledge-card";
+import { KnowledgeDemo } from "./knowledge-demo/knowledge-demo";
 
 export const Apertura = async () => {
   const t = await getScopedI18n("home.apertura");
@@ -39,7 +39,7 @@ export const Apertura = async () => {
           </div>
         </div>
 
-        <KnowledgeCard />
+        <KnowledgeDemo />
       </div>
     </section>
   );

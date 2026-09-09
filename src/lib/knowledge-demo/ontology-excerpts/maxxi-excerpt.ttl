@@ -1,0 +1,216 @@
+# Excerpt from the MAXXI museum ontology (Isagog client work).
+# Class and property declarations only — the terms the demo displays.
+# Instances shown in the demo are illustrative and are NOT from this file.
+
+:about rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :inheres_in ;
+         owl:inverseOf :described_in ;
+         rdfs:domain :Information ;
+         rdfs:comment "Informative aboutness"@en ,
+                      "Informazione di argomento"@it ;
+         rdfs:label "about"@en ,
+                    "riguardo a"@it .
+
+:author_of rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :relatedness ;
+             owl:inverseOf :authored_by ;
+             rdfs:label "author of"@en ,
+                        "autore di"@it .
+
+:authored_by rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :relatedness ;
+               rdfs:label "authored by"@en ,
+                          "creato da"@it .
+
+:described_in rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :has_inherent ;
+                rdfs:label "described in"@en ,
+                           "descritto in"@it ;
+                rdfs:comment "Indicates that a resource is described in a textual information resource, such as a curatorial note or an exhibition catalogue"@en ,
+                             "Indica che una risorsa è descritta in un'informazione testuale, come una nota curatoriale o un catalogo espositivo"@it .
+
+:has_catalogue rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :described_in ;
+               rdfs:domain :Exhibition ;
+               rdfs:range :ExhibitionCatalogue ;
+                                                     rdfs:label "catalogo dell'esposizione"@it ,
+                                                                "exhibition catalogue"@en .
+
+:has_wall_text rdf:type owl:ObjectProperty .
+
+:Document rdf:type owl:Class ;
+            rdfs:subClassOf :TextualInformation ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :authored_by ;
+                              owl:someValuesFrom :Author
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :date ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :title ;
+                              owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange xsd:string
+                            ] ;
+            rdfs:comment "A textual document"@en ,
+                         "Un documento testuale"@it ;
+            rdfs:label "Document"@en ,
+                       "Documento"@it .
+
+:TextualInformation rdf:type owl:Class ;
+                      rdfs:label "Informazione testuale"@it ,
+                                 "Textual information"@en .
+
+:Artist rdf:type owl:Class ;
+        rdfs:subClassOf :Person ,
+                        :Author ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :described_in ;
+                          owl:someValuesFrom :CuratorialNote
+                                                              ] ;
+                                              rdfs:label "Artist"@en ,
+                                                         "Artista"@it .
+
+:Artwork rdf:type owl:Class ;
+         owl:equivalentClass [ rdf:type owl:Class ;
+                               owl:unionOf ( :ImmaterialArtwork
+                                             :MaterialArtwork
+                                                                                   :PerformativeArtwork
+                                                                                 )
+                                                                   ] ;
+                                               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty   :authored_by ;
+                                                                 owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                      owl:unionOf ( :Author
+                                                                                                    :Collective
+                                                                                                  )
+                                                                                    ]
+                                                               ] ,  
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :described_in ;
+                                                                 owl:someValuesFrom :CuratorialNote
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :visual_description ;
+                                                                 owl:someValuesFrom :VisualDescription
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :creation_date ;
+                                                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onDataRange xsd:string
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :medium ;
+                                                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onDataRange xsd:string
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :technique ;
+                                                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onDataRange xsd:string
+                                                               ] ,
+                                                               [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty :title ;
+                                                                 owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                 owl:onDataRange xsd:string
+                                                               ] ;
+                                               rdfs:comment "Information about creative work, which can be material, immaterial or performative"@en ,
+                                                            "Opera creativa, che può essere materiale, immateriale o performativa"@it ;
+                                               rdfs:label "Artwork"@en ,
+                                                          "Opera d'Arte"@it ;
+                                               :cis "http://dati.beniculturali.it/cis/CreativeWork" .
+
+:Curator rdf:type owl:Class ;
+         rdfs:subClassOf :Person ;
+         rdfs:comment "A person who organizes exhibitions"@en ,
+                      "Una persona che organizza mostre"@it ;
+         rdfs:label "Curator"@en ,
+                                                          "Curatore"@it .
+
+:CuratorialNote rdf:type owl:Class ;
+                rdfs:subClassOf :TextualInformation ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :about ;
+                                  owl:someValuesFrom [ rdf:type owl:Class ;
+                                                                                             owl:unionOf ( :Artwork
+                                                                                                           :Author
+                                                                                                           :Exhibition
+                                                                                                         )
+                                                                                           ]
+                                                                      ] ,
+                                                                      [ rdf:type owl:Restriction ;
+                                                                        owl:onProperty :authored_by ;
+                                                                        owl:someValuesFrom :Curator
+                                                                      ] ;
+                                                      rdfs:comment "Curatorial text associated with an artwork, its artist, or related topics; component of the curatorial record"@en ,
+                                                                   "Testo curatoriale relativo a un'opera, al suo artista o a temi correlati; componente della scheda curatoriale"@it ;
+                                                      rdfs:label "Curatorial note"@en ,
+                                                                 "Nota curatoriale"@it .
+
+:Exhibition rdf:type owl:Class ;
+            rdfs:subClassOf :Event ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :artworks ;
+                              owl:someValuesFrom :Artwork
+                            ] ,
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :described_in ;
+                                                                    owl:someValuesFrom :CuratorialNote
+                                                                  ] ,
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :curated_by ;
+                                                                    owl:someValuesFrom :Curator   
+                                                                  ] ,
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :has_catalogue ;
+                                                                    owl:someValuesFrom :ExhibitionCatalogue
+                                                                  ] ,
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :has_wall_text ;
+                                                                    owl:someValuesFrom :WallText
+                                                                  ] ,
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :title ;
+                                                                    owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                    owl:onDataRange xsd:string
+                                                                  ] ,
+                                                                  [ rdf:type owl:Restriction ;
+                                                                    owl:onProperty :location   ;
+                                                                    owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                    owl:onDataRange xsd:string
+                                                                  ] ;
+                                                  rdfs:comment "A public display of artworks"@en ,
+                                                               "Una mostra pubblica di opere d'arte"@it ;
+                                                  rdfs:label "Exhibition"@en ,
+                                                             "Mostra"@it ;
+                                                  :cis "http://dati.beniculturali.it/cis/CulturalEvent" .
+
+:ExhibitionCatalogue rdf:type owl:Class ;
+                     rdfs:subClassOf :Document ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty :about ;
+                                       owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                       owl:onClass :Exhibition
+                                                                           ] ;
+                                                           rdfs:comment "Catalogo pubblicato per una mostra"@it ,
+                                                                        "Catalogue published for an exhibition"@en ;
+                                                           rdfs:label "Catalogo espositivo"@it ,
+                                                                      "Exhibition Catalogue"@en .
+
+:VisualDescription rdf:type owl:Class ;
+                   rdfs:subClassOf :TextualInformation ,
+                                   [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty :about ;
+                                                                           owl:someValuesFrom :Artwork  
+                                                                         ] ;
+                                                         rdfs:comment "Descrizione oggettiva degli elementi visibili di un'opera (composizione, forme, colori, materiali, stato)"@it ,
+                                                                      "Objective description of an artwork's visible features (composition, forms, colors, materials, condition)"@en ;
+                                                         rdfs:label "Descrizione visuale"@it ,
+                                                                    "Visual description"@en .
+
+:WallText rdf:type owl:Class ;
+           rdfs:subClassOf :Document ;
+           rdfs:label "Testo di sala"@it ,
+                      "Wall text"@en .

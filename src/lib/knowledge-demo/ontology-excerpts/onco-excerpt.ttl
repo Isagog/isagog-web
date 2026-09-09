@@ -1,0 +1,129 @@
+# Excerpt from the Isagog oncology knowledge graph (synthetic case).
+# Vendored so the demo's displayed claims can be tested against their source.
+# Pseudonymised: patient identity and internal ids replaced. Clinical content,
+# quotes, polarities and line numbers are preserved exactly.
+@prefix kb: <https://isagog.com/kb/paziente-esempio/> .
+@prefix onco: <https://isagog.com/onto/onco#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+kb:b-L1-bcl2 a onco:BiomarkerStatement,
+        onco:ClinicalStatement ;
+    rdfs:label "BCL2 positivo"@it ;
+    onco:assayMethod "immunoistochimica"@it ;
+    onco:concept <https://isagog.com/kb/paziente-esempio/concept/d10f85ce61> ;
+    onco:date "2025-02-06"^^xsd:date ;
+    onco:duringEncounter kb:E1 ;
+    onco:informationSource onco:LaboratoryAssay ;
+    onco:marker "BCL2"@it ;
+    onco:markerStatus onco:MarkerPositive ;
+    onco:polarity onco:Asserted ;
+    onco:sourceDocument <https://isagog.com/kb/paziente-esempio/doc/L1> ;
+    onco:sourceLineEnd 51 ;
+    onco:sourceLineStart 51 ;
+    onco:sourceQuote "BCL2+"@it ;
+    onco:subject kb:patient .
+
+kb:p-L1-test-allergologico a onco:ClinicalStatement,
+        onco:ProcedureStatement ;
+    rdfs:label "Test allergologico mai eseguito"@it ;
+    onco:concept <https://isagog.com/kb/paziente-esempio/concept/3f14d929f8> ;
+    onco:date "2025-02-03"^^xsd:date ;
+    onco:duringEncounter kb:E1 ;
+    onco:polarity onco:Negated ;
+    onco:sourceDocument <https://isagog.com/kb/paziente-esempio/doc/L1> ;
+    onco:sourceLineEnd 22 ;
+    onco:sourceLineStart 22 ;
+    onco:sourceQuote "mai sottoposto a test allergologico"@it ;
+    onco:subject kb:patient .
+
+kb:s-L3-localizzazione-ossea-dim a onco:ClinicalStatement,
+        onco:ConditionStatement ;
+    rdfs:label "Sospetta localizzazione ossea all'omero destro, in attesa di conferma istologica"@it ;
+    onco:bodySite "omero"@it ;
+    onco:clinicallySalient true ;
+    onco:concept <https://isagog.com/kb/paziente-esempio/concept/c739ad22a6> ;
+    onco:date "2025-09-22"^^xsd:date ;
+    onco:duringEncounter kb:E3 ;
+    onco:involvesSite <https://isagog.com/kb/paziente-esempio/site/ee163c4510> ;
+    onco:laterality onco:Right ;
+    onco:polarity onco:Suspected ;
+    onco:severity "alta"@it ;
+    onco:sourceDocument <https://isagog.com/kb/paziente-esempio/doc/L3> ;
+    onco:sourceLineEnd 52 ;
+    onco:sourceLineStart 52 ;
+    onco:sourceQuote "**Sospetta** localizzazione ossea all'omero destro, in attesa di conferma istologica."@it ;
+    onco:subject kb:patient .
+
+kb:a-L2-allergia-penicillina a onco:AllergyStatement,
+        onco:ClinicalStatement ;
+    rdfs:label "Allergia riferita a penicillina"@it ;
+    onco:concept <https://isagog.com/kb/paziente-esempio/concept/0a47fbe707> ;
+    onco:date "2025-04-02"^^xsd:date ;
+    onco:duringEncounter kb:E2 ;
+    onco:informationSource onco:PatientReport ;
+    onco:polarity onco:Reported ;
+    onco:sourceDocument <https://isagog.com/kb/paziente-esempio/doc/L2> ;
+    onco:sourceLineEnd 41 ;
+    onco:sourceLineStart 41 ;
+    onco:sourceQuote "In considerazione dell'**allergia riferita a penicillina**"@it ;
+    onco:subject kb:patient .
+
+kb:s-L3-allergia-penicillina a onco:AllergyStatement,
+        onco:ClinicalStatement ;
+    rdfs:label "Allergia a penicillina esclusa (de-labellazione)"@it ;
+    onco:becauseOf kb:s-L3-test-allergologico-negativo ;
+    onco:clinicallySalient true ;
+    onco:concept <https://isagog.com/kb/paziente-esempio/concept/0a47fbe707> ;
+    onco:date "2025-09-12"^^xsd:date ;
+    onco:duringEncounter kb:E3 ;
+    onco:extractionNote "Segnalazione di allergia delle precedenti lettere da considerarsi superata"@it ;
+    onco:informationSource onco:SpecialistConsult ;
+    onco:polarity onco:RuledOut ;
+    onco:sourceDocument <https://isagog.com/kb/paziente-esempio/doc/L3> ;
+    onco:sourceLineEnd 44 ;
+    onco:sourceLineStart 44 ;
+    onco:sourceQuote "Il paziente è stato **de-labellato**: può assumere beta-lattamici penicillinici. La segnalazione di allergia riportata nelle precedenti lettere di dimissione è pertanto da considerarsi **superata**."@it ;
+    onco:subject kb:patient ;
+    onco:supersedes kb:a-L1-penicillina,
+        kb:a-L2-allergia-penicillina .
+
+kb:a-L1-penicillina a onco:AllergyStatement,
+        onco:ClinicalStatement ;
+    rdfs:label "Reazione cutanea a penicillina in età pediatrica, riferita"@it ;
+    onco:concept <https://isagog.com/kb/paziente-esempio/concept/0a47fbe707> ;
+    onco:date "2025-02-03"^^xsd:date ;
+    onco:duringEncounter kb:E1 ;
+    onco:extractionNote "Episodio non documentato"@it ;
+    onco:informationSource onco:PatientReport ;
+    onco:polarity onco:Reported ;
+    onco:sourceDocument <https://isagog.com/kb/paziente-esempio/doc/L1> ;
+    onco:sourceLineEnd 22 ;
+    onco:sourceLineStart 22 ;
+    onco:sourceQuote "Riferita dal paziente reazione cutanea a **penicillina** in età pediatrica; episodio non documentato"@it ;
+    onco:subject kb:patient .
+
+<https://isagog.com/kb/paziente-esempio/doc/L3> a onco:Document ;
+    rdfs:label "Lettera 3 — set 2025 — rivalutazione"@it ;
+    onco:authoredBy kb:prat-1,
+        kb:prat-3 ;
+    onco:docDate "2025-09-22"^^xsd:date ;
+    onco:docId "L3" ;
+    onco:issuedBy kb:org-ematologia .
+
+<https://isagog.com/kb/paziente-esempio/doc/L1> a onco:Document ;
+    rdfs:label "Lettera 1 — feb 2025 — diagnosi"@it ;
+    onco:authoredBy kb:prat-1,
+        kb:prat-3 ;
+    onco:docDate "2025-02-14"^^xsd:date ;
+    onco:docId "L1" ;
+    onco:issuedBy kb:org-ematologia .
+
+<https://isagog.com/kb/paziente-esempio/doc/L2> a onco:Document ;
+    rdfs:label "Lettera 2 — apr 2025 — neutropenia febbrile"@it ;
+    onco:authoredBy kb:prat-1,
+        kb:prat-2 ;
+    onco:docDate "2025-04-11"^^xsd:date ;
+    onco:docId "L2" ;
+    onco:issuedBy kb:org-ematologia .

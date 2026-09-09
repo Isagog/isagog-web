@@ -38,24 +38,119 @@ export default {
       ctaPrimary: "Valutiamo il vostro caso ↗",
       ctaSecondary: "Scoprite come funziona",
     },
-    card: {
-      org: "MUSEO AURORA",
-      sample: "SCENARIO INVENTATO",
-      questionLabel: "UNA DOMANDA DEL VISITATORE",
-      questionLine1: "Quali opere posso scoprire?",
-      questionLine2: "Chi le ha realizzate?",
-      originKind: "MOSTRA",
-      originName: "Luce e colore",
-      edgeComprende: "comprende",
-      edgeRealizzata: "realizzata da",
-      workKind: "OPERA",
-      work1: "Il giardino blu",
-      work2: "La città al tramonto",
-      author1: "Luca Bianchi",
-      author2: "Sofia Conti",
-      answerTitle: "Due fonti collegate. Una risposta.",
-      answerLink: "Esplorate il percorso e le schede →",
-      disclaimer: "Museo, persone, opere e documenti sono interamente inventati.",
+    knowledgeDemo: {
+      eyebrow: "TRE DOMINI, UNA PIATTAFORMA",
+      tablistLabel: "Scegli un dominio",
+      questionPickerLabel: "Scegli una domanda",
+      questionLabel: "DOMANDA",
+      answerLabel: "RISPOSTA",
+      evidenceLabel: "FONTE",
+      classLabel: "classe",
+      propertyLabel: "proprietà",
+      traversalLabel: "percorso",
+      lineLabel: "riga",
+      refusalCaption: "Il sistema non generalizza",
+      ctaTitle: "Una piattaforma. Tre domini.",
+      ctaLink: "Scoprite come funziona →",
+      museo: {
+        tabLabel: "MUSEO",
+        disclosure:
+          "Istanze illustrative su schema reale: opera, mostra e testi sono inventati; le classi e le proprietà attraversate — WallText, ExhibitionCatalogue, CuratorialNote, about, described_in — sono quelle della piattaforma MAXXI.",
+        sharedClassCaption: "Classi diverse, tutte {className}",
+        valueKind: "VALORE",
+        noOutgoingEdges: "Nessun arco `described_in` in uscita da quest'opera.",
+        nodes: {
+          artwork1: "Controluce (1987)",
+          artwork2: "Notturno (1991)",
+          artwork3: "Grande vetrata (senza scheda)",
+          wallText1: "Testo di sala — Controluce",
+          exhibitionCatalogue1: "Catalogo — Linee di luce",
+          curatorialNote1: "Nota curatoriale sull'autrice",
+          exhibition1: "Mostra — Linee di luce",
+          techniqueValue: "olio su tela",
+        },
+        questions: {
+          gather: {
+            question: "Cosa posso leggere su quest'opera?",
+            answer:
+              "Tre testi diversi — un testo di sala, una voce di catalogo e una nota curatoriale. Nessun fatto memorizzato dice che parlano tutti di quest'opera: il sistema li trova risalendo alla classe che condividono.",
+          },
+          technique: {
+            question: "Quali altre opere usano la stessa tecnica?",
+            answer:
+              "Notturno (1991) condivide con Controluce (1987) lo stesso valore della proprietà `technique`.",
+          },
+          refusal: {
+            question: "Cosa posso leggere su quest'opera?",
+            answer: "Nessuna informazione testuale trovata per quest'opera.",
+            explanation:
+              "La mostra ha un catalogo, ma in questo schema non esistono catene di proprietà: un testo relativo alla mostra non diventa automaticamente relativo a ciascuna opera esposta.",
+          },
+        },
+      },
+      giornale: {
+        tabLabel: "GIORNALE",
+        disclosure:
+          "Istanza illustrativa su schema reale: il caso è inventato; le classi dei descrittori — HumanDescriptor, AIDescriptor, DBPediaDescriptor, WikipediaDescriptor, ContextualDescriptor — sono quelle della piattaforma MeMa / il manifesto.",
+        entity: "Progetto Parco Nord",
+        questions: {
+          archive: {
+            question: "Cosa sappiamo di questo progetto?",
+            answer:
+              "Quattro fatti, quattro provenienze diverse: un redattore, un modello di IA, una risorsa esterna e una descrizione valida solo al momento dell'articolo.",
+            facts: {
+              human: "Coordinato dall'assessorato al Verde pubblico",
+              ai: "Avviato nel 2019",
+              dbpedia: "Situato nel quartiere Nord",
+              wikipedia: "Descritto nella voce Wikipedia del quartiere",
+              contextual: "In fase di realizzazione (al momento di questo articolo)",
+            },
+          },
+          refusal: {
+            question: "Qual è il budget del progetto?",
+            answer:
+              "Non confermato: l'unico dato disponibile viene da un descrittore IA, senza riscontro umano o esterno.",
+            facts: {
+              aiOnly: "Budget stimato: 2 milioni di euro",
+            },
+          },
+        },
+      },
+      clinica: {
+        tabLabel: "CLINICA",
+        disclosure:
+          "Dati reali (sintetici, pseudonimizzati): il caso clinico è sintetico per costruzione, ma le affermazioni, le citazioni e i riferimenti a documento e riga provengono dal grafo di conoscenza.",
+        notes: {
+          reportedPediatric: "Riferita dal paziente; l'episodio non è documentato.",
+          neverTested: "Nessun test allergologico è mai stato eseguito.",
+          steeringTreatment: "L'etichetta non verificata comincia a orientare le scelte terapeutiche.",
+          deLabelled: "La valutazione specialistica supera le due segnalazioni precedenti.",
+          bcl2: "Accertato in laboratorio, non riferito dal paziente.",
+          boneSuspected: "Ipotesi aperta: in attesa di conferma istologica.",
+        },
+        polarityGloss: {
+          Asserted: "confermato",
+          Reported: "riferito, non verificato",
+          Negated: "escluso da verifica diretta",
+          RuledOut: "escluso; supera le valutazioni precedenti",
+          Suspected: "ipotesi aperta",
+        },
+        questions: {
+          allergy: {
+            question: "È allergico alla penicillina?",
+            answer:
+              "Dipende da quando lo si chiede: riferita ma mai testata da febbraio ad aprile, poi esclusa (de-labellata) a settembre 2025.",
+          },
+          bcl2: {
+            question: "BCL2?",
+            answer: "Sì — positivo, accertato per immunoistochimica.",
+          },
+          bone: {
+            question: "Localizzazione ossea?",
+            answer: "Sospetta, non ancora confermata: in attesa dell'esame istologico.",
+          },
+        },
+      },
     },
     teasers: {
       approach:
