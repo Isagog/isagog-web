@@ -67,6 +67,24 @@ describe("buildPageMetadata", () => {
     expect(metadata.openGraph?.url).toBe(metadata.alternates?.canonical);
   });
 
+  it("sets openGraph.siteName", async () => {
+    // Every page defines its own openGraph object, and Next.js does not
+    // deep-merge nested metadata fields across layout and page — a page's
+    // openGraph wholly replaces the layout's, per
+    // node_modules/next/dist/docs/.../generate-metadata.md#merging. Without
+    // this, og:site_name would silently disappear from every page despite
+    // layout.tsx still declaring it.
+    const { buildPageMetadata } = await load(undefined);
+    const metadata = buildPageMetadata({
+      locale: "it",
+      path: "/approach",
+      title: "Il nostro approccio",
+      description: "Descrizione.",
+    });
+
+    expect(metadata.openGraph?.siteName).toBe("Isagog");
+  });
+
   it("carries the staging base path in every URL-bearing field", async () => {
     const { buildPageMetadata } = await load("/isagog-web");
     const metadata = buildPageMetadata({

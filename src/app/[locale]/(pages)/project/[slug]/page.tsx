@@ -1,9 +1,9 @@
 import { LocaleLink as Link } from "@/app/_components/custom/locale-link";
 import { MarkdownRenderer } from "@/app/_components/custom/markdown-render";
 import { locales } from "@/lib/locale-href";
-import { extractHeading, getMdxBySlug, getSlugs } from "@/lib/mdx";
+import { getMdxBySlug, getSlugs } from "@/lib/mdx";
 import { buildPageMetadata } from "@/lib/page-metadata";
-import { getProjectListEntry } from "@/lib/project-list";
+import { buildCaseStudyTitle, getProjectListEntry } from "@/lib/project-list";
 import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
 import type { Metadata } from "next";
 
@@ -30,13 +30,8 @@ export async function generateMetadata({
   // this detail page in agreement. Only fall back to the MDX heading (and
   // then the section title) if a slug is somehow missing from that list.
   const listEntry = getProjectListEntry(slug, locale);
-  let title: string;
-  if (listEntry) {
-    title = `${listEntry.title} — ${listEntry.secondTitle}`;
-  } else {
-    const post = await getMdxBySlug(slug, "projects", locale);
-    title = (post && extractHeading(post.content)) ?? t("project.title");
-  }
+  const post = listEntry ? null : await getMdxBySlug(slug, "projects", locale);
+  const title = buildCaseStudyTitle(listEntry, post?.content ?? null, t("project.title"));
 
   return buildPageMetadata({
     locale,

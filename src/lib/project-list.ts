@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { extractHeading } from "./mdx";
 import { zProjectsSchema } from "@/packages/action/projects/project.model";
 
 export interface ProjectListEntry {
@@ -35,4 +36,26 @@ export const getProjectListEntry = (slug: string, locale: string): ProjectListEn
     console.error(`Error reading project list entry for slug "${slug}" (${locale}):`, error);
     return null;
   }
+};
+
+/**
+ * Composes a case study's page title, preferring the project list over the
+ * MDX heading: every content/projects/*.mdx file leads with a generic
+ * collection heading ("# Progetti" / "# Projects"), with the real project
+ * name one level down as "##" — so extractHeading alone would give every
+ * case study the same title. The list entry doesn't have that problem, and
+ * reusing it keeps the index card and this detail page in agreement.
+ *
+ * Falls back to the MDX's own heading, and only then to the caller-supplied
+ * fallback (the section title) — never to the site title.
+ */
+export const buildCaseStudyTitle = (
+  listEntry: ProjectListEntry | null,
+  mdxContent: string | null,
+  fallback: string
+): string => {
+  if (listEntry) return `${listEntry.title} — ${listEntry.secondTitle}`;
+
+  const heading = mdxContent === null ? null : extractHeading(mdxContent);
+  return heading ?? fallback;
 };
