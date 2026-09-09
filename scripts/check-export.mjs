@@ -32,6 +32,14 @@ for (const locale of LOCALES) {
 }
 if (!existsSync(join(OUT, "index.html"))) missing.push(join(OUT, "index.html"));
 
+// Old-site URL stubs: outside the locale segments, matching the dropped
+// live-site paths they redirect from (/service, /work-with-us).
+const OLD_URL_STUBS = ["service", "work-with-us"];
+for (const stub of OLD_URL_STUBS) {
+  const file = join(OUT, stub, "index.html");
+  if (!existsSync(file)) missing.push(file);
+}
+
 if (missing.length > 0) {
   console.error(`check-export: ${missing.length} expected file(s) missing:`);
   for (const file of missing) console.error(`  - ${file}`);

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isagog</title>
+    <link rel="icon" href="../favicon.ico" />
+    <!--
+      Old-site URL stub: the live site had /work-with-us, dropped by the
+      information-architecture split in favour of /about. Redirect old
+      links/bookmarks there instead of 404ing at cutover.
+      Client-side locale redirect: static export has no middleware. Paths
+      are relative (not absolute) and climb one level ("../") to escape
+      this /work-with-us/ directory before descending into the locale
+      segment, so this works unmodified both at the domain root and under
+      the staging base path (e.g. /isagog-web/).
+    -->
+    <script>
+      (function () {
+        var supported = ["it", "en"];
+        var fallback = "it";
+        var lang = (navigator.language || fallback).slice(0, 2).toLowerCase();
+        var locale = supported.indexOf(lang) !== -1 ? lang : fallback;
+        window.location.replace("../" + locale + "/about/");
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=../it/about/" />
+    </noscript>
+  </head>
+  <body>
+    <p>Redirecting to <a href="../it/about/">Isagog</a>…</p>
+  </body>
+</html>
