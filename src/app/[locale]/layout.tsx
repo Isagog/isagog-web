@@ -3,7 +3,7 @@ import { Footer } from "@/app/_components/custom/footer";
 import { Header } from "@/app/_components/custom/header";
 import { Providers } from "@/app/_components/providers";
 import { SectionRail } from "@/app/_components/custom/section-rail";
-import { IS_STAGING, SITE_URL } from "@/lib/base-path";
+import { asset, IS_STAGING, SITE_URL } from "@/lib/base-path";
 import { I18nProviderClient } from "@/packages/locales/client";
 import { getStaticParams } from "@/packages/locales/server";
 import type { Metadata } from "next";
@@ -15,8 +15,17 @@ export const metadata: Metadata = {
   title: "Isagog — Un'IA che sa dire cosa sa",
   description:
     "Isagog rende la conoscenza della vostra organizzazione esplicita, verificabile e utilizzabile da assistenti e applicazioni di intelligenza artificiale.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-  metadataBase: new URL("https://isagog.com"),
+  // asset() prefixes the base path directly — icon URLs are never resolved
+  // against metadataBase, so a hardcoded root-relative path here would
+  // serve the old live site's favicon on a staging build.
+  icons: [{ rel: "icon", url: asset("/favicon.ico") }],
+  // Must be this deployment's own origin+base path, not a bare production
+  // hardcode: alternates.languages below is relative and resolves against
+  // this. A stale metadataBase would make a staging build's hreflang tags
+  // point at the old live site's real URLs while canonical correctly
+  // pointed at /isagog-web/ — the same identity-contradiction hazard as
+  // the og:url/image fix.
+  metadataBase: new URL(SITE_URL),
   openGraph: {
     title: "Isagog — Un'IA che sa dire cosa sa",
     description:
