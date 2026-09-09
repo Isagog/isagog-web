@@ -1,7 +1,7 @@
 import { asset } from "@/lib/base-path";
 import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
 import { Monitor, Network } from "lucide-react";
-import { TextCarousel } from "./components/text-carousel";
+import { Tecnologia, TextCarousel } from "./components";
 
 const PlatformPage = async ({ params }: { params: Promise<{ locale: string }> }) => {
   const { locale } = await params;
@@ -11,12 +11,7 @@ const PlatformPage = async ({ params }: { params: Promise<{ locale: string }> })
 
   return (
     <main className="bg-page">
-      <section className="mx-auto flex max-w-[1224px] flex-col items-center gap-6 px-6 pt-20 pb-10 text-center">
-        <h1 className="text-[clamp(32px,4vw,46px)] leading-[1.15] text-forest">{t("heroTitle")}</h1>
-        <p className="max-w-[720px] text-[19px] leading-[1.5] text-prose-muted">
-          {t("heroDescription")}
-        </p>
-      </section>
+      <Tecnologia />
 
       <iframe
         src={asset(`/platform-explorer/${locale === "it" ? "it" : "en"}.html`)}

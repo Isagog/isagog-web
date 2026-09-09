@@ -1,10 +1,9 @@
-import { LocaleLink as Link } from "@/app/_components/custom/locale-link";
 import { SectionHeading } from "@/app/_components/custom/section-heading";
 import { getScopedI18n } from "@/packages/locales/server";
-import { ArrowUpRight, ShieldCheck } from "lucide-react";
+import { ShieldCheck } from "lucide-react";
 
 export const Tecnologia = async () => {
-  const t = await getScopedI18n("home.tecnologia");
+  const t = await getScopedI18n("platform.tecnologia");
 
   return (
     <section id="tecnologia" className="scroll-anchor bg-tecnologia px-6 py-20">
@@ -68,18 +67,11 @@ export const Tecnologia = async () => {
           </article>
         </div>
 
-        <div className="flex flex-wrap items-center justify-between gap-4 border-t border-divider pt-6">
+        <div className="flex flex-wrap items-center gap-4 border-t border-divider pt-6">
           <span className="flex items-center gap-2 text-[14px] text-forest">
             <ShieldCheck size={18} strokeWidth={2} />
             {t("badge")}
           </span>
-          <Link
-            href="/platform"
-            className="inline-flex items-center gap-2 rounded-[5px] bg-forest-deep px-5 py-3.5 text-[15px] font-medium text-white"
-          >
-            {t("cta")}
-            <ArrowUpRight size={18} strokeWidth={2} />
-          </Link>
         </div>
       </div>
     </section>
