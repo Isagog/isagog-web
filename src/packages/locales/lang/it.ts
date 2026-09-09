@@ -198,6 +198,7 @@ export default {
   blog: {
     notFound: "Articolo non trovato",
     backToBlog: "Torna al blog",
+    nextArticle: "Prossimo articolo",
     loadError: "Non è stato possibile caricare gli articoli. Riprova più tardi.",
   },
   about: {

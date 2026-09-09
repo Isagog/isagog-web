@@ -195,6 +195,7 @@ export default {
   blog: {
     notFound: "Article not found",
     backToBlog: "Go back to blog",
+    nextArticle: "Next article",
     loadError: "We couldn't load the articles. Please try again later.",
   },
   about: {

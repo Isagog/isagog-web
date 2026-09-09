@@ -62,9 +62,20 @@ const ProjectPostPage = async ({
     );
   }
 
+  // No "next case study" link here: getSlugs("projects", locale) walks the
+  // content directory in filesystem order (manifesto, maxxi, teleperformance
+  // — alphabetical), but the /project index renders the curated order from
+  // projects-data/list.*.json (maxxi, manifesto, teleperformance). A "next"
+  // link built off getSlugs would point somewhere other than what the
+  // reader saw as "next" on the index, so this ships the back-link only.
   return (
     <main className="mx-auto max-w-[780px] px-6 py-16">
       <MarkdownRenderer content={post.content} />
+      <footer className="mt-16 border-t border-card-border pt-8">
+        <Link href="/project" className="text-[15px] font-semibold text-terracotta">
+          ← {t("backToProjects")}
+        </Link>
+      </footer>
     </main>
   );
 };
