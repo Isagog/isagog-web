@@ -180,16 +180,16 @@ export default {
       },
       giornale: {
         tabLabel: "GIORNALE",
-        shortDisclosure: "Esempio illustrativo sullo schema reale MeMa / il manifesto.",
+        shortDisclosure: "Esempio illustrativo sullo schema di un archivio storico giornalistico.",
         traceLabel: "Esplora le definizioni e la provenienza",
         disclosure:
-          "Istanza illustrativa su schema reale: il caso è inventato; le classi dei descrittori — HumanDescriptor, AIDescriptor, DBPediaDescriptor, WikipediaDescriptor, ContextualDescriptor — sono quelle della piattaforma MeMa / il manifesto.",
+          "Istanza illustrativa su schema reale: il caso è inventato; le classi dei descrittori — HumanDescriptor, AIDescriptor, DBPediaDescriptor, WikipediaDescriptor, ContextualDescriptor — sono quelle della ontologia di un archivio giornalistico.",
         entity: "Progetto Parco Nord",
         questions: {
           archive: {
-            question: "Cosa sappiamo di questo progetto?",
+            question: "Cosa sappiamo del progetto Parco Nord?",
             answer:
-              "Cinque affermazioni con provenienza esplicita: un redattore, un modello di IA, DBpedia, Wikipedia e una descrizione legata al momento dell'articolo.",
+              "Recuperiamo cinque fatti con provenienza esplicita: un redattore, un modello di IA, DBpedia, Wikipedia e una descrizione legata al momento dell'articolo.",
             facts: {
               human: "Coordinato dall'assessorato al Verde pubblico",
               ai: "Avviato nel 2019",
