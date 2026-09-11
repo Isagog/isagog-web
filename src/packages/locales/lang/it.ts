@@ -3,7 +3,7 @@ export default {
     wordmark: "Isagog",
     home: "Inizio",
     approach: "Approccio",
-    platform: "La Piattaforma",
+    platform: "Piattaforma",
     project: "Progetti",
     blog: "Approfondimenti",
     cta: "Valutiamo il vostro caso",
@@ -40,7 +40,7 @@ export default {
       eyebrow: "TRE DOMINI, UNA PIATTAFORMA",
       title: "Dalla somiglianza al ragionamento.",
       intro: "La ricerca testuale, anche per similarità semantica, trova solo passaggi pertinenti. Un grafo RDF invece collega entità, fatti, fonti e relazioni; l'ontologia esplicita le regole con cui derivare nuove conoscenze.",
-      traceLabel: "Esplora passaggi, risultati e assiomi",
+      traceLabel: "Esplora le fonti del ragionamento",
       proof: {
         label: "Il ragionamento in evidenza",
         fact: "NEL GRAFO",
@@ -181,7 +181,7 @@ export default {
       giornale: {
         tabLabel: "GIORNALE",
         shortDisclosure: "Esempio illustrativo sullo schema di un archivio storico giornalistico.",
-        traceLabel: "Esplora le definizioni e la provenienza",
+        traceLabel: "Esplora le fonti del ragionamento",
         disclosure:
           "Istanza illustrativa su schema reale: il caso è inventato; le classi dei descrittori — HumanDescriptor, AIDescriptor, DBPediaDescriptor, WikipediaDescriptor, ContextualDescriptor — sono quelle della ontologia di un archivio giornalistico.",
         entity: "Progetto Parco Nord",
@@ -211,7 +211,7 @@ export default {
       clinica: {
         tabLabel: "CLINICA",
         shortDisclosure: "Caso sintetico e pseudonimizzato; affermazioni e fonti dal grafo clinico.",
-        traceLabel: "Esplora le citazioni e le fonti complete",
+        traceLabel: "Esplora le fonti del ragionamento",
         revision: "L'affermazione di settembre supera esplicitamente quelle precedenti tramite la relazione supersedes: non basta scegliere il testo più simile o più recente.",
         knowledgeBoundary: "Negated registra un fatto esplicitamente negato; RuledOut una valutazione esclusa. Un fatto mancante resta ignoto e un sospetto resta aperto: non diventano falsi per assenza di conferma.",
         disclosure:

@@ -14,12 +14,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LocaleLink as Link } from "./locale-link";
 
-/**
- * "/" is a prefix of every pathname, so the home entry needs an exact match
- * or it would render as active on every page.
- */
-const isActive = (pathname: string, href: string): boolean =>
-  href === "/" ? pathname === "/" : pathname.startsWith(href);
+const isActive = (pathname: string, href: string): boolean => pathname.startsWith(href);
 
 export const Header = () => {
   const t = useScopedI18n("nav");
@@ -27,7 +22,6 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
 
   const navItems = [
-    { href: "/", label: t("home") },
     { href: "/approach", label: t("approach") },
     { href: "/platform", label: t("platform") },
     { href: "/project", label: t("project") },
@@ -37,30 +31,33 @@ export const Header = () => {
   return (
     <header className="fixed top-0 z-50 w-full bg-page/90 backdrop-blur-sm border-b border-border">
       <div className="mx-auto flex max-w-[1224px] items-center justify-between gap-4 px-6 py-4 max-[640px]:px-6">
-        <Link href="/" className="font-serif text-[22px] text-forest">
-          {t("wordmark")}
-        </Link>
-
-        <nav className="hidden xl:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "text-[15px] text-forest/80 hover:text-forest transition-colors",
-                isActive(pathname, item.href) && "text-forest font-medium"
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
-            className="rounded-[5px] bg-forest-deep px-5 py-3 text-[15px] font-medium text-white"
-          >
-            {t("cta")}
+        <div className="flex items-center gap-8">
+          <Link href="/" className="font-serif text-[22px] text-forest">
+            {t("wordmark")}
           </Link>
-        </nav>
+
+          <nav className="hidden xl:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "text-[15px] text-forest/80 hover:text-forest transition-colors",
+                  isActive(pathname, item.href) && "text-forest font-medium"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
+        <Link
+          href="/contact"
+          className="hidden xl:block rounded-[5px] bg-forest-deep px-5 py-3 text-[15px] font-medium text-white"
+        >
+          {t("cta")}
+        </Link>
 
         <DropdownMenu open={open} onOpenChange={setOpen}>
           <DropdownMenuTrigger
