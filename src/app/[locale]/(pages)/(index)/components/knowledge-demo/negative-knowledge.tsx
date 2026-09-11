@@ -2,7 +2,6 @@ import { clinicaStatements } from "@/lib/knowledge-demo/data/clinica";
 import type { HomeT } from "./i18n";
 import { QuoteBlock, TermBadge } from "./graph-primitives";
 
-/** A real negative statement is visible on the initial museum tab, too. */
 export const NegativeKnowledge = ({ t, onExplore }: { readonly t: HomeT; readonly onExplore: () => void }) => {
   const negative = clinicaStatements.find((statement) => statement.id === "p-L1-test-allergologico");
   if (negative === undefined) return null;

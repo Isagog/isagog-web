@@ -7,6 +7,7 @@ import { clinicaQuestions, clinicaStatements } from "@/lib/knowledge-demo/data/c
 import { KnowledgeDemo } from "./knowledge-demo";
 import { MuseoPanel } from "./museo-panel";
 import { ClinicaPanel } from "./clinica-panel";
+import { NegativeKnowledge } from "./negative-knowledge";
 import type { HomeT } from "./i18n";
 
 function translate(key: string): string {
@@ -27,17 +28,20 @@ const t = translate as HomeT;
 const text = (html: string) => html.replace(/<[^>]+>/g, "").replace(/&#x27;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, "&");
 
 describe("the demo before interaction or hydration", () => {
-  it("opens on museum inference and also exposes a sourced negative statement", () => {
+  it("opens on museum inference and keeps the negative statement out of the museum and newspaper tabs", () => {
     const html = renderToStaticMarkup(createElement(KnowledgeDemo));
     expect(html).toContain('id="knowledge-demo-tab-museo" aria-selected="true"');
-    const negativeSection = html.split('aria-labelledby="negative-knowledge-title"')[1]?.split("</section>")[0];
-    expect(negativeSection).toBeDefined();
-    expect(text(negativeSection!)).toContain("mai sottoposto a test allergologico");
-    expect(text(negativeSection!)).toContain("Negated");
-    expect(text(negativeSection!)).toContain("riga 22");
-    expect(text(negativeSection!)).toContain("l'assenza di un dato non dimostra il contrario");
-    expect(negativeSection).not.toMatch(/<details|\bhidden=/);
+    expect(html).not.toContain('aria-labelledby="negative-knowledge-title"');
     expect(html).not.toMatch(/<details[^>]*\bopen(?:=|\s|>)/);
+  });
+
+  it("exposes the sourced negative statement, scoped to the clinical case", () => {
+    const html = renderToStaticMarkup(createElement(NegativeKnowledge, { t, onExplore: () => {} }));
+    expect(text(html)).toContain("mai sottoposto a test allergologico");
+    expect(text(html)).toContain("Negated");
+    expect(text(html)).toContain("riga 22");
+    expect(text(html)).toContain("l'assenza di un dato non dimostra il contrario");
+    expect(html).not.toMatch(/<details|\bhidden=/);
   });
 
   for (const question of museoQuestions) {

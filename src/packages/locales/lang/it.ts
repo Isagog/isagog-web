@@ -25,7 +25,7 @@ export default {
     hero: {
       imageAlt: "Illustrazione di un albero, Isagog",
       title: "Un'IA che sa dire cosa sa",
-      tagline: "E che quando serve sa dire: non lo so",
+      tagline: "E che quando serve sa dire: no.",
     },
     apertura: {
       eyebrow: "INTELLIGENZA ARTIFICIALE · CONOSCENZA ESPLICITA",

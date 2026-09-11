@@ -145,7 +145,7 @@ export const KnowledgeDemo = () => {
         </div>
       </div>
 
-      {activeTab !== "clinica" && <NegativeKnowledge t={t} onExplore={exploreClinicalEvidence} />}
+      {activeTab === "clinica" && <NegativeKnowledge t={t} onExplore={exploreClinicalEvidence} />}
 
       <LocaleLink
         href="/approach"
