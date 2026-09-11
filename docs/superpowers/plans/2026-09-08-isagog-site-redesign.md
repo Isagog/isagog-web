@@ -1507,7 +1507,7 @@ Transcribe verbatim from `bozzacompleta.html:248–316` into `it.ts` under a new
     hero: {
       imageAlt: "Illustrazione di un albero, Isagog",
       title: "Un'IA che sa dire cosa sa",
-      tagline: "E che quando serve sa dire: non lo so",
+      tagline: "E che quando serve sa dire di no",
     },
     apertura: {
       eyebrow: "INTELLIGENZA ARTIFICIALE · CONOSCENZA ESPLICITA",

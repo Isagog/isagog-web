@@ -39,7 +39,7 @@ export default {
     knowledgeDemo: {
       eyebrow: "TRE DOMINI, UNA PIATTAFORMA",
       title: "Dalla somiglianza al ragionamento.",
-      intro: "La ricerca testuale o vettoriale, anche per similarità coseno, trova passaggi pertinenti. Un grafo RDF collega affermazioni, fonti e relazioni; l'ontologia esplicita le regole con cui derivare nuove conoscenze.",
+      intro: "La ricerca testuale, anche per similarità semantica, trova solo passaggi pertinenti. Un grafo RDF invece collega entità, fatti, fonti e relazioni; l'ontologia esplicita le regole con cui derivare nuove conoscenze.",
       traceLabel: "Esplora passaggi, risultati e assiomi",
       proof: {
         label: "Il ragionamento in evidenza",
@@ -61,7 +61,7 @@ export default {
       ctaLink: "Scoprite come funziona →",
       museo: {
         tabLabel: "MUSEO",
-        shortDisclosure: "Esempio illustrativo sull'ontologia reale MAXXI e sulla top ontology Isagog.",
+        shortDisclosure: "Esempio illustrativo su una ontologia di un museo di arte contemporanea.",
         disclosure:
           "Istanze illustrative su schema reale: la mostra, le opere e le sale sono inventate; le classi e le proprietà attraversate — Exhibition, Painting, Installation, VideoArtwork, Hall, exhibited_in, located_in, adjacent_to — sono quelle dell'ontologia MAXXI (v2.8) e della top ontology Isagog che essa importa.",
         resolutionLabel: "COME È STATA RISOLTA",
