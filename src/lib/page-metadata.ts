@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
+import en from "../packages/locales/lang/en";
+import itLocale from "../packages/locales/lang/it";
 import { IS_STAGING, SITE_URL } from "./base-path";
 import { locales } from "./locale-href";
 
 const SITE_NAME = "Isagog";
 const SOCIAL_IMAGE_PATH = "/images/tree.avif";
-const SOCIAL_IMAGE_ALT = "Illustrazione di un albero, Isagog";
+// The social image is the homepage hero tree, so it shares the hero's alt text.
+const SOCIAL_IMAGE_ALT: Readonly<Record<string, string>> = {
+  it: itLocale.home.hero.imageAlt,
+  en: en.home.hero.imageAlt,
+};
 
 interface BuildPageMetadataArgs {
   locale: string;
@@ -42,7 +48,7 @@ export function buildPageMetadata({
       description,
       url: canonical,
       siteName: SITE_NAME,
-      images: [{ url: imageUrl, width: 1200, height: 630, alt: SOCIAL_IMAGE_ALT }],
+      images: [{ url: imageUrl, width: 1200, height: 630, alt: SOCIAL_IMAGE_ALT[locale] ?? SOCIAL_IMAGE_ALT.it }],
       type: "website",
     },
     twitter: {

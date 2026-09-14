@@ -20,7 +20,12 @@ export const ContactForm = () => {
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    window.location.href = buildMailtoHref(draft);
+    window.location.href = buildMailtoHref(draft, undefined, {
+      subject: t("mailSubject"),
+      name: t("mailName"),
+      email: t("mailEmail"),
+      organisation: t("mailOrg"),
+    });
   };
 
   return (

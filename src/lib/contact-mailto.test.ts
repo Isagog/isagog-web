@@ -9,6 +9,28 @@ const draft = {
 };
 
 describe("buildMailtoHref", () => {
+  it("defaults to the Italian subject and field labels", () => {
+    const url = new URL(buildMailtoHref(draft));
+    expect(url.searchParams.get("subject")).toBe("Isagog — richiesta di confronto");
+    expect(url.searchParams.get("body") ?? "").toContain("Nome: Anna Rossi");
+  });
+
+  it("uses the supplied subject and field labels, so the English page drafts an English email", () => {
+    const url = new URL(
+      buildMailtoHref(draft, "info@isagog.com", {
+        subject: "Isagog — request for a conversation",
+        name: "Name",
+        email: "Email",
+        organisation: "Organization",
+      })
+    );
+    expect(url.searchParams.get("subject")).toBe("Isagog — request for a conversation");
+    const body = url.searchParams.get("body") ?? "";
+    expect(body).toContain("Name: Anna Rossi");
+    expect(body).toContain("Organization: Museo Aurora");
+    expect(body).not.toContain("Organizzazione");
+  });
+
   it("targets info@isagog.com by default", () => {
     expect(buildMailtoHref(draft)).toMatch(/^mailto:info@isagog\.com\?/);
   });

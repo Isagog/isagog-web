@@ -430,6 +430,10 @@ export default {
       submit: "Preparate la richiesta ↗",
       disclosure:
         "Questo prototipo prepara una bozza email. Potrete rivederla e inviarla dal vostro programma di posta. Nessun dato viene inviato dal modulo.",
+      mailSubject: "Isagog — richiesta di confronto",
+      mailName: "Nome",
+      mailEmail: "Email",
+      mailOrg: "Organizzazione",
     },
   },
   meta: {

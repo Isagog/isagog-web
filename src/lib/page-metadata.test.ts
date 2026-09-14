@@ -152,4 +152,18 @@ describe("buildPageMetadata", () => {
     expect(metadata.title).not.toBe("Isagog — Un'IA che sa dire cosa sa");
     expect(metadata.openGraph?.title).toBe("Il nostro approccio");
   });
+
+  it("localizes the social image alt text", async () => {
+    const { buildPageMetadata } = await load(undefined);
+    const altFor = (locale: string) => {
+      const images = buildPageMetadata({ locale, path: "", title: "t", description: "d" })
+        .openGraph?.images;
+      return Array.isArray(images) && typeof images[0] === "object" && images[0] !== null
+        ? (images[0] as { alt?: string }).alt
+        : undefined;
+    };
+
+    expect(altFor("it")).toBe("Illustrazione di un albero, Isagog");
+    expect(altFor("en")).toBe("Illustration of a tree, Isagog");
+  });
 });

@@ -2,7 +2,7 @@
 
 ## MeMa: Memoria Manifesta
 
-### Client Requests
+### Client Request
 
 The historical archive of *il manifesto* is officially recognized by the Italian Ministry of Culture as a cultural heritage asset. To bring this legacy into the digital age, *il manifesto* is developing a new AI-powered strategy — and has chosen Isagog as its research and development partner. Together, we're building a platform that transforms decades of journalistic history into a living, searchable resource for the future.
 
@@ -10,7 +10,7 @@ The historical archive of *il manifesto* is officially recognized by the Italian
 
 MEMA was created to design a community AI based on the principles of openness, transparency, collaboration, and non-extraction. The mission: to establish productive relationships between the archive, the editorial staff, various user communities, and society at large.
 
-![Screenshot del progetto MEMA](/images/project-images/mema.avif)
+![Screenshot of the MeMa project](/images/project-images/mema.avif)
 
 ### Transforming Editorial Work
 
@@ -29,12 +29,12 @@ Knowledge and language technologies are constantly evolving. MeMa's knowledge ba
 
 ### System Architecture
 
-![Schema architettura MeMa](/images/project-images/mema-architecture.avif)
+![MeMa system architecture diagram](/images/project-images/mema-architecture.avif)
 
 ### Development
 
 Each morning, a data-loading process updates the Knowledge Graph (KG) with new content. This process integrates multiple sources, analyzes the text using an NLP service to extract relevant information, and generates RDF data aligned with the MeMa ontology to enrich the KG. The Knowledge Graph is a graph database based on the RDF (Resource Description Framework) model, equipped with inference capabilities and built on the following technologies: Apache Jena, OWL Pellet reasoner, Lucene search engine.
 
-In parallel, a Natural Language Processing (NLP) service provides an abstraction layer that supports various analytical functions critical to the system’s operations, including: Entity recognition, Topic identification, Semantic similarity analysis, Additional NLP tasks powered by open-source transformer models.
+In parallel, a Natural Language Processing (NLP) service provides an abstraction layer that supports various analytical functions critical to the system’s operations, including: entity recognition, topic identification, semantic similarity analysis, as well as other NLP tasks powered by open-source transformer models.
 
 A separate service manages query handling and updates to the KG. It supports both similarity searches and SPARQL queries to retrieve relevant entities. This service leverages indexed attributes to boost query performance and speed up retrieval, while also using NLP techniques to interpret user input and rank results accordingly.
