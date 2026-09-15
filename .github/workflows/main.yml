@@ -7,8 +7,6 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
@@ -64,18 +62,18 @@ jobs:
           path: out
           retention-days: 7
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      # isagog-web owns the isagog.com root, but only Isagog/isagog.github.io
+      # (the org's user-site repo) can serve a GitHub Pages custom domain at
+      # the apex while still letting Isagog/isagog-old live at a subpath
+      # under it. So instead of deploying to isagog-web's own Pages site,
+      # this pushes the build straight into isagog.github.io's gh-pages
+      # branch, which is what Pages actually serves from over there.
+      - name: Publish to isagog.github.io
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: out
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          personal_token: ${{ secrets.ISAGOG_GITHUB_IO_DEPLOY_TOKEN }}
+          external_repository: Isagog/isagog.github.io
+          publish_branch: gh-pages
+          publish_dir: ./out
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
