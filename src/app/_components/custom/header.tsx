@@ -12,6 +12,7 @@ import { useScopedI18n } from "@/packages/locales/client";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { LanguageSelector } from "./language-selector";
 import { LocaleLink as Link } from "./locale-link";
 
 const isActive = (pathname: string, href: string): boolean => pathname.startsWith(href);
@@ -52,35 +53,41 @@ export const Header = () => {
           </nav>
         </div>
 
-        <Link
-          href="/contact"
-          className="hidden xl:block rounded-[5px] bg-forest-deep px-5 py-3 text-[15px] font-medium text-white"
-        >
-          {t("cta")}
-        </Link>
-
-        <DropdownMenu open={open} onOpenChange={setOpen}>
-          <DropdownMenuTrigger
-            aria-label={t("menu")}
-            className="xl:hidden flex h-8 w-8 items-center justify-center"
+        <div className="hidden xl:flex items-center gap-4">
+          <Link
+            href="/contact"
+            className="rounded-[5px] bg-forest-deep px-5 py-3 text-[15px] font-medium text-white"
           >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48 bg-page border-card-border">
-            {navItems.map((item) => (
-              <DropdownMenuItem key={item.href} asChild>
-                <Link href={item.href} className="text-[15px] text-forest">
-                  {item.label}
+            {t("cta")}
+          </Link>
+          <LanguageSelector className="text-forest/80 hover:text-forest" />
+        </div>
+
+        <div className="xl:hidden flex items-center gap-2">
+          <LanguageSelector className="text-forest/80 hover:text-forest" />
+          <DropdownMenu open={open} onOpenChange={setOpen}>
+            <DropdownMenuTrigger
+              aria-label={t("menu")}
+              className="flex h-8 w-8 items-center justify-center"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48 bg-page border-card-border">
+              {navItems.map((item) => (
+                <DropdownMenuItem key={item.href} asChild>
+                  <Link href={item.href} className="text-[15px] text-forest">
+                    {item.label}
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+              <DropdownMenuItem asChild>
+                <Link href="/contact" className="text-[15px] text-terracotta">
+                  {t("cta")}
                 </Link>
               </DropdownMenuItem>
-            ))}
-            <DropdownMenuItem asChild>
-              <Link href="/contact" className="text-[15px] text-terracotta">
-                {t("cta")}
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </header>
   );
