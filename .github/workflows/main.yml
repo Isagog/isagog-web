@@ -52,10 +52,6 @@ jobs:
 
       - name: Build static export
         run: pnpm build
-        env:
-          # Staging lives at https://isagog.com/isagog-web/. At cutover this
-          # env block is deleted and the site rebuilds for the domain root.
-          NEXT_PUBLIC_BASE_PATH: /isagog-web
 
       - name: Generate timestamp
         id: ts
