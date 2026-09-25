@@ -18,77 +18,40 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout isagog-web
+      - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          path: isagog-web
-
-      # Archived pre-cutover site, published at isagog.com/isagog-old/.
-      # Checked out fresh on every build so an update there ships on the
-      # next isagog-web deploy without needing its own Pages site.
-      - name: Checkout isagog-web-old
-        uses: actions/checkout@v4
-        with:
-          repository: Isagog/isagog-web-old
-          path: isagog-web-old
 
       # No `version:` here on purpose. action-setup@v4 errors out when the
       # version is declared both here and as `packageManager` in
       # package.json, so package.json stays the single source of truth.
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          package_json_file: isagog-web/package.json
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-          cache-dependency-path: |
-            isagog-web/pnpm-lock.yaml
-            isagog-web-old/pnpm-lock.yaml
 
       - name: Restore cache
         uses: actions/cache@v4
         with:
-          path: isagog-web/.next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('isagog-web/pnpm-lock.yaml') }}-${{ hashFiles('isagog-web/**.[jt]s', 'isagog-web/**.[jt]sx') }}
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('isagog-web/pnpm-lock.yaml') }}-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
 
-      - name: Install isagog-web dependencies
-        working-directory: isagog-web
+      - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
       - name: Test
-        working-directory: isagog-web
         run: pnpm test
 
       - name: Lint
-        working-directory: isagog-web
         run: pnpm lint
 
-      - name: Build isagog-web
-        working-directory: isagog-web
+      - name: Build static export
         run: pnpm build
-
-      - name: Install isagog-web-old dependencies
-        working-directory: isagog-web-old
-        run: pnpm install --frozen-lockfile
-
-      - name: Build isagog-web-old
-        working-directory: isagog-web-old
-        run: pnpm build
-        env:
-          # Archived under the new site's root — see isagog-web-old's own
-          # src/lib/base-path.ts for why every asset/fetch/iframe needs this.
-          NEXT_PUBLIC_BASE_PATH: /isagog-old
-
-      - name: Merge the archived site under /isagog-old
-        run: |
-          mkdir -p isagog-web/out/isagog-old
-          cp -r isagog-web-old/out/. isagog-web/out/isagog-old/
 
       - name: Generate timestamp
         id: ts
@@ -98,13 +61,13 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: isagog-site-${{ steps.ts.outputs.value }}
-          path: isagog-web/out
+          path: out
           retention-days: 7
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: isagog-web/out
+          path: out
 
   deploy:
     needs: build
