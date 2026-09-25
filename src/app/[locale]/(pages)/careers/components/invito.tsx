@@ -3,7 +3,6 @@ import { getScopedI18n } from "@/packages/locales/server";
 
 export const Invito = async () => {
   const t = await getScopedI18n("careers.invito");
-  const facts = [t("factRemote"), t("factContract"), t("factPay")];
 
   return (
     <section id="lavora-con-noi" className="scroll-anchor bg-visione px-6 py-20">
@@ -22,16 +21,9 @@ export const Invito = async () => {
           lead={t("lead")}
         />
 
-        <ul aria-label={t("factsLabel")} className="mt-10 flex flex-wrap gap-3">
-          {facts.map((fact) => (
-            <li
-              key={fact}
-              className="rounded-[5px] border border-cream/25 px-4 py-2 text-[14px] font-medium text-cream"
-            >
-              {fact}
-            </li>
-          ))}
-        </ul>
+        <p className="mt-10 inline-block rounded-[5px] border border-cream/25 px-4 py-2 text-[14px] font-medium text-cream">
+          {t("factRemote")}
+        </p>
 
         <div className="mt-12 border-t border-cream/15 pt-8">
           <h2 className="text-[12px] font-semibold uppercase tracking-[0.1em] text-cream-soft">
