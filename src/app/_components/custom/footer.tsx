@@ -20,6 +20,7 @@ const ROUTE_LINKS = [
   { href: "/platform", key: "platform" },
   { href: "/project", key: "project" },
   { href: "/blog", key: "blog" },
+  { href: "/careers", key: "careers" },
   { href: "/contact", key: "contact" },
 ] as const;
 

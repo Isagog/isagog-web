@@ -27,6 +27,7 @@ export const Header = () => {
     { href: "/platform", label: t("platform") },
     { href: "/project", label: t("project") },
     { href: "/blog", label: t("blog") },
+    { href: "/careers", label: t("careers") },
   ];
 
   return (
