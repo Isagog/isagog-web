@@ -26,8 +26,8 @@ export default {
   home: {
     hero: {
       imageAlt: "Illustration of a tree, Isagog",
-      title: "An AI that can tell you what it knows",
-      tagline: "And that, when it matters, can say: no.",
+      title: "An AI that also knows what it doesn't know",
+      tagline: "And when needed can tell you so.",
     },
     apertura: {
       eyebrow: "ARTIFICIAL INTELLIGENCE · EXPLICIT KNOWLEDGE",
@@ -539,7 +539,7 @@ export default {
   },
   meta: {
     home: {
-      title: "Isagog — An AI that can tell you what it knows",
+      title: "Isagog — An AI that also knows what it doesn't know",
       description:
         "Isagog makes your organization's knowledge explicit, verifiable and usable by AI assistants and applications.",
     },

@@ -59,7 +59,7 @@ describe("buildCaseStudyTitle", () => {
   it("falls back to the supplied fallback, never the site title, when neither is available", () => {
     const title = buildCaseStudyTitle(null, null, "Progetti — Isagog");
     expect(title).toBe("Progetti — Isagog");
-    expect(title).not.toBe("Isagog — Un'IA che sa dire cosa sa");
+    expect(title).not.toBe("Isagog — Una IA che sa anche cosa non sa");
   });
 
   it("falls back to the supplied fallback when the MDX has no heading", () => {

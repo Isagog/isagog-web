@@ -26,8 +26,8 @@ export default {
   home: {
     hero: {
       imageAlt: "Illustrazione di un albero, Isagog",
-      title: "Un'IA che sa dire cosa sa",
-      tagline: "E che quando serve sa dire: no.",
+      title: "Una IA che sa anche cosa non sa",
+      tagline: "E sa dirtelo",
     },
     apertura: {
       eyebrow: "INTELLIGENZA ARTIFICIALE · CONOSCENZA ESPLICITA",
@@ -542,7 +542,7 @@ export default {
   },
   meta: {
     home: {
-      title: "Isagog — Un'IA che sa dire cosa sa",
+      title: "Isagog — Una IA che sa anche cosa non sa",
       description:
         "Isagog rende la conoscenza della vostra organizzazione esplicita, verificabile e utilizzabile da assistenti e applicazioni di intelligenza artificiale.",
     },

@@ -149,7 +149,7 @@ describe("buildPageMetadata", () => {
     });
 
     expect(metadata.title).toBe("Il nostro approccio");
-    expect(metadata.title).not.toBe("Isagog — Un'IA che sa dire cosa sa");
+    expect(metadata.title).not.toBe("Isagog — Una IA che sa anche cosa non sa");
     expect(metadata.openGraph?.title).toBe("Il nostro approccio");
   });
 
