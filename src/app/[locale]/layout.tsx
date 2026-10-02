@@ -1,4 +1,5 @@
 import { BodyWrapper } from "@/app/_components/custom/body-wrapper";
+import { CloudflareAnalytics } from "@/app/_components/custom/cloudflare-analytics";
 import { Footer } from "@/app/_components/custom/footer";
 import { Header } from "@/app/_components/custom/header";
 import { Providers } from "@/app/_components/providers";
@@ -68,6 +69,7 @@ export default async function RootLayout({
             {children}
             <Footer year={buildYear} />
           </Providers>
+          <CloudflareAnalytics />
         </BodyWrapper>
       </I18nProviderClient>
     </html>
