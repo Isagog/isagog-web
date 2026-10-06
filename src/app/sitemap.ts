@@ -10,6 +10,7 @@ const TOP_LEVEL_PATHS = [
   { path: "", priority: 1, changeFrequency: "monthly" as const },
   { path: "/approach", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/platform", priority: 0.9, changeFrequency: "monthly" as const },
+  { path: "/ontologies", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/project", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/blog", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },

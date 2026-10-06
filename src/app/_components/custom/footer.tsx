@@ -18,6 +18,7 @@ const ROUTE_LINKS = [
   { href: "/", key: "home" },
   { href: "/approach", key: "approach" },
   { href: "/platform", key: "platform" },
+  { href: "/ontologies", key: "ontologies" },
   { href: "/project", key: "project" },
   { href: "/blog", key: "blog" },
   { href: "/careers", key: "careers" },

@@ -25,6 +25,7 @@ export const Header = () => {
   const navItems = [
     { href: "/approach", label: t("approach") },
     { href: "/platform", label: t("platform") },
+    { href: "/ontologies", label: t("ontologies") },
     { href: "/project", label: t("project") },
     { href: "/blog", label: t("blog") },
     { href: "/careers", label: t("careers") },
