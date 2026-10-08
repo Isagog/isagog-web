@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 
 // Next (16.3.4, output: "export") always writes the export to ./out
@@ -46,6 +46,28 @@ const IRI_STUBS = ["ontology", "ontology/top", "ontology/agents", "ontology/fram
 for (const stub of IRI_STUBS) {
   const file = join(OUT, stub, "index.html");
   if (!existsSync(file)) missing.push(file);
+}
+
+// Concept-link markup ("[ontologia](onto:)", src/lib/concept-links.ts) must
+// be rendered by <ConceptText>; raw markup in a page's visible HTML means a
+// string reached the page some other way. Scripts are skipped: the inlined
+// RSC payload may legitimately carry the raw copy.
+const leaks = [];
+const walk = (dir) => {
+  for (const entry of readdirSync(dir, { withFileTypes: true })) {
+    const path = join(dir, entry.name);
+    if (entry.isDirectory()) walk(path);
+    else if (entry.name.endsWith(".html")) {
+      const visible = readFileSync(path, "utf-8").replace(/<script[\s\S]*?<\/script>/g, "");
+      if (visible.includes("](onto:")) leaks.push(path);
+    }
+  }
+};
+if (existsSync(OUT)) walk(OUT);
+if (leaks.length > 0) {
+  console.error(`check-export: unrendered concept-link markup in ${leaks.length} file(s):`);
+  for (const file of leaks) console.error(`  - ${file}`);
+  process.exit(1);
 }
 
 if (missing.length > 0) {

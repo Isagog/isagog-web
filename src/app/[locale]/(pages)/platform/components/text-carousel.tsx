@@ -1,6 +1,7 @@
 "use client";
 
-import { useScopedI18n } from "@/packages/locales/client";
+import { ConceptText } from "@/app/_components/custom/concept-text";
+import { useCurrentLocale, useScopedI18n } from "@/packages/locales/client";
 import { Check } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
@@ -9,6 +10,7 @@ export const TextCarousel = () => {
   const [height, setHeight] = useState<number>();
   const activeSlideRef = useRef<HTMLDivElement>(null);
   const t = useScopedI18n("textCarousel");
+  const locale = useCurrentLocale();
 
   // Track the active slide's own height so the section never reserves room
   // for the longest one; ResizeObserver also covers rewraps on resize/font
@@ -58,6 +60,9 @@ export const TextCarousel = () => {
           <div
             key={slide.title}
             ref={currentSlide === index ? activeSlideRef : undefined}
+            // Hidden slides are only faded out: keep their links out of the tab
+            // order and their text away from screen readers.
+            inert={currentSlide !== index}
             className={`w-full p-6 transition-opacity duration-500 ease-in-out sm:p-8 ${
               currentSlide === index
                 ? "relative opacity-100"
@@ -82,7 +87,9 @@ export const TextCarousel = () => {
                         <Check size={20} />
                       </span>
                     )}
-                    <p className="font-sans text-lg font-light text-prose-muted">{point}</p>
+                    <p className="font-sans text-lg font-light text-prose-muted">
+                      <ConceptText text={point} locale={locale} />
+                    </p>
                   </li>
                 ))}
               </ul>

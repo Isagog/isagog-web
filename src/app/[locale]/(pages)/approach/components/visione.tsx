@@ -1,11 +1,13 @@
+import { ConceptText } from "@/app/_components/custom/concept-text";
 import { SectionHeading } from "@/app/_components/custom/section-heading";
 import { asset } from "@/lib/base-path";
-import { getScopedI18n } from "@/packages/locales/server";
+import { getCurrentLocale, getScopedI18n } from "@/packages/locales/server";
 import Image from "next/image";
 import { DemoSlot } from "./demo-slot";
 
 export const Visione = async () => {
   const t = await getScopedI18n("approach.visione");
+  const locale = await getCurrentLocale();
 
   return (
     <section id="visione" className="scroll-anchor bg-visione px-6 py-20">
@@ -26,7 +28,9 @@ export const Visione = async () => {
 
         <div className="mt-12 grid gap-x-10 text-[16.5px] leading-[1.6] text-cream-soft md:grid-cols-2">
           <p className="mb-5">{t("p1")}</p>
-          <p className="mb-5">{t("p2")}</p>
+          <p className="mb-5">
+            <ConceptText text={t("p2")} locale={locale} />
+          </p>
           <p className="mb-5">{t("p3")}</p>
           <p className="mb-5 overflow-hidden">
             <Image

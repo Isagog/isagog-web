@@ -43,7 +43,7 @@ export default {
     knowledgeDemo: {
       eyebrow: "TRE DOMINI, UNA PIATTAFORMA",
       title: "Dalla somiglianza al ragionamento.",
-      intro: "La ricerca testuale, anche per similarità semantica, trova solo passaggi pertinenti. Un grafo RDF invece collega entità, fatti, fonti e relazioni; l'ontologia esplicita le regole con cui derivare nuove conoscenze.",
+      intro: "La ricerca testuale, anche per similarità semantica, trova solo passaggi pertinenti. Un [grafo RDF](onto:reasoning) invece collega entità, fatti, fonti e relazioni; l'[ontologia](onto:) esplicita le regole con cui derivare nuove conoscenze.",
       traceLabel: "Esplora le fonti del ragionamento",
       proof: {
         label: "Il ragionamento in evidenza",
@@ -276,7 +276,7 @@ export default {
       titleEm: "come lo sa.",
       lead: "E che quando serve sa dire: non lo so",
       p1: "Quando una risposta entra nel lavoro di un'organizzazione, deve poter essere esaminata: quali informazioni usa, quali relazioni collega, quali elementi mancano. Un'intelligenza degna di fiducia sa mostrare da dove viene una risposta, e sa tacere quando la conoscenza a sua disposizione tace.",
-      p2: "Per questo costruiamo una rappresentazione esplicita del vostro dominio: concetti e relazioni che i vostri esperti possono discutere e correggere. È ciò che chiamiamo un'ontologia — la descrizione di ciò che esiste nel vostro mondo, di come si chiama e di come si lega al resto.",
+      p2: "Per questo costruiamo una rappresentazione esplicita del vostro dominio: concetti e relazioni che i vostri esperti possono discutere e correggere. È ciò che chiamiamo un'[ontologia](onto:) — la descrizione di ciò che esiste nel vostro mondo, di come si chiama e di come si lega al resto.",
       p3: "Da questa idea discende una precisa divisione del lavoro. Ai modelli linguistici il mestiere che sanno fare meglio: comprendere il linguaggio, dialogare, formulare. I contenuti restano altrove, in una base di conoscenza consultabile e aggiornabile, su cui fondare le risposte e verificarne i passaggi.",
       p4a: "È un'idea antica. L'",
       p4Isagoge: "Isagoge",
@@ -294,7 +294,7 @@ export default {
       titleLine1: "Agli agenti l'analisi.",
       titleEm: "Agli esperti il giudizio.",
       lead: "Dai vostri documenti e dai vostri dati, una conoscenza che ragiona. In giorni, sotto la vostra supervisione.",
-      p1: "Isagog ha un metodo per costruire la base di conoscenza di un'organizzazione a partire da ciò che già possiede, e per ragionarci sopra. I nostri agenti, basati su modelli linguistici specializzati, leggono documenti e dati, riconoscono concetti e relazioni impliciti e ne propongono i modelli, pronti per la revisione; altri agenti estraggono poi informazione strutturata, dato per dato, in modo tracciabile. Sono processi ripetibili: nuovi documenti, nuovi dati, stessi procedimenti.",
+      p1: "Isagog ha un metodo per costruire la base di conoscenza di un'organizzazione a partire da ciò che già possiede, e per ragionarci sopra. I nostri agenti, basati su modelli linguistici specializzati, leggono documenti e dati, riconoscono concetti e relazioni impliciti e ne propongono i [modelli](onto:layers), pronti per la revisione; altri agenti estraggono poi informazione strutturata, dato per dato, in modo tracciabile. Sono processi ripetibili: nuovi documenti, nuovi dati, stessi procedimenti.",
       p2: "Agli esperti di dominio resta il compito che solo loro possono svolgere: supervisionare. Leggono ciò che gli agenti hanno proposto, correggono, approvano — ciò che prima richiedeva mesi di analisi e colloqui si ottiene in giorni. È questo che rende il metodo scalabile e ne tiene i costi sotto controllo.",
       cap1: {
         title: "Rappresentare",
@@ -308,7 +308,7 @@ export default {
       },
       cap3: {
         title: "Ragionare",
-        body: "Il modello linguistico porta la comprensione del linguaggio, il grafo di conoscenza porta la struttura, la coerenza e la prova. È l'integrazione che chiamiamo neurosimbolica, ed è il cuore del nostro metodo.",
+        body: "Il modello linguistico porta la comprensione del linguaggio, il [grafo di conoscenza](onto:reasoning) porta la struttura, la coerenza e la prova. È l'integrazione che chiamiamo neurosimbolica, ed è il cuore del nostro metodo.",
         result: "La conoscenza nei processi quotidiani",
       },
       closing: "Questa divisione del lavoro ha una conseguenza importante: quando i contenuti stanno nel grafo e il modello si occupa del linguaggio, anche un modello di piccole dimensioni è all'altezza del compito. Ragiona su ciò che è scritto, e ciò che è scritto si può leggere, correggere e approvare, senza addestrare né riaddestrare nulla.",
@@ -365,7 +365,7 @@ export default {
       title: "Knowledge Augmented Generation",
       subtitle: "Oltre la RAG: risposte fondate su fatti, non solo su testi",
       point1:
-        "Gli agenti analitici leggono i tuoi documenti e li trasformano in un grafo di conoscenza: entità, fatti, relazioni.",
+        "Gli agenti analitici leggono i tuoi documenti e li trasformano in un [grafo di conoscenza](onto:reasoning): entità, fatti, relazioni.",
       point2:
         "Il grafo lavora insieme alla ricerca vettoriale: la precisione del ragionamento più l'ampiezza della ricerca.",
       point3:
@@ -448,7 +448,7 @@ export default {
       lead: "Collaborazioni professionali in sviluppo software Python, IA e dati.",
       factRemote: "Full remote",
       whyLabel: "PERCHÉ ISAGOG",
-      why1: "In Isagog Srl rendiamo la conoscenza delle organizzazioni accessibile a persone e applicazioni. Combiniamo modelli linguistici, grafi di conoscenza e ragionamento per costruire sistemi di IA le cui risposte siano fondate su informazioni verificabili e i cui limiti siano riconoscibili.",
+      why1: "In Isagog Srl rendiamo la conoscenza delle organizzazioni accessibile a persone e applicazioni. Combiniamo modelli linguistici, [grafi di conoscenza](onto:reasoning) e ragionamento per costruire sistemi di IA le cui risposte siano fondate su informazioni verificabili e i cui limiti siano riconoscibili.",
       why2: "Il nostro lavoro parte dai problemi degli utenti e arriva al software che li aiuta ad affrontarli. La qualità di una soluzione si misura nella sua utilità, nella possibilità di comprenderne il comportamento e nella cura con cui viene mantenuta.",
       why3: "Siamo una PMI in cui ricerca e sviluppo lavorano a stretto contatto. Cerchiamo persone interessate a contribuire a progetti di IA avanzata, assumendosi la responsabilità di incarichi concreti e confrontandosi con professionisti di comprovata esperienza accademica e di ricerca.",
     },
@@ -469,7 +469,7 @@ export default {
       },
       skill2: {
         title: "IA applicata e conoscenza",
-        body: "Modelli linguistici e agenti, ricerca semantica e RAG, valutazione dei risultati. Grafi di conoscenza, ontologie e RDF/SPARQL sono una specializzazione particolarmente rilevante per noi.",
+        body: "Modelli linguistici e agenti, ricerca semantica e RAG, valutazione dei risultati. Grafi di conoscenza, [ontologie](onto:) e RDF/SPARQL sono una specializzazione particolarmente rilevante per noi.",
       },
       skill3: {
         title: "Dati e processi affidabili",

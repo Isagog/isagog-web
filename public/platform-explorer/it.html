@@ -202,6 +202,8 @@
   .dr-body{padding:20px 28px 34px;overflow:auto;flex:1}
   .dr-body p{font-size:13.5px;line-height:1.62;color:var(--ink-soft);margin-bottom:14px}
   .dr-body p b{color:var(--ink);font-weight:600}
+  .dr-body a{color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent);text-underline-offset:3px}
+  .dr-body a:hover{text-decoration-color:currentColor}
   .dr-body p em{font-family:"Fraunces",serif;color:var(--ink);letter-spacing:0}
   .dr-body h4{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dc,var(--know));margin:20px 0 10px;display:flex;align-items:center;gap:10px}
   .dr-body h4::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
@@ -540,7 +542,7 @@ requestAnimationFrame(tick);
 /* ================= drawer / info ================= */
 const INFO={
   blueprint:{c:'var(--know)',k:'la fondazione — tecnicamente: l\'ontologia',t:'La Mappa della Conoscenza',h:`
-    <p>Ogni organizzazione ha una mappa nascosta: i <b>tipi di cose che le importano</b> — artisti e opere, oppure clienti e contratti — e <b>come si relazionano</b>. La Mappa della Conoscenza rende esplicita quella mappa. È l'unica fondazione su cui poggia tutto ciò che le sta sopra.</p>
+    <p>Ogni organizzazione ha una mappa nascosta: i <b>tipi di cose che le importano</b> — artisti e opere, oppure clienti e contratti — e <b>come si relazionano</b>. La Mappa della Conoscenza rende esplicita quella mappa: tecnicamente, un'<a href="https://ontology.isagog.com/it/" target="_top">ontologia</a>. È l'unica fondazione su cui poggia tutto ciò che le sta sopra.</p>
     <div class="exbox"><div class="lb">tu scrivi, in linguaggio naturale</div>
       <div class="quote">“Una Mostra è un Evento che espone una o più Opere.”</div></div>
     <div class="exbox"><div class="lb">la piattaforma propone la versione formale — tu confermi</div>
@@ -572,7 +574,7 @@ const INFO={
     <p>Vive accanto al <b>grafo</b> del Grafo di Conoscenza, alimentato dallo stesso Lettore: due modi di ricordare lo stesso fatto, uno esatto e uno sfumato.</p>
     <div class="dr-next">avanti → clicca <b onclick="openInfo('kb')">Grafo di Conoscenza</b> — il suo gemello per i fatti esatti</div>`},
   kb:{c:'var(--know)',k:'fatti esatti · verificabili',t:'Il Grafo di Conoscenza',h:`
-    <p>Un <b>grafo di conoscenza</b> (RDF, standard W3C aperti). Ogni fatto entra tipizzato dalla mappa, connesso agli altri, e <b>ha un nome</b>: si può citare, correggere, ritrattare — e conserva il riferimento alla fonte da cui proviene.</p>
+    <p>Un <b><a href="https://ontology.isagog.com/it/reasoning/" target="_top">grafo di conoscenza</a></b> (RDF, standard W3C aperti). Ogni fatto entra tipizzato dalla mappa, connesso agli altri, e <b>ha un nome</b>: si può citare, correggere, ritrattare — e conserva il riferimento alla fonte da cui proviene.</p>
     <div class="exbox"><div class="lb">un fatto, come è memorizzato</div>
       <div class="code"><span class="s">:Andrea_Pazienza</span> <span class="p">creates</span> <span class="o">:Total_Comics</span> ;<br><span class="s">:Total_Comics</span> <span class="p">locatedIn</span> <span class="o">:Gallery_5</span> .</div></div>
     <p><b>Vivo, non congelato.</b> I fatti si correggono, si aggiungono o si ritrattano sul posto — senza riaddestramento, senza attese da un fornitore di modelli. E poiché i fatti hanno un nome, ogni risposta <b>risale alle sue fonti</b>.</p>

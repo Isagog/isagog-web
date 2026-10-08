@@ -43,7 +43,7 @@ export default {
     knowledgeDemo: {
       eyebrow: "THREE DOMAINS, ONE PLATFORM",
       title: "From similarity to reasoning.",
-      intro: "Text search, even by semantic similarity, only finds relevant passages. An RDF graph, instead, connects entities, facts, sources and relations; the ontology makes explicit the rules for deriving new knowledge.",
+      intro: "Text search, even by semantic similarity, only finds relevant passages. An [RDF graph](onto:reasoning), instead, connects entities, facts, sources and relations; the [ontology](onto:) makes explicit the rules for deriving new knowledge.",
       traceLabel: "Explore the sources of the reasoning",
       proof: {
         label: "The reasoning, in focus",
@@ -276,7 +276,7 @@ export default {
       titleEm: "how it knows.",
       lead: "And that, when it matters, can say: I don't know",
       p1: "When an answer enters an organization's work, it must be open to examination: what information it uses, what relations it connects, what elements are missing. A trustworthy intelligence can show where an answer comes from, and knows to stay silent when the knowledge at its disposal is silent.",
-      p2: "That is why we build an explicit representation of your domain: concepts and relations that your experts can discuss and correct. It is what we call an ontology — the description of what exists in your world, what it is called and how it connects to everything else.",
+      p2: "That is why we build an explicit representation of your domain: concepts and relations that your experts can discuss and correct. It is what we call an [ontology](onto:) — the description of what exists in your world, what it is called and how it connects to everything else.",
       p3: "From this idea follows a precise division of labor. Language models get the job they do best: understanding language, conversing, putting things into words. The content stays elsewhere, in a knowledge base that can be consulted and updated, on which answers are grounded and their steps verified.",
       p4a: "It is an ancient idea. Porphyry's ",
       p4Isagoge: "Isagoge",
@@ -294,7 +294,7 @@ export default {
       titleLine1: "Analysis to the agents.",
       titleEm: "Judgment to the experts.",
       lead: "From your documents and your data, knowledge that reasons. In days, under your supervision.",
-      p1: "Isagog has a method for building an organization's knowledge base from what it already has, and for reasoning over it. Our agents, based on specialized language models, read documents and data, recognize implicit concepts and relations and propose models of them, ready for review; other agents then extract structured information, item by item, in a traceable way. These are repeatable processes: new documents, new data, same procedures.",
+      p1: "Isagog has a method for building an organization's knowledge base from what it already has, and for reasoning over it. Our agents, based on specialized language models, read documents and data, recognize implicit concepts and relations and propose [models](onto:layers) of them, ready for review; other agents then extract structured information, item by item, in a traceable way. These are repeatable processes: new documents, new data, same procedures.",
       p2: "Domain experts keep the task only they can perform: supervision. They read what the agents have proposed, correct, approve — what used to take months of analysis and interviews is achieved in days. This is what makes the method scalable and keeps its costs under control.",
       cap1: {
         title: "Represent",
@@ -308,7 +308,7 @@ export default {
       },
       cap3: {
         title: "Reason",
-        body: "The language model brings the understanding of language; the knowledge graph brings structure, consistency and proof. It is the integration we call neurosymbolic, and it is the heart of our method.",
+        body: "The language model brings the understanding of language; the [knowledge graph](onto:reasoning) brings structure, consistency and proof. It is the integration we call neurosymbolic, and it is the heart of our method.",
         result: "Knowledge in everyday processes",
       },
       closing: "This division of labor has an important consequence: when the content lives in the graph and the model takes care of language, even a small model is up to the task. It reasons on what is written, and what is written can be read, corrected and approved, without training or retraining anything.",
@@ -364,7 +364,7 @@ export default {
       title: "Knowledge Augmented Generation",
       subtitle: "Beyond RAG: answers grounded in facts, not just text",
       point1:
-        "Analytic agents read your documents and turn them into a knowledge graph: entities, facts, relations.",
+        "Analytic agents read your documents and turn them into a [knowledge graph](onto:reasoning): entities, facts, relations.",
       point2:
         "The graph works together with vector search: the precision of reasoning plus the breadth of retrieval.",
       point3:
@@ -445,7 +445,7 @@ export default {
       lead: "Professional collaborations in Python software development, AI and data.",
       factRemote: "Fully remote",
       whyLabel: "WHY ISAGOG",
-      why1: "At Isagog Srl we make organizations' knowledge accessible to people and applications. We combine language models, knowledge graphs and reasoning to build AI systems whose answers are grounded in verifiable information and whose limits are recognizable.",
+      why1: "At Isagog Srl we make organizations' knowledge accessible to people and applications. We combine language models, [knowledge graphs](onto:reasoning) and reasoning to build AI systems whose answers are grounded in verifiable information and whose limits are recognizable.",
       why2: "Our work starts from users' problems and ends in software that helps them tackle those problems. We measure a solution's quality by its usefulness, by how well its behavior can be understood, and by the care with which it is maintained.",
       why3: "We are a small company where research and development work side by side. We are looking for people who want to contribute to advanced AI projects, take ownership of concrete assignments and work alongside professionals with proven academic and research experience.",
     },
@@ -466,7 +466,7 @@ export default {
       },
       skill2: {
         title: "Applied AI and knowledge",
-        body: "Language models and agents, semantic search and RAG, evaluating results. Knowledge graphs, ontologies and RDF/SPARQL are a specialization that matters especially to us.",
+        body: "Language models and agents, semantic search and RAG, evaluating results. Knowledge graphs, [ontologies](onto:) and RDF/SPARQL are a specialization that matters especially to us.",
       },
       skill3: {
         title: "Reliable data and processes",

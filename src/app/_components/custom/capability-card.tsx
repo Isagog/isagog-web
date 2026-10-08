@@ -9,7 +9,7 @@ export const CapabilityCard = ({
 }: {
   number: string;
   title: string;
-  body: string;
+  body: ReactNode;
   result: string;
   icon: ReactNode;
 }) => (
