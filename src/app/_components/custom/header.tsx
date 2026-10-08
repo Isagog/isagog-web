@@ -7,8 +7,9 @@ import {
   DropdownMenuTrigger,
 } from "@/app/_components/ui/dropdown-menu";
 import { stripLocale } from "@/lib/locale-href";
+import { ontologySiteUrl } from "@/lib/ontology-site";
 import { cn } from "@/lib/utils";
-import { useScopedI18n } from "@/packages/locales/client";
+import { useCurrentLocale, useScopedI18n } from "@/packages/locales/client";
 import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -19,12 +20,15 @@ const isActive = (pathname: string, href: string): boolean => pathname.startsWit
 
 export const Header = () => {
   const t = useScopedI18n("nav");
+  const locale = useCurrentLocale();
   const pathname = stripLocale(usePathname());
   const [open, setOpen] = useState(false);
 
   const navItems = [
     { href: "/approach", label: t("approach") },
     { href: "/platform", label: t("platform") },
+    // The ontology minisite: absolute URL, so LocaleLink leaves it as is.
+    { href: ontologySiteUrl(locale), label: t("ontologies") },
     { href: "/project", label: t("project") },
     { href: "/blog", label: t("blog") },
     { href: "/careers", label: t("careers") },

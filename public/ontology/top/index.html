@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Isagog</title>
+    <link rel="icon" href="../../favicon.ico" />
+    <!--
+      Ontology IRI stub. https://isagog.com/ontology/top is the namespace of
+      the Isagog top level ontology; its terms are /ontology/top#<Term>.
+      Dereferencing one lands here and is forwarded to the ontology minisite
+      (repo Isagog/isagog-ontology): a term to its entry in the explorer
+      (#top:<Term>), the bare namespace to its section of the layers page.
+      Browsers keep the fragment across GitHub Pages' /ontology/top ->
+      /ontology/top/ redirect. Client-side because static export has no
+      middleware; the targets are absolute because the minisite is another
+      origin. The three namespace stubs differ only in `layer`.
+    -->
+    <script>
+      (function () {
+        var site = "https://ontology.isagog.com/";
+        var layer = "top";
+        var supported = ["it", "en"];
+        var fallback = "it";
+        var lang = (navigator.language || fallback).slice(0, 2).toLowerCase();
+        var locale = supported.indexOf(lang) !== -1 ? lang : fallback;
+        var term = window.location.hash.slice(1);
+        var id = term.indexOf(":") === -1 ? layer + ":" + term : term;
+        window.location.replace(
+          term ? site + locale + "/explorer/#" + id : site + locale + "/layers/#" + layer
+        );
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=https://ontology.isagog.com/it/layers/#top" />
+    </noscript>
+  </head>
+  <body>
+    <p>Redirecting to <a href="https://ontology.isagog.com/it/layers/#top">Ontologie Isagog</a>…</p>
+  </body>
+</html>
