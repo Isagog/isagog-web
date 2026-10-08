@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { ArrowUpRight, Landmark, Newspaper, Stethoscope } from "lucide-react";
+import { ConceptText } from "@/app/_components/custom/concept-text";
 import { LocaleLink } from "@/app/_components/custom/locale-link";
-import { useScopedI18n } from "@/packages/locales/client";
+import { useCurrentLocale, useScopedI18n } from "@/packages/locales/client";
 import type { TabId } from "@/lib/knowledge-demo/types";
 import { museoQuestions, museoTabLabelKey } from "@/lib/knowledge-demo/data/museo";
 import { giornaleQuestions, giornaleTabLabelKey } from "@/lib/knowledge-demo/data/giornale";
@@ -35,6 +36,7 @@ const TAB_ICONS: Record<TabId, typeof Landmark> = {
  */
 export const KnowledgeDemo = () => {
   const t = useScopedI18n("home");
+  const locale = useCurrentLocale();
   const [activeTab, setActiveTab] = useState<TabId>("museo");
   const [museoQuestionId, setMuseoQuestionId] = useState(museoQuestions[0]?.id ?? "");
   const [giornaleQuestionId, setGiornaleQuestionId] = useState(giornaleQuestions[0]?.id ?? "");
@@ -64,7 +66,9 @@ export const KnowledgeDemo = () => {
         </span>
       </div>
       <h2 className="mt-4 text-[26px] leading-tight text-forest">{t("knowledgeDemo.title")}</h2>
-      <p className="mt-3 text-[14px] leading-relaxed text-forest">{t("knowledgeDemo.intro")}</p>
+      <p className="mt-3 text-[14px] leading-relaxed text-forest">
+        <ConceptText text={t("knowledgeDemo.intro")} locale={locale} />
+      </p>
 
       <div className="mt-5">
         <TabStrip tabs={tabs} activeTab={activeTab} onChange={setActiveTab} tablistLabel={t("knowledgeDemo.tablistLabel")} />

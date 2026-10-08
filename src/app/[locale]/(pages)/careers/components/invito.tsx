@@ -1,8 +1,10 @@
+import { ConceptText } from "@/app/_components/custom/concept-text";
 import { SectionHeading } from "@/app/_components/custom/section-heading";
-import { getScopedI18n } from "@/packages/locales/server";
+import { getCurrentLocale, getScopedI18n } from "@/packages/locales/server";
 
 export const Invito = async () => {
   const t = await getScopedI18n("careers.invito");
+  const locale = await getCurrentLocale();
 
   return (
     <section id="lavora-con-noi" className="scroll-anchor bg-visione px-6 py-20">
@@ -30,7 +32,9 @@ export const Invito = async () => {
             {t("whyLabel")}
           </h2>
           <div className="mt-6 grid gap-x-10 text-[16.5px] leading-[1.6] text-cream-soft md:grid-cols-3">
-            <p className="mb-5">{t("why1")}</p>
+            <p className="mb-5">
+              <ConceptText text={t("why1")} locale={locale} />
+            </p>
             <p className="mb-5">{t("why2")}</p>
             <p className="mb-5">{t("why3")}</p>
           </div>

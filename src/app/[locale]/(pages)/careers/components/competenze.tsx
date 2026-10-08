@@ -1,9 +1,11 @@
+import { ConceptText } from "@/app/_components/custom/concept-text";
 import { SectionHeading } from "@/app/_components/custom/section-heading";
-import { getScopedI18n } from "@/packages/locales/server";
+import { getCurrentLocale, getScopedI18n } from "@/packages/locales/server";
 import { Brain, Database, Server, ShieldCheck } from "lucide-react";
 
 export const Competenze = async () => {
   const t = await getScopedI18n("careers.competenze");
+  const locale = await getCurrentLocale();
 
   const skills = [
     { number: "01", icon: <Server size={24} strokeWidth={2} />, title: t("skill1.title"), body: t("skill1.body") },
@@ -56,7 +58,9 @@ export const Competenze = async () => {
                 <h4 className="mt-3 font-serif text-[22px] leading-[1.2] text-forest">
                   {skill.title}
                 </h4>
-                <p className="mt-3 text-[15px] leading-[1.5] text-prose-muted">{skill.body}</p>
+                <p className="mt-3 text-[15px] leading-[1.5] text-prose-muted">
+                  <ConceptText text={skill.body} locale={locale} />
+                </p>
               </article>
             ))}
           </div>

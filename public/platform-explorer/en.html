@@ -202,6 +202,8 @@
   .dr-body{padding:20px 28px 34px;overflow:auto;flex:1}
   .dr-body p{font-size:13.5px;line-height:1.62;color:var(--ink-soft);margin-bottom:14px}
   .dr-body p b{color:var(--ink);font-weight:600}
+  .dr-body a{color:inherit;text-decoration:underline;text-decoration-color:color-mix(in srgb,currentColor 40%,transparent);text-underline-offset:3px}
+  .dr-body a:hover{text-decoration-color:currentColor}
   .dr-body p em{font-family:"Fraunces",serif;color:var(--ink);letter-spacing:0}
   .dr-body h4{font-family:"JetBrains Mono",monospace;font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dc,var(--know));margin:20px 0 10px;display:flex;align-items:center;gap:10px}
   .dr-body h4::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
@@ -540,7 +542,7 @@ requestAnimationFrame(tick);
 /* ================= drawer / info ================= */
 const INFO={
   blueprint:{c:'var(--know)',k:'the foundation — technically: the ontology',t:'The Knowledge Blueprint',h:`
-    <p>Every organisation has a hidden map: the <b>kinds of things that matter</b> to it — artists and artworks, or clients and contracts — and <b>how they relate</b>. The Knowledge Blueprint makes that map explicit. It is the single foundation everything above it stands on.</p>
+    <p>Every organisation has a hidden map: the <b>kinds of things that matter</b> to it — artists and artworks, or clients and contracts — and <b>how they relate</b>. The Knowledge Blueprint makes that map explicit: technically, an <a href="https://ontology.isagog.com/en/" target="_top">ontology</a>. It is the single foundation everything above it stands on.</p>
     <div class="exbox"><div class="lb">you write, in plain language</div>
       <div class="quote">“An Exhibition is an Event that displays one or more Artworks.”</div></div>
     <div class="exbox"><div class="lb">the platform proposes the formal version — you confirm</div>
@@ -572,7 +574,7 @@ const INFO={
     <p>It lives alongside the Knowledge Graph, fed by the same Extractor: two ways of remembering the same fact, one exact and one fuzzy.</p>
     <div class="dr-next">next → click the <b onclick="openInfo('kb')">Knowledge Graph</b> — its twin for exact facts</div>`},
   kb:{c:'var(--know)',k:'exact · auditable facts',t:'The Knowledge Graph',h:`
-    <p>A <b>knowledge graph</b> (RDF, open W3C standards). Every fact enters typed by the blueprint, connected to the others, and <b>has a name</b>: it can be cited, corrected, retracted — and it keeps a pointer to the source it came from.</p>
+    <p>A <b><a href="https://ontology.isagog.com/en/reasoning/" target="_top">knowledge graph</a></b> (RDF, open W3C standards). Every fact enters typed by the blueprint, connected to the others, and <b>has a name</b>: it can be cited, corrected, retracted — and it keeps a pointer to the source it came from.</p>
     <div class="exbox"><div class="lb">a fact, as stored</div>
       <div class="code"><span class="s">:Andrea_Pazienza</span> <span class="p">creates</span> <span class="o">:Total_Comics</span> ;<br><span class="s">:Total_Comics</span> <span class="p">locatedIn</span> <span class="o">:Gallery_5</span> .</div></div>
     <p><b>Live, not frozen.</b> Facts are corrected, added or retracted in place — no retraining, no waiting on a model vendor. And because facts are named, every answer <b>traces back to its sources</b>.</p>

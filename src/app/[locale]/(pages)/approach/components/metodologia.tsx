@@ -1,10 +1,12 @@
+import { ConceptText } from "@/app/_components/custom/concept-text";
 import { CapabilityCard } from "@/app/_components/custom/capability-card";
 import { SectionHeading } from "@/app/_components/custom/section-heading";
-import { getScopedI18n } from "@/packages/locales/server";
+import { getCurrentLocale, getScopedI18n } from "@/packages/locales/server";
 import { Brain, Database, ScanText } from "lucide-react";
 
 export const Metodologia = async () => {
   const t = await getScopedI18n("approach.metodologia");
+  const locale = await getCurrentLocale();
 
   return (
     <section id="metodologia" className="scroll-anchor bg-page px-6 py-20">
@@ -22,7 +24,9 @@ export const Metodologia = async () => {
         />
 
         <div className="mt-10 grid gap-x-10 text-[16.5px] leading-[1.6] text-prose-muted md:grid-cols-2">
-          <p className="mb-5">{t("p1")}</p>
+          <p className="mb-5">
+            <ConceptText text={t("p1")} locale={locale} />
+          </p>
           <p className="mb-5">{t("p2")}</p>
         </div>
 
@@ -45,7 +49,7 @@ export const Metodologia = async () => {
             number="03"
             icon={<Brain size={24} strokeWidth={2} />}
             title={t("cap3.title")}
-            body={t("cap3.body")}
+            body={<ConceptText text={t("cap3.body")} locale={locale} />}
             result={t("cap3.result")}
           />
         </div>
