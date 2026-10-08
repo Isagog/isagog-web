@@ -1,6 +1,7 @@
 "use client";
 
-import { useScopedI18n } from "@/packages/locales/client";
+import { ontologySiteUrl } from "@/lib/ontology-site";
+import { useCurrentLocale, useScopedI18n } from "@/packages/locales/client";
 import { LocaleLink as Link } from "./locale-link";
 
 interface FooterProps {
@@ -14,10 +15,13 @@ interface FooterProps {
   year: number;
 }
 
-const ROUTE_LINKS = [
+// Internal paths get the locale prefix from LocaleLink; the ontology
+// minisite is another origin, so its href is built per locale.
+const FOOTER_LINKS = [
   { href: "/", key: "home" },
   { href: "/approach", key: "approach" },
   { href: "/platform", key: "platform" },
+  { href: ontologySiteUrl, key: "ontologies" },
   { href: "/project", key: "project" },
   { href: "/blog", key: "blog" },
   { href: "/careers", key: "careers" },
@@ -26,6 +30,7 @@ const ROUTE_LINKS = [
 
 export const Footer = ({ year }: FooterProps) => {
   const t = useScopedI18n("footer");
+  const locale = useCurrentLocale();
 
   return (
     <footer className="border-t border-card-border bg-page">
@@ -34,8 +39,12 @@ export const Footer = ({ year }: FooterProps) => {
           {t("copyright", { year: String(year) })} — {t("street")}, {t("zip")}
         </span>
         <div className="flex flex-wrap gap-6">
-          {ROUTE_LINKS.map((link) => (
-            <Link key={link.href} href={link.href} className="hover:text-forest">
+          {FOOTER_LINKS.map((link) => (
+            <Link
+              key={link.key}
+              href={typeof link.href === "function" ? link.href(locale) : link.href}
+              className="hover:text-forest"
+            >
               {t(link.key)}
             </Link>
           ))}

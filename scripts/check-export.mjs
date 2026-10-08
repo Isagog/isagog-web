@@ -40,6 +40,14 @@ for (const stub of OLD_URL_STUBS) {
   if (!existsSync(file)) missing.push(file);
 }
 
+// Ontology IRI stubs: https://isagog.com/ontology/{top,agents,frame}[#Term]
+// forward to the ontology minisite (ontology.isagog.com).
+const IRI_STUBS = ["ontology", "ontology/top", "ontology/agents", "ontology/frame"];
+for (const stub of IRI_STUBS) {
+  const file = join(OUT, stub, "index.html");
+  if (!existsSync(file)) missing.push(file);
+}
+
 if (missing.length > 0) {
   console.error(`check-export: ${missing.length} expected file(s) missing:`);
   for (const file of missing) console.error(`  - ${file}`);

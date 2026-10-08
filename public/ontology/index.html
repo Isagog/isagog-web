@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Isagog</title>
+    <link rel="icon" href="../favicon.ico" />
+    <!--
+      Parent of the ontology IRI namespaces (/ontology/{top,agents,frame},
+      each with its own stub): forward to the ontology minisite's home in the
+      visitor's language. Absolute target: the minisite is another origin.
+    -->
+    <script>
+      (function () {
+        var site = "https://ontology.isagog.com/";
+        var supported = ["it", "en"];
+        var fallback = "it";
+        var lang = (navigator.language || fallback).slice(0, 2).toLowerCase();
+        var locale = supported.indexOf(lang) !== -1 ? lang : fallback;
+        window.location.replace(site + locale + "/");
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=https://ontology.isagog.com/it/" />
+    </noscript>
+  </head>
+  <body>
+    <p>Redirecting to <a href="https://ontology.isagog.com/it/">Ontologie Isagog</a>…</p>
+  </body>
+</html>
