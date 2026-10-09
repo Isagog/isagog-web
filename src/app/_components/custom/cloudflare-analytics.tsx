@@ -1,7 +1,10 @@
+"use client";
+
 import { IS_STAGING } from "@/lib/base-path";
 import Script from "next/script";
 
 // Cloudflare Web Analytics: cookieless page-view stats for isagog.com.
+// AnalyticsConsent mounts this only after the visitor agrees.
 // The token is public by design — it ships in every page's HTML anyway.
 // Cloudflare matches the site's hostname by suffix, so a staging build under
 // isagog.com/isagog-web/ would be counted as production traffic: skip it.

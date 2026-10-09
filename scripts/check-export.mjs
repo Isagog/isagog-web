@@ -32,6 +32,22 @@ for (const locale of LOCALES) {
 }
 if (!existsSync(join(OUT, "index.html"))) missing.push(join(OUT, "index.html"));
 
+// The consent choice must be present in both static entry pages, while the
+// optional Cloudflare beacon must not load before a visitor accepts.
+const consentCopy = {
+  it: ["Prima di proseguire", "Non accetto: esco dal sito"],
+  en: ["Before you continue", "Disagree and leave site"],
+};
+for (const locale of LOCALES) {
+  const file = join(OUT, locale, "index.html");
+  if (!existsSync(file)) continue;
+  const html = readFileSync(file, "utf-8");
+  if (consentCopy[locale].some((text) => !html.includes(text))) {
+    console.error(`check-export: analytics consent missing from ${file}`);
+    process.exit(1);
+  }
+}
+
 // Old-site URL stubs: outside the locale segments, matching the dropped
 // live-site paths they redirect from (/service, /work-with-us).
 const OLD_URL_STUBS = ["service", "work-with-us"];
@@ -53,13 +69,16 @@ for (const stub of IRI_STUBS) {
 // string reached the page some other way. Scripts are skipped: the inlined
 // RSC payload may legitimately carry the raw copy.
 const leaks = [];
+const analyticsBeacons = [];
 const walk = (dir) => {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
     const path = join(dir, entry.name);
     if (entry.isDirectory()) walk(path);
     else if (entry.name.endsWith(".html")) {
-      const visible = readFileSync(path, "utf-8").replace(/<script[\s\S]*?<\/script>/g, "");
+      const html = readFileSync(path, "utf-8");
+      const visible = html.replace(/<script[\s\S]*?<\/script>/g, "");
       if (visible.includes("](onto:")) leaks.push(path);
+      if (html.includes("static.cloudflareinsights.com/beacon.min.js")) analyticsBeacons.push(path);
     }
   }
 };
@@ -67,6 +86,11 @@ if (existsSync(OUT)) walk(OUT);
 if (leaks.length > 0) {
   console.error(`check-export: unrendered concept-link markup in ${leaks.length} file(s):`);
   for (const file of leaks) console.error(`  - ${file}`);
+  process.exit(1);
+}
+if (analyticsBeacons.length > 0) {
+  console.error(`check-export: analytics beacon loads before consent in ${analyticsBeacons.length} file(s):`);
+  for (const file of analyticsBeacons) console.error(`  - ${file}`);
   process.exit(1);
 }
 
