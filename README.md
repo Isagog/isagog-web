@@ -14,6 +14,20 @@ and GitHub Pages serves it.
     pnpm lint         # ESLint
     pnpm typecheck    # tsc --noEmit
 
+## Navigation analytics
+
+The production site at `isagog.com` sends anonymous `$pageview` and
+`$pageleave` events to the Isagog EU PostHog project. The client setup is in
+`src/instrumentation-client.ts`; it also captures client-side route changes.
+Local development and builds with `NEXT_PUBLIC_BASE_PATH` set do not send
+events. PostHog click/form autocapture and session replay are disabled, and
+the SDK keeps its anonymous visit ID in memory rather than browser storage.
+
+After deploying, open PostHog **Product analytics → New insight → Paths** and
+select **Pageview** to see the routes visitors take. **Web analytics → Pages**
+shows page-level traffic and exit trends. Browser tracking protection can
+block these events, so counts may differ from Cloudflare Web Analytics.
+
 ## Structure
 
 - `src/app/[locale]/(pages)/(index)/` — the one scrolling homepage; one
