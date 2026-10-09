@@ -1,7 +1,7 @@
 "use client";
 
 import { startNavigationAnalytics } from "@/lib/navigation-analytics";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { CloudflareAnalytics } from "./cloudflare-analytics";
 
 const CONSENT_KEY = "isagog-analytics-consent-v1";
@@ -26,9 +26,10 @@ function subscribeToConsent(callback: () => void) {
 
 const copy = {
   it: {
-    title: "Prima di proseguire",
-    intro:
-      "Per capire come le persone visitano questo sito, usiamo PostHog (nell'UE) e Cloudflare Web Analytics solo se scegli di continuare.",
+    title: "Privacy e analisi",
+    summary:
+      "Solo con il tuo consenso, PostHog (UE) e Cloudflare misurano pagine visitate e ordine, durata, provenienza, paese approssimativo, browser, dispositivo e prestazioni.",
+    details: "Maggiori dettagli",
     data:
       "Raccogliamo i percorsi delle pagine visitate e il loro ordine, gli orari e la durata della visita, il sito di provenienza, il paese approssimativo (ricavato dall'indirizzo IP) e informazioni di base su browser e dispositivo. Cloudflare misura anche le prestazioni delle pagine.",
     limits:
@@ -38,9 +39,10 @@ const copy = {
     leave: "Non accetto: esco dal sito",
   },
   en: {
-    title: "Before you continue",
-    intro:
-      "To understand how people navigate this site, we use PostHog (hosted in the EU) and Cloudflare Web Analytics only if you choose to continue.",
+    title: "Privacy and analytics",
+    summary:
+      "Only with your consent, PostHog (EU) and Cloudflare measure pages visited and their order, visit duration, referral, approximate country, browser, device, and performance.",
+    details: "More details",
     data:
       "We collect the paths of pages visited and their order, visit times and duration, the referring site, approximate country (derived from the IP address), and basic browser and device information. Cloudflare also measures page performance.",
     limits:
@@ -55,20 +57,10 @@ export function AnalyticsConsent({ locale }: { locale: string }) {
   const [acceptedForVisit, setAcceptedForVisit] = useState(false);
   const storedConsent = useSyncExternalStore(subscribeToConsent, consentSnapshot, () => false);
   const accepted = storedConsent || acceptedForVisit;
-  const acceptButton = useRef<HTMLButtonElement>(null);
   const text = locale === "en" ? copy.en : copy.it;
 
   useEffect(() => {
-    const site = document.getElementById("site-content");
-    if (accepted) {
-      site?.removeAttribute("inert");
-      startNavigationAnalytics();
-      return;
-    }
-
-    site?.setAttribute("inert", "");
-    acceptButton.current?.focus();
-    return () => site?.removeAttribute("inert");
+    if (accepted) startNavigationAnalytics();
   }, [accepted]);
 
   const accept = () => {
@@ -84,38 +76,36 @@ export function AnalyticsConsent({ locale }: { locale: string }) {
   if (accepted) return <CloudflareAnalytics />;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-forest-deep/85 p-4 sm:p-6">
+    <div className="pointer-events-none fixed inset-x-3 bottom-3 z-[100] sm:inset-x-6 sm:bottom-6">
       <section
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="analytics-consent-title"
-        aria-describedby="analytics-consent-description"
-        className="max-h-[calc(100dvh-2rem)] w-full max-w-2xl overflow-y-auto rounded-lg border border-card-border bg-page p-6 shadow-2xl sm:p-9"
+        aria-label={text.title}
+        className="pointer-events-auto mx-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-2xl overflow-y-auto rounded-lg border border-card-border bg-page p-4 shadow-2xl sm:p-5"
       >
-        <h2 id="analytics-consent-title" className="text-3xl text-forest sm:text-4xl">
+        <h2 className="text-lg font-medium text-forest sm:text-xl">
           {text.title}
         </h2>
-        <div
-          id="analytics-consent-description"
-          className="mt-5 space-y-3 text-sm leading-relaxed text-forest sm:text-base"
-        >
-          <p>{text.intro}</p>
-          <p>{text.data}</p>
-          <p>{text.limits}</p>
-          <p className="font-medium">{text.choice}</p>
-        </div>
-        <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+        <p className="mt-1 text-sm leading-relaxed text-forest">{text.summary}</p>
+        <details className="mt-2 text-sm leading-relaxed text-forest">
+          <summary className="w-fit cursor-pointer font-medium underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest">
+            {text.details}
+          </summary>
+          <div className="mt-2 space-y-2">
+            <p>{text.data}</p>
+            <p>{text.limits}</p>
+            <p>{text.choice}</p>
+          </div>
+        </details>
+        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
           <button
-            ref={acceptButton}
             type="button"
             onClick={accept}
-            className="rounded-md bg-forest-deep px-5 py-3 font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            className="rounded-md bg-forest-deep px-4 py-2 text-sm font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
           >
             {text.accept}
           </button>
           <a
             href="about:blank"
-            className="rounded-md border border-forest-deep px-5 py-3 font-medium text-forest focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            className="text-sm font-medium text-forest underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
           >
             {text.leave}
           </a>

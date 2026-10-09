@@ -3,6 +3,8 @@
 Static site for isagog.com, built from the `bozzacompleta.html` design draft.
 Next.js 16 with `output: "export"` — the build emits plain HTML/JS into `out/`
 and GitHub Pages serves it.
+The unprefixed home page redirects to `/it/` regardless of browser language;
+visitors can switch to English or open `/en/` directly.
 
 ## Commands
 
@@ -16,8 +18,9 @@ and GitHub Pages serves it.
 
 ## Navigation analytics
 
-The production site at `isagog.com` asks visitors in Italian or English before
-loading PostHog or the existing Cloudflare Web Analytics beacon. Continuing
+The production site at `isagog.com` shows a compact Italian or English banner
+before loading PostHog or the existing Cloudflare Web Analytics beacon. Visitors
+can browse while the banner is visible without starting analytics. Agreeing
 stores the consent choice in local storage, then sends anonymous `$pageview`
 and `$pageleave` events to the Isagog EU PostHog project. Leaving navigates to
 `about:blank` without starting either analytics script. The client setup is in
