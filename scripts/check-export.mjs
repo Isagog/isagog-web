@@ -30,13 +30,21 @@ for (const locale of LOCALES) {
     }
   }
 }
-if (!existsSync(join(OUT, "index.html"))) missing.push(join(OUT, "index.html"));
+const rootFile = join(OUT, "index.html");
+if (!existsSync(rootFile)) missing.push(rootFile);
+else {
+  const rootHtml = readFileSync(rootFile, "utf-8");
+  if (!rootHtml.includes('url=./it/') || rootHtml.includes("navigator.language")) {
+    console.error("check-export: unprefixed home must default to Italian");
+    process.exit(1);
+  }
+}
 
 // The consent choice must be present in both static entry pages, while the
 // optional Cloudflare beacon must not load before a visitor accepts.
 const consentCopy = {
-  it: ["Prima di proseguire", "Non accetto: esco dal sito"],
-  en: ["Before you continue", "Disagree and leave site"],
+  it: ["Privacy e analisi", "Maggiori dettagli", "Non accetto: esco dal sito"],
+  en: ["Privacy and analytics", "More details", "Disagree and leave site"],
 };
 for (const locale of LOCALES) {
   const file = join(OUT, locale, "index.html");
