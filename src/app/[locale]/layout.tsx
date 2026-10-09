@@ -1,5 +1,5 @@
 import { BodyWrapper } from "@/app/_components/custom/body-wrapper";
-import { CloudflareAnalytics } from "@/app/_components/custom/cloudflare-analytics";
+import { AnalyticsConsent } from "@/app/_components/custom/analytics-consent";
 import { Footer } from "@/app/_components/custom/footer";
 import { Header } from "@/app/_components/custom/header";
 import { Providers } from "@/app/_components/providers";
@@ -64,12 +64,14 @@ export default async function RootLayout({
     >
       <I18nProviderClient locale={locale}>
         <BodyWrapper className="pt-[72px]">
-          <Providers>
-            <Header />
-            {children}
-            <Footer year={buildYear} />
-          </Providers>
-          <CloudflareAnalytics />
+          <div id="site-content">
+            <Providers>
+              <Header />
+              {children}
+              <Footer year={buildYear} />
+            </Providers>
+          </div>
+          <AnalyticsConsent locale={locale} />
         </BodyWrapper>
       </I18nProviderClient>
     </html>

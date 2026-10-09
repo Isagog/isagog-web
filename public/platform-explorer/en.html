@@ -247,20 +247,6 @@
 header{padding-right:110px}
 @media print{.lang-switch{display:none}}
 </style>
-<!-- Cloudflare Web Analytics. Loads only when this page is opened on its
-     own: inside the /platform iframe the parent page is already counted, and
-     the /isagog-web/ staging deploy must not count as production traffic. -->
-<script>
-  (function () {
-    if (window.top !== window.self) return;
-    if (location.pathname.indexOf("/isagog-web/") === 0) return;
-    var s = document.createElement("script");
-    s.type = "module";
-    s.src = "https://static.cloudflareinsights.com/beacon.min.js";
-    s.setAttribute("data-cf-beacon", '{"token": "c1590541ed7d43338e6c1f6c3e6fd691"}');
-    document.head.appendChild(s);
-  })();
-</script>
 </head>
 <body>
 

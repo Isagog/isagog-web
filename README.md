@@ -16,12 +16,18 @@ and GitHub Pages serves it.
 
 ## Navigation analytics
 
-The production site at `isagog.com` sends anonymous `$pageview` and
-`$pageleave` events to the Isagog EU PostHog project. The client setup is in
-`src/instrumentation-client.ts`; it also captures client-side route changes.
+The production site at `isagog.com` asks visitors in Italian or English before
+loading PostHog or the existing Cloudflare Web Analytics beacon. Continuing
+stores the consent choice in local storage, then sends anonymous `$pageview`
+and `$pageleave` events to the Isagog EU PostHog project. Leaving navigates to
+`about:blank` without starting either analytics script. The client setup is in
+`src/lib/navigation-analytics.ts` and also captures client-side route changes.
 Local development and builds with `NEXT_PUBLIC_BASE_PATH` set do not send
-events. PostHog click/form autocapture and session replay are disabled, and
-the SDK keeps its anonymous visit ID in memory rather than browser storage.
+events. PostHog click/form autocapture and session replay are disabled. Its
+anonymous visit ID is stored only for the current browser tab, so full-page
+language changes remain part of the same navigation path.
+Standalone `platform-explorer` HTML pages do not load analytics on their own;
+their parent `/platform` page is counted when the explorer is embedded.
 
 After deploying, open PostHog **Product analytics → New insight → Paths** and
 select **Pageview** to see the routes visitors take. **Web analytics → Pages**
