@@ -76,36 +76,36 @@ export function AnalyticsConsent({ locale }: { locale: string }) {
   if (accepted) return <CloudflareAnalytics />;
 
   return (
-    <div className="pointer-events-none fixed inset-x-3 bottom-3 z-[100] sm:inset-x-6 sm:bottom-6">
+    <div className="pointer-events-none fixed bottom-3 right-3 z-[100] w-[calc(100vw-1.5rem)] max-w-[21rem] sm:bottom-4 sm:right-4">
       <section
         aria-label={text.title}
-        className="pointer-events-auto mx-auto max-h-[calc(100dvh-1.5rem)] w-full max-w-2xl overflow-y-auto rounded-lg border border-card-border bg-page p-4 shadow-2xl sm:p-5"
+        className="pointer-events-auto max-h-[calc(100dvh-1.5rem)] w-full overflow-y-auto rounded-lg border border-card-border bg-page p-3 shadow-2xl"
       >
-        <h2 className="text-lg font-medium text-forest sm:text-xl">
+        <h2 className="text-base font-medium text-forest">
           {text.title}
         </h2>
-        <p className="mt-1 text-sm leading-relaxed text-forest">{text.summary}</p>
-        <details className="mt-2 text-sm leading-relaxed text-forest">
+        <p className="mt-1 text-xs leading-relaxed text-forest">{text.summary}</p>
+        <details className="mt-1.5 text-xs leading-relaxed text-forest">
           <summary className="w-fit cursor-pointer font-medium underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest">
             {text.details}
           </summary>
-          <div className="mt-2 space-y-2">
+          <div className="mt-1.5 space-y-1.5">
             <p>{text.data}</p>
             <p>{text.limits}</p>
             <p>{text.choice}</p>
           </div>
         </details>
-        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5">
           <button
             type="button"
             onClick={accept}
-            className="rounded-md bg-forest-deep px-4 py-2 text-sm font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            className="rounded-md bg-forest-deep px-3 py-1.5 text-xs font-medium text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
           >
             {text.accept}
           </button>
           <a
             href="about:blank"
-            className="text-sm font-medium text-forest underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
+            className="text-xs font-medium text-forest underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest"
           >
             {text.leave}
           </a>
