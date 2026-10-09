@@ -6,11 +6,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/app/_components/ui/dropdown-menu";
+import { asset } from "@/lib/base-path";
 import { stripLocale } from "@/lib/locale-href";
 import { ontologySiteUrl } from "@/lib/ontology-site";
 import { cn } from "@/lib/utils";
 import { useCurrentLocale, useScopedI18n } from "@/packages/locales/client";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LanguageSelector } from "./language-selector";
@@ -38,8 +40,15 @@ export const Header = () => {
     <header className="fixed top-0 z-50 w-full bg-page/90 backdrop-blur-sm border-b border-border">
       <div className="mx-auto flex max-w-[1224px] items-center justify-between gap-4 px-6 py-4 max-[640px]:px-6">
         <div className="flex items-center gap-8">
-          <Link href="/" className="font-serif text-[22px] text-forest">
-            {t("wordmark")}
+          <Link href="/" className="shrink-0">
+            <Image
+              src={asset("/isagog-logo.svg")}
+              alt={t("wordmark")}
+              width={2410}
+              height={309}
+              loading="eager"
+              className="h-5 w-auto sm:h-6"
+            />
           </Link>
 
           <nav className="hidden xl:flex items-center gap-8">
