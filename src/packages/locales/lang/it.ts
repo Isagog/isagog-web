@@ -4,7 +4,6 @@ export default {
     home: "Inizio",
     approach: "Approccio",
     platform: "Piattaforma",
-    ontologies: "Ontologie",
     project: "Progetti",
     blog: "Approfondimenti",
     careers: "Lavora con noi",
@@ -15,7 +14,6 @@ export default {
     home: "Inizio",
     approach: "Approccio",
     platform: "La Piattaforma",
-    ontologies: "Ontologie",
     project: "Progetti",
     blog: "Approfondimenti",
     careers: "Lavora con noi",
@@ -401,6 +399,17 @@ export default {
   },
   blog: {
     heading: "Approfondimenti",
+    technical: {
+      heading: "Approfondimenti tecnici",
+      ontology: {
+        title: "Le ontologie Isagog",
+        description:
+          "Concetti intesi come prospettive che guidano il ragionamento dei modelli linguistici e del grafo di conoscenza: livelli, prospettive ed esploratore dei termini.",
+      },
+    },
+    articles: {
+      heading: "Articoli",
+    },
     notFound: "Articolo non trovato",
     backToBlog: "Torna al blog",
     nextArticle: "Prossimo articolo",

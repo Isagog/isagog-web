@@ -4,7 +4,6 @@ export default {
     home: "Home",
     approach: "Approach",
     platform: "Platform",
-    ontologies: "Ontologies",
     project: "Projects",
     blog: "Insights",
     careers: "Work with us",
@@ -15,7 +14,6 @@ export default {
     home: "Home",
     approach: "Approach",
     platform: "The Platform",
-    ontologies: "Ontologies",
     project: "Projects",
     blog: "Insights",
     careers: "Work with us",
@@ -398,6 +396,17 @@ export default {
   },
   blog: {
     heading: "Insights",
+    technical: {
+      heading: "Technical deep dives",
+      ontology: {
+        title: "Isagog ontologies",
+        description:
+          "Concepts as perspectives that guide the reasoning of language models and the knowledge graph: layers, perspectives and a term explorer.",
+      },
+    },
+    articles: {
+      heading: "Articles",
+    },
     notFound: "Article not found",
     backToBlog: "Back to the blog",
     nextArticle: "Next article",

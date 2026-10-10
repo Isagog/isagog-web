@@ -2,6 +2,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server";
 import type { Metadata } from "next";
 import { BlogCard } from "./_components/blog-card";
+import { TechnicalInsights } from "./_components/technical-insights";
 
 export async function generateMetadata({
   params,
@@ -29,7 +30,18 @@ const BlogPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
       <h1 className="self-start font-serif text-[clamp(28px,3.4vw,39px)] leading-[1.15] text-forest">
         {t("heading")}
       </h1>
-      <BlogCard />
+      <section className="flex w-full flex-col gap-5">
+        <h2 className="font-serif text-[clamp(22px,2.4vw,28px)] leading-[1.2] text-forest">
+          {t("technical.heading")}
+        </h2>
+        <TechnicalInsights />
+      </section>
+      <section className="mt-6 flex w-full flex-col gap-5">
+        <h2 className="font-serif text-[clamp(22px,2.4vw,28px)] leading-[1.2] text-forest">
+          {t("articles.heading")}
+        </h2>
+        <BlogCard />
+      </section>
     </main>
   );
 };
