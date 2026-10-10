@@ -12,6 +12,8 @@ const TOP_LEVEL_PATHS = [
   { path: "/platform", priority: 0.9, changeFrequency: "monthly" as const },
   { path: "/project", priority: 0.8, changeFrequency: "monthly" as const },
   { path: "/blog", priority: 0.8, changeFrequency: "monthly" as const },
+  // Standalone page under /blog, not an MDX article; its figures are revised monthly.
+  { path: "/blog/on-prem-llm-sizing", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
   { path: "/careers", priority: 0.6, changeFrequency: "monthly" as const },
 ];

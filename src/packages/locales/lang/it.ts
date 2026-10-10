@@ -406,6 +406,12 @@ export default {
         description:
           "Concetti intesi come prospettive che guidano il ragionamento dei modelli linguistici e del grafo di conoscenza: livelli, prospettive ed esploratore dei termini.",
       },
+      llmSizing: {
+        eyebrow: "Strumento interattivo · Ottobre 2026",
+        title: "Matrice di dimensionamento on-prem degli LLM",
+        description:
+          "21 modelli open-weight a confronto con 14 configurazioni hardware, dalla GPU desktop al nodo Blackwell: cosa ci sta in memoria e a quanti token al secondo.",
+      },
     },
     articles: {
       heading: "Articoli",
@@ -575,6 +581,11 @@ export default {
     blog: {
       title: "Approfondimenti — Isagog",
       description: "Il pensiero che sta dietro al metodo di Isagog.",
+    },
+    llmSizing: {
+      title: "Matrice di dimensionamento on-prem degli LLM — Isagog",
+      description:
+        "Dove stanno gli LLM open-weight più recenti e a che velocità generano, da una scheda gaming da 16 GB a un nodo Blackwell da 8 GPU. Matrice interattiva, ottobre 2026.",
     },
     contact: {
       title: "Contatti — Isagog",
