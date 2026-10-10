@@ -3,7 +3,7 @@ import type { Locale } from "./locale-href";
 /**
  * The ontology minisite: a separate static site (repo Isagog/isagog-ontology,
  * GitHub Pages with a custom domain) that shares this site's header, footer
- * and design tokens. Linked from the nav and footer; the ontology IRIs under
+ * and design tokens. Linked from the Insights page (/blog); the ontology IRIs under
  * /ontology/ on this site forward to it (see public/ontology/).
  */
 export const ONTOLOGY_SITE_URL = "https://ontology.isagog.com";
