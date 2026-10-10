@@ -403,6 +403,12 @@ export default {
         description:
           "Concepts as perspectives that guide the reasoning of language models and the knowledge graph: layers, perspectives and a term explorer.",
       },
+      llmSizing: {
+        eyebrow: "Interactive tool · October 2026",
+        title: "On-Prem LLM Sizing Matrix",
+        description:
+          "21 open-weight models against 14 hardware configurations, from a desktop GPU to a Blackwell node: what fits in memory and how many tokens per second to expect.",
+      },
     },
     articles: {
       heading: "Articles",
@@ -571,6 +577,11 @@ export default {
     blog: {
       title: "Insights — Isagog",
       description: "The thinking behind Isagog's method.",
+    },
+    llmSizing: {
+      title: "On-Prem LLM Sizing Matrix — Isagog",
+      description:
+        "Where the current open-weight LLMs fit and roughly how fast they generate, from a 16 GB gaming card to an 8-GPU Blackwell node. Interactive sizing matrix, October 2026.",
     },
     contact: {
       title: "Contact — Isagog",
