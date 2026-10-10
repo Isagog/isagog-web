@@ -31,13 +31,13 @@ const BlogPage = async ({ params }: { params: Promise<{ locale: string }> }) => 
         {t("heading")}
       </h1>
       <section className="flex w-full flex-col gap-5">
-        <h2 className="font-serif text-[clamp(22px,2.4vw,28px)] leading-[1.2] text-forest">
+        <h2 className="font-serif text-[clamp(22px,2.4vw,28px)] leading-[1.2] text-terracotta">
           {t("technical.heading")}
         </h2>
         <TechnicalInsights />
       </section>
       <section className="mt-6 flex w-full flex-col gap-5">
-        <h2 className="font-serif text-[clamp(22px,2.4vw,28px)] leading-[1.2] text-forest">
+        <h2 className="font-serif text-[clamp(22px,2.4vw,28px)] leading-[1.2] text-terracotta">
           {t("articles.heading")}
         </h2>
         <BlogCard />
