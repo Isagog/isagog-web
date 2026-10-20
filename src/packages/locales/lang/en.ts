@@ -643,6 +643,10 @@ export default {
         title: "Companies, funds and institutions",
         body: "Regulations, contracts and internal knowledge available to the people who work with clients, members and partners.",
       },
+      altro: {
+        title: "And much more",
+        body: "Wherever there are documents, rules and knowledge to make reliable and searchable.",
+      },
     },
     call: {
       eyebrow: "30 MINUTES, NO COMMITMENT",

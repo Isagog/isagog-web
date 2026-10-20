@@ -646,6 +646,10 @@ export default {
         title: "Imprese, casse ed enti",
         body: "Regolamenti, contratti e conoscenza interna a disposizione di chi lavora con clienti, iscritti e soci.",
       },
+      altro: {
+        title: "E molto altro",
+        body: "Ovunque ci siano documenti, regole e conoscenza da rendere affidabili e consultabili.",
+      },
     },
     call: {
       eyebrow: "30 MINUTI, SENZA IMPEGNO",
