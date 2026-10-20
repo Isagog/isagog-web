@@ -6,7 +6,16 @@ import { useState } from "react";
 
 const inputClass = "rounded-[4px] border border-card-border bg-transparent px-3 py-2.5 text-[15px]";
 
-export const ContactForm = () => {
+/** Copy a host page can swap in; anything left out keeps the contact page's wording. */
+export interface ContactFormCopy {
+  readonly formTitle?: string;
+  readonly formSub?: string;
+  readonly fieldMessage?: string;
+  readonly fieldMessagePlaceholder?: string;
+  readonly mailSubject?: string;
+}
+
+export const ContactForm = ({ copy = {} }: { copy?: ContactFormCopy }) => {
   const t = useScopedI18n("contact.contatto");
   const [draft, setDraft] = useState({
     name: "",
@@ -21,7 +30,7 @@ export const ContactForm = () => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     window.location.href = buildMailtoHref(draft, undefined, {
-      subject: t("mailSubject"),
+      subject: copy.mailSubject ?? t("mailSubject"),
       name: t("mailName"),
       email: t("mailEmail"),
       organisation: t("mailOrg"),
@@ -33,8 +42,8 @@ export const ContactForm = () => {
       onSubmit={onSubmit}
       className="rounded-[5px] border border-card-border bg-paper p-7"
     >
-      <h4 className="font-serif text-[24px] text-forest">{t("formTitle")}</h4>
-      <p className="mt-2 text-[15px] text-prose-muted">{t("formSub")}</p>
+      <h4 className="font-serif text-[24px] text-forest">{copy.formTitle ?? t("formTitle")}</h4>
+      <p className="mt-2 text-[15px] text-prose-muted">{copy.formSub ?? t("formSub")}</p>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2">
         <label className="flex flex-col gap-2 text-[13px] text-forest">
@@ -73,13 +82,13 @@ export const ContactForm = () => {
       </label>
 
       <label className="mt-4 flex flex-col gap-2 text-[13px] text-forest">
-        {t("fieldMessage")}
+        {copy.fieldMessage ?? t("fieldMessage")}
         <textarea
           required
           rows={4}
           value={draft.message}
           onChange={(event) => update("message")(event.target.value)}
-          placeholder={t("fieldMessagePlaceholder")}
+          placeholder={copy.fieldMessagePlaceholder ?? t("fieldMessagePlaceholder")}
           className={inputClass}
         />
       </label>
