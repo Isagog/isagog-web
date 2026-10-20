@@ -19,6 +19,7 @@ export default {
     careers: "Work with us",
     contact: "Contact",
     email: "info@isagog.com",
+    privacyPreferences: "Privacy preferences",
     copyright: "(c) {year} Isagog Srl",
     street: "Via Faà di Bruno 52",
     zip: "00195 Roma (IT)",
