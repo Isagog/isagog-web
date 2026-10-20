@@ -408,7 +408,7 @@ export default {
         eyebrow: "Interactive tool · October 2026",
         title: "On-Prem LLM Sizing Matrix",
         description:
-          "21 open-weight models against 14 hardware configurations, from a desktop GPU to a Blackwell node: what fits in memory and how many tokens per second to expect.",
+          "27 open-weight models against 14 hardware configurations, from a desktop GPU to a Blackwell node: what fits in memory and how many tokens per second to expect.",
       },
     },
     articles: {

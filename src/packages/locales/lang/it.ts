@@ -411,7 +411,7 @@ export default {
         eyebrow: "Strumento interattivo · Ottobre 2026",
         title: "Matrice di dimensionamento on-prem degli LLM",
         description:
-          "21 modelli open-weight a confronto con 14 configurazioni hardware, dalla GPU desktop al nodo Blackwell: cosa ci sta in memoria e a quanti token al secondo.",
+          "27 modelli open-weight a confronto con 14 configurazioni hardware, dalla GPU desktop al nodo Blackwell: cosa ci sta in memoria e a quanti token al secondo.",
       },
     },
     articles: {

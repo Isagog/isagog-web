@@ -1,6 +1,7 @@
 /**
  * Models and hardware behind the on-prem LLM sizing matrix
- * (/[locale]/blog/on-prem-llm-sizing/). Figures compiled on 10 October 2026;
+ * (/[locale]/blog/on-prem-llm-sizing/). Figures compiled on 10 October 2026; the 36–100B group, Qwen3.5-122B-A10B and
+ * Mistral Medium 3.5 were added on 20 October 2026;
  * see the page's Sources section. Notes are written in English here and
  * localised by `localizeModels` / `localizeHardware`.
  */
@@ -66,16 +67,22 @@ export const MODELS: readonly LlmModel[] = [
   {g:1,name:"MiniMax M3",maker:"MiniMax",total:428,active:23,bits:8.2,rel:"MXFP8",layers:62,kv:60,moe:true,ctx:1000,note:"1M context with sparse attention; native image and video input; official MXFP8 weights. MiniMax Community License."},
   {g:1,name:"Qwen3.5-397B-A17B",maker:"Alibaba",total:397,active:17,bits:16,rel:"BF16",layers:60,kv:30,moe:true,ctx:262,note:"Apache 2.0. Ships in BF16 with an official FP8 version; hybrid linear attention keeps the KV cache small."},
   {g:1,name:"DeepSeek V4 Flash",maker:"DeepSeek",total:284,active:13,bits:4.5,rel:"FP4/FP8",layers:43,kv:15,moe:true,ctx:1000,note:"MIT license, about 160 GB in native FP4/FP8. Runs on two H200s, or a 256 GB+ Mac."},
+  {g:2,name:"Mistral Medium 3.5",maker:"Mistral",total:128,active:128,bits:8.2,rel:"FP8",layers:88,kv:352,moe:false,ctx:256,note:"Dense, April 2026: every token reads all 128B weights, so it is the slowest model per GB in this matrix, above all on low-bandwidth boxes. Native FP8, about 130 GB; vision input; 256K context. An EAGLE draft model adds about 1.4× at one user. Modified MIT license with a revenue cap for large companies."},
+  {g:2,name:"Qwen3.5-122B-A10B",maker:"Alibaba",total:122,active:10,bits:16,rel:"BF16",layers:48,kv:24,moe:true,ctx:262,note:"Apache 2.0, February 2026: the mid-size of the Qwen3.5 family, 8 of 256 experts active. Hybrid linear attention (one full-attention layer in four) keeps the KV cache small; 262K context."},
   {g:2,name:"Mistral Small 4",maker:"Mistral",total:119,active:6.5,bits:16,rel:"BF16",layers:36,kv:45,moe:true,ctx:256,note:"Apache 2.0, 6.5B active, 256K context, vision input. BF16 upload about 242 GB; FP8 and NVFP4 builds exist."},
   {g:2,name:"Nemotron 3 Super",maker:"NVIDIA",total:120,active:12,bits:16,rel:"BF16",layers:80,kv:15,moe:true,ctx:1000,note:"12B active, 1M context, hybrid Mamba-Transformer."},
   {g:2,name:"gpt-oss-120b",maker:"OpenAI",total:117,active:5.1,bits:4.44,rel:"MXFP4",layers:36,kv:36,moe:true,ctx:131,note:"Apache 2.0. Native MXFP4, about 65 GB: the classic model for 128 GB boxes and single 80–96 GB cards."},
   {g:2,name:"Llama 4 Scout",maker:"Meta",total:109,active:17,bits:16,rel:"BF16",layers:48,kv:50,moe:true,ctx:10000,note:"10M-token context window. Llama community license has EU-specific restrictions; check before use in Europe."},
-  {g:3,name:"Qwen3.6-35B-A3B",maker:"Alibaba",total:35,active:3,bits:16,rel:"BF16",layers:40,kv:20,moe:true,ctx:262,note:"Apache 2.0, only 3B active, so very fast. Unsloth reports about 240 tok/s on an RTX PRO 6000 with MTP."},
-  {g:3,name:"Gemma 4 31B",maker:"Google",total:31,active:31,bits:16,rel:"BF16",layers:60,kv:90,moe:false,ctx:256,note:"Dense. About 18–21 GB at 4-bit, 35–39 GB at 8-bit, 63 GB in BF16. Its KV cache is large, so long context on 24 GB takes tuning."},
-  {g:3,name:"Qwen3.8-27B",maker:"Alibaba",total:27,active:27,bits:16,rel:"BF16",layers:64,kv:64,moe:false,ctx:262,note:"Apache 2.0 dense multimodal model, 262K native context, thinking mode on by default."},
-  {g:3,name:"Gemma 4 26B-A4B",maker:"Google",total:26,active:4,bits:16,rel:"BF16",layers:30,kv:60,moe:true,ctx:256,note:"MoE with about 4B active; 256K context."},
-  {g:3,name:"gpt-oss-20b",maker:"OpenAI",total:21,active:3.6,bits:4.95,rel:"MXFP4",layers:24,kv:24,moe:true,ctx:131,note:"Apache 2.0, about 13 GB in MXFP4: fits a 16 GB card."},
-  {g:3,name:"Gemma 4 12B",maker:"Google",total:12,active:12,bits:16,rel:"BF16",layers:48,kv:50,moe:false,ctx:128,note:"Dense; the small end of this lineup."}
+  {g:3,name:"Qwen3-Next-80B-A3B",maker:"Alibaba",total:80,active:3,bits:16,rel:"BF16",layers:48,kv:24,moe:true,ctx:262,note:"Apache 2.0, September 2025, in Instruct and Thinking variants. 10 of 512 experts plus a shared one per token; Gated DeltaNet linear attention in three layers of four keeps the KV cache small; built-in multi-token prediction. Official FP8 builds exist."},
+  {g:3,name:"Qwen3-Coder-Next",maker:"Alibaba",total:80,active:3,bits:16,rel:"BF16",layers:48,kv:24,moe:true,ctx:262,note:"Apache 2.0, February 2026. An agentic-coding model on the Qwen3-Next backbone, non-thinking only; Qwen reports 70.6% on SWE-bench Verified. Same footprint and speed as Qwen3-Next-80B-A3B; Unsloth quotes about 46 GB at 4-bit and 85 GB at 8-bit, in line with this matrix."},
+  {g:3,name:"Llama 3.3 70B",maker:"Meta",total:70.6,active:70.6,bits:16,rel:"BF16",layers:80,kv:320,moe:false,ctx:128,note:"December 2024, and still the usual 70B dense reference for 48 GB and 96 GB setups. Dense, so slow on low-bandwidth boxes, and its KV cache is large: 128K of context alone takes about 40 GB. Text-only; Llama 3.3 Community License."},
+  {g:3,name:"Kimi-Linear-48B-A3B",maker:"Moonshot",total:48,active:3,bits:16,rel:"BF16",layers:27,kv:8,moe:true,ctx:1000,note:"MIT license, October 2025. Kimi Delta Attention (linear) and MLA layers in a 3:1 ratio make the KV cache tiny, so 1M context is practical. Trained on 5.7T tokens; closer to a research release than a flagship."},
+  {g:4,name:"Qwen3.6-35B-A3B",maker:"Alibaba",total:35,active:3,bits:16,rel:"BF16",layers:40,kv:20,moe:true,ctx:262,note:"Apache 2.0, only 3B active, so very fast. Unsloth reports about 240 tok/s on an RTX PRO 6000 with MTP."},
+  {g:4,name:"Gemma 4 31B",maker:"Google",total:31,active:31,bits:16,rel:"BF16",layers:60,kv:90,moe:false,ctx:256,note:"Dense. About 18–21 GB at 4-bit, 35–39 GB at 8-bit, 63 GB in BF16. Its KV cache is large, so long context on 24 GB takes tuning."},
+  {g:4,name:"Qwen3.8-27B",maker:"Alibaba",total:27,active:27,bits:16,rel:"BF16",layers:64,kv:64,moe:false,ctx:262,note:"Apache 2.0 dense multimodal model, 262K native context, thinking mode on by default."},
+  {g:4,name:"Gemma 4 26B-A4B",maker:"Google",total:26,active:4,bits:16,rel:"BF16",layers:30,kv:60,moe:true,ctx:256,note:"MoE with about 4B active; 256K context."},
+  {g:4,name:"gpt-oss-20b",maker:"OpenAI",total:21,active:3.6,bits:4.95,rel:"MXFP4",layers:24,kv:24,moe:true,ctx:131,note:"Apache 2.0, about 13 GB in MXFP4: fits a 16 GB card."},
+  {g:4,name:"Gemma 4 12B",maker:"Google",total:12,active:12,bits:16,rel:"BF16",layers:48,kv:50,moe:false,ctx:128,note:"Dense; the small end of this lineup."}
 ];
 
 /** Hardware price placeholder replaced by the localised "on quote" label. */
@@ -114,6 +121,12 @@ export const MODEL_NOTES_IT: Readonly<Record<string, string>> = {
   "Nemotron 3 Super": "12B attivi, contesto da 1M, architettura ibrida Mamba-Transformer.",
   "gpt-oss-120b": "Apache 2.0. MXFP4 nativo, circa 65 GB: il modello classico per le macchine da 128 GB e per le singole schede da 80–96 GB.",
   "Llama 4 Scout": "Finestra di contesto da 10M token. La licenza community di Llama ha restrizioni specifiche per l’UE: verificatela prima dell’uso in Europa.",
+  "Mistral Medium 3.5": "Denso, aprile 2026: ogni token legge tutti i 128B di pesi, quindi è il modello più lento per GB di questa matrice, soprattutto sulle macchine con poca banda. FP8 nativo, circa 130 GB; input visivo; contesto da 256K. Un modello draft EAGLE aggiunge circa 1,4× con un utente. Licenza MIT modificata, con un tetto di fatturato per le grandi aziende.",
+  "Qwen3.5-122B-A10B": "Apache 2.0, febbraio 2026: la taglia intermedia della famiglia Qwen3.5, con 8 esperti attivi su 256. L’attenzione lineare ibrida (un layer di attenzione completa ogni quattro) mantiene piccola la cache KV; contesto da 262K.",
+  "Qwen3-Next-80B-A3B": "Apache 2.0, settembre 2025, nelle varianti Instruct e Thinking. 10 esperti su 512 più uno condiviso per token; l’attenzione lineare Gated DeltaNet in tre layer su quattro mantiene piccola la cache KV; multi-token prediction integrata. Esistono build FP8 ufficiali.",
+  "Qwen3-Coder-Next": "Apache 2.0, febbraio 2026. Modello per il coding agentico sul backbone di Qwen3-Next, solo non-thinking; Qwen riporta il 70,6% su SWE-bench Verified. Stessa occupazione e velocità di Qwen3-Next-80B-A3B; Unsloth indica circa 46 GB a 4 bit e 85 GB a 8 bit, in linea con questa matrice.",
+  "Llama 3.3 70B": "Dicembre 2024, ed è ancora il riferimento 70B denso per le configurazioni da 48 GB e 96 GB. Essendo denso è lento sulle macchine con poca banda, e la sua cache KV è grande: 128K di contesto occupano da soli circa 40 GB. Solo testo; Llama 3.3 Community License.",
+  "Kimi-Linear-48B-A3B": "Licenza MIT, ottobre 2025. Layer di Kimi Delta Attention (lineare) e MLA in rapporto 3:1 rendono minuscola la cache KV, così il contesto da 1M è praticabile. Addestrato su 5,7T token; più un rilascio di ricerca che un modello di punta.",
   "Qwen3.6-35B-A3B": "Apache 2.0, solo 3B attivi, quindi molto veloce. Unsloth riporta circa 240 tok/s su una RTX PRO 6000 con MTP.",
   "Gemma 4 31B": "Denso. Circa 18–21 GB a 4 bit, 35–39 GB a 8 bit, 63 GB in BF16. La cache KV è grande: il contesto lungo su 24 GB richiede messa a punto.",
   "Qwen3.8-27B": "Modello multimodale denso Apache 2.0, contesto nativo da 262K, modalità thinking attiva di default.",

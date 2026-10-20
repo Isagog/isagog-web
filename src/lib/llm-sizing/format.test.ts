@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { SIZING_COPY } from "./copy";
 import { HARDWARE, MODELS } from "./data";
 import { fmtBW, fmtGB, fmtParams, fmtTps, localizeHardware, localizeModels } from "./format";
 
@@ -45,5 +46,12 @@ describe("localisation", () => {
   it("has an Italian note for every model and hardware entry", () => {
     expect(localizeModels("it").every((m, i) => m.note !== MODELS[i]?.note)).toBe(true);
     expect(localizeHardware("it", "").every((h, i) => h.note !== HARDWARE[i]?.note)).toBe(true);
+  });
+
+  it("labels every model's size group in both languages", () => {
+    const lastGroup = Math.max(...MODELS.map((m) => m.g));
+    for (const locale of ["it", "en"] as const) {
+      expect(SIZING_COPY[locale].tool.groups).toHaveLength(lastGroup + 1);
+    }
   });
 });

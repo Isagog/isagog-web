@@ -12,8 +12,11 @@ import { MatrixTable, type Selection } from "./matrix-table";
 import styles from "./sizing.module.css";
 
 const INITIAL_SCENARIO: Scenario = { prec: "best", ctx: 32, users: 1, offload: true, spec: false };
-/** gpt-oss-120b on DGX Spark, as on the original page. */
-const INITIAL_SELECTION: Selection = { m: 13, h: 4 };
+/** gpt-oss-120b on DGX Spark, as on the original page; looked up by name so new rows don’t shift it. */
+const initialSelection = (models: readonly LlmModel[], hardware: readonly Hardware[]): Selection => ({
+  m: Math.max(0, models.findIndex((m) => m.name === "gpt-oss-120b")),
+  h: Math.max(0, hardware.findIndex((h) => h.id === "spark")),
+});
 
 interface SizingToolProps {
   locale: Locale;
@@ -30,7 +33,7 @@ interface SizingToolProps {
  */
 export function SizingTool({ locale, copy, models, hardware }: SizingToolProps) {
   const [scenario, setScenario] = useState(INITIAL_SCENARIO);
-  const [selected, setSelected] = useState(INITIAL_SELECTION);
+  const [selected, setSelected] = useState(() => initialSelection(models, hardware));
   const evaluations = useMemo(
     () => models.map((m) => hardware.map((h) => evaluate(m, h, scenario))),
     [models, hardware, scenario]

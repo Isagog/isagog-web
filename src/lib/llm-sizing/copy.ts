@@ -281,6 +281,40 @@ export const SIZING_COPY: Readonly<Record<Locale, SizingCopy>> = {
                 label: "Gemma 4 / Qwen3.6 (Unsloth)",
               },
             ],
+            [
+              {
+                href: "https://docs.sglang.io/cookbook/autoregressive/Mistral/Mistral-Medium-3.5",
+                label: "Mistral Medium 3.5 (SGLang)",
+              },
+              {
+                href: "https://github.com/QwenLM/Qwen3.8",
+                label: "Qwen3.5-122B-A10B (elenco dei rilasci Qwen)",
+              },
+            ],
+            [
+              {
+                href: "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct",
+                label: "Qwen3-Next-80B-A3B (Hugging Face)",
+              },
+              {
+                href: "https://www.marktechpost.com/2026/02/03/qwen-team-releases-qwen3-coder-next-an-open-weight-language-model-designed-specifically-for-coding-agents-and-local-development/",
+                label: "Qwen3-Coder-Next (MarkTechPost)",
+              },
+              {
+                href: "https://unsloth.ai/docs/models/qwen3-coder-next",
+                label: "dimensioni (Unsloth)",
+              },
+            ],
+            [
+              {
+                href: "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+                label: "Llama 3.3 70B (Hugging Face)",
+              },
+              {
+                href: "https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct",
+                label: "Kimi-Linear-48B-A3B (Hugging Face)",
+              },
+            ],
           ],
         },
         {
@@ -344,7 +378,7 @@ export const SIZING_COPY: Readonly<Record<Locale, SizingCopy>> = {
         },
       ],
     },
-    footnote: "Compilato il 10 ottobre 2026. I rilasci di modelli open-weight cambiano ogni mese: considerate ogni cifra un punto di partenza e fate un benchmark sul vostro stack prima di acquistare.",
+    footnote: "Compilato il 10 ottobre 2026; il gruppo 36–100B, Qwen3.5-122B-A10B e Mistral Medium 3.5 sono stati aggiunti il 20 ottobre 2026. I rilasci di modelli open-weight cambiano ogni mese: considerate ogni cifra un punto di partenza e fate un benchmark sul vostro stack prima di acquistare.",
     cta: {
       title: "Dovete dimensionare un’infrastruttura on-prem per un progetto reale?",
       body: "Aiutiamo le organizzazioni a scegliere modello, hardware e architettura per i loro sistemi di IA basati su conoscenza e agenti.",
@@ -355,6 +389,7 @@ export const SIZING_COPY: Readonly<Record<Locale, SizingCopy>> = {
         "1T+ parametri",
         "250–800B parametri",
         "100–130B parametri",
+        "36–100B parametri",
         "Fino a 35B parametri",
       ],
       hwg: ["GPU desktop", "Workstation e memoria unificata", "Datacenter"],
@@ -594,6 +629,40 @@ export const SIZING_COPY: Readonly<Record<Locale, SizingCopy>> = {
                 label: "Gemma 4 / Qwen3.6 (Unsloth)",
               },
             ],
+            [
+              {
+                href: "https://docs.sglang.io/cookbook/autoregressive/Mistral/Mistral-Medium-3.5",
+                label: "Mistral Medium 3.5 (SGLang)",
+              },
+              {
+                href: "https://github.com/QwenLM/Qwen3.8",
+                label: "Qwen3.5-122B-A10B (Qwen release list)",
+              },
+            ],
+            [
+              {
+                href: "https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct",
+                label: "Qwen3-Next-80B-A3B (Hugging Face)",
+              },
+              {
+                href: "https://www.marktechpost.com/2026/02/03/qwen-team-releases-qwen3-coder-next-an-open-weight-language-model-designed-specifically-for-coding-agents-and-local-development/",
+                label: "Qwen3-Coder-Next (MarkTechPost)",
+              },
+              {
+                href: "https://unsloth.ai/docs/models/qwen3-coder-next",
+                label: "sizes (Unsloth)",
+              },
+            ],
+            [
+              {
+                href: "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct",
+                label: "Llama 3.3 70B (Hugging Face)",
+              },
+              {
+                href: "https://huggingface.co/moonshotai/Kimi-Linear-48B-A3B-Instruct",
+                label: "Kimi-Linear-48B-A3B (Hugging Face)",
+              },
+            ],
           ],
         },
         {
@@ -657,7 +726,7 @@ export const SIZING_COPY: Readonly<Record<Locale, SizingCopy>> = {
         },
       ],
     },
-    footnote: "Compiled 10 October 2026. Open-weight model releases move monthly; treat every figure as a starting point and benchmark on your own stack before buying.",
+    footnote: "Compiled 10 October 2026; the 36–100B group, Qwen3.5-122B-A10B and Mistral Medium 3.5 added 20 October 2026. Open-weight model releases move monthly; treat every figure as a starting point and benchmark on your own stack before buying.",
     cta: {
       title: "Sizing an on-prem deployment for a real project?",
       body: "We help organizations choose the right model, hardware and architecture for their knowledge and agentic AI systems.",
@@ -668,6 +737,7 @@ export const SIZING_COPY: Readonly<Record<Locale, SizingCopy>> = {
         "1T+ parameters",
         "250–800B parameters",
         "100–130B parameters",
+        "36–100B parameters",
         "Up to 35B parameters",
       ],
       hwg: ["Desktop GPU", "Workstation & unified memory", "Datacenter"],
