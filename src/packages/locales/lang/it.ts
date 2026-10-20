@@ -557,6 +557,114 @@ export default {
       closing: "Ci interessa capire come affronti i problemi, come collabori e quale contributo puoi portare a Isagog.",
     },
   },
+  discover: {
+    hero: {
+      eyebrow: "MUSEI · PUBBLICA AMMINISTRAZIONE · SANITÀ · EDITORIA",
+      titleLine1: "Una IA che risponde",
+      titleEm: "con le vostre fonti.",
+      titleLine2: "E sa dire «non lo so».",
+      sub: "Isagog realizza assistenti di intelligenza artificiale per enti e organizzazioni che non possono permettersi risposte inventate. Rendiamo esplicita la conoscenza della vostra organizzazione e la facciamo ragionare con modelli linguistici aperti, che possono funzionare sulla vostra infrastruttura.",
+      ctaPrimary: "Prenotate una call di 30 minuti ↓",
+      ctaSecondary: "Guardate i progetti",
+    },
+    problema: {
+      eyebrow: "PERCHÉ NON BASTA UN CHATBOT",
+      titleLine1: "Usare l'IA dove",
+      titleEm: "un errore costa caro.",
+      item1: {
+        title: "Risposte plausibili, non sempre vere",
+        body: "Un modello linguistico da solo produce testi convincenti anche quando l'informazione manca. In un museo, in un ospedale o in un ufficio pubblico, una risposta sbagliata pesa più di una risposta mancata.",
+      },
+      item2: {
+        title: "Dati che escono dall'organizzazione",
+        body: "Molti servizi di IA elaborano i dati sull'infrastruttura del fornitore, spesso fuori dall'Unione europea. Per archivi, dati sanitari e atti amministrativi questo è spesso un vincolo, non una scelta.",
+      },
+      item3: {
+        title: "Una conformità da dimostrare",
+        body: "AI Act e GDPR chiedono di sapere da dove arriva una risposta e chi ne è responsabile. Serve un sistema che mostri fonti e ragionamento, non una scatola nera.",
+      },
+    },
+    approccio: {
+      eyebrow: "COME LAVORA ISAGOG",
+      titleLine1: "Conoscenza esplicita,",
+      titleEm: "modelli aperti.",
+      item1: {
+        title: "La vostra conoscenza, resa esplicita",
+        body: "Documenti, cataloghi, archivi e procedure diventano un [grafo di conoscenza](onto:reasoning) organizzato da un'[ontologia](onto:) del vostro dominio, validata dai vostri esperti.",
+      },
+      item2: {
+        title: "Risposte con le fonti",
+        body: "Ogni risposta è ancorata a informazioni verificabili. Quando un'informazione non c'è, il sistema lo dichiara invece di inventarla.",
+      },
+      item3: {
+        title: "Sulla vostra infrastruttura",
+        body: "Modelli linguistici aperti, installabili anche on-premise: i dati restano a voi, i costi sono prevedibili e non dipendete da un unico fornitore.",
+      },
+    },
+    casi: {
+      eyebrow: "PROGETTI",
+      titleLine1: "Già al lavoro",
+      titleEm: "con utenti veri.",
+      readCase: "Leggete il caso →",
+      maxxi: {
+        tag: "MUSEO · ROMA",
+        title: "MAXXI",
+        body: "MAXXIperTUTTI: un'IA conversazionale con agenti specializzati che orienta i visitatori, racconta le opere e riformula i contenuti in linguaggio facile da leggere. Validata con persone con disabilità cognitive, sordità e disabilità visive.",
+      },
+      manifesto: {
+        tag: "EDITORIA · ARCHIVIO STORICO",
+        title: "il manifesto",
+        body: "MeMa – Memoria Manifesta: 800.000 articoli di un archivio riconosciuto bene di interesse culturale, consultabili per significato dalla redazione e collegati alle notizie di oggi.",
+      },
+      voicefirst: {
+        tag: "SERVIZIO CLIENTI",
+        title: "Teleperformance",
+        body: "Voice First: un copilota che ascolta la conversazione, ragiona su procedure e normative e suggerisce all'operatore l'azione successiva.",
+      },
+    },
+    settori: {
+      eyebrow: "DOVE PUÒ SERVIRE",
+      titleLine1: "Un metodo,",
+      titleEm: "molti contesti.",
+      cultura: {
+        title: "Musei e cultura",
+        body: "Assistenti per i visitatori, accessibilità dei contenuti, cataloghi e archivi interrogabili, ascolto del pubblico.",
+      },
+      pa: {
+        title: "Pubblica amministrazione",
+        body: "Norme, procedure e atti consultabili da uffici e cittadini, con la fonte di ogni risposta.",
+      },
+      sanita: {
+        title: "Sanità",
+        body: "Linee guida, protocolli e procedure amministrative interrogabili, distinguendo ciò che è documentato da ciò che manca.",
+      },
+      editoria: {
+        title: "Editoria e media",
+        body: "Archivi storici ricercabili per significato, collegamenti tra notizie e fonti, strumenti per le redazioni.",
+      },
+      enti: {
+        title: "Imprese, casse ed enti",
+        body: "Regolamenti, contratti e conoscenza interna a disposizione di chi lavora con clienti, iscritti e soci.",
+      },
+    },
+    call: {
+      eyebrow: "30 MINUTI, SENZA IMPEGNO",
+      titleLine1: "Parliamo del",
+      titleEm: "vostro caso.",
+      p1: "Una prima conversazione con il nostro team per capire se e dove l'IA può esservi utile, con quali dati e con quali garanzie.",
+      stepsLabel: "Nella call",
+      step1: "Ci raccontate l'esigenza e i vincoli della vostra organizzazione.",
+      step2: "Vi mostriamo come abbiamo affrontato casi simili.",
+      step3: "Individuiamo insieme il primo passo concreto.",
+      mailLink: "Preferite scriverci? info@isagog.com ↗",
+      formTitle: "Richiedete la call.",
+      formSub: "Vi rispondiamo entro un giorno lavorativo per fissare giorno e ora.",
+      fieldMessage: "Di che cosa vorreste parlare?",
+      fieldMessagePlaceholder:
+        "Ad esempio: rendere consultabile il nostro archivio, aiutare i visitatori a orientarsi…",
+      mailSubject: "Isagog — richiesta di una call di 30 minuti",
+    },
+  },
   meta: {
     home: {
       title: "Isagog — Una IA che sa anche cosa non sa",
@@ -596,6 +704,11 @@ export default {
       title: "Lavora con noi — Isagog",
       description:
         "Collaborazioni professionali in sviluppo software Python, IA e dati: lavora con Isagog su sistemi di IA fondati su conoscenza verificabile.",
+    },
+    discover: {
+      title: "Una IA che risponde con le vostre fonti — Isagog",
+      description:
+        "Assistenti di IA per musei, pubblica amministrazione, sanità ed editoria: risposte fondate su fonti verificabili, modelli aperti sulla vostra infrastruttura. Prenotate una call di 30 minuti.",
     },
   },
 } as const;

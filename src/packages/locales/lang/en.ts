@@ -554,6 +554,114 @@ export default {
       closing: "We want to understand how you approach problems, how you collaborate and what you can bring to Isagog.",
     },
   },
+  discover: {
+    hero: {
+      eyebrow: "MUSEUMS · PUBLIC SECTOR · HEALTHCARE · PUBLISHING",
+      titleLine1: "An AI that answers",
+      titleEm: "from your sources.",
+      titleLine2: "And can say “I don't know”.",
+      sub: "Isagog builds AI assistants for institutions and organisations that cannot afford made-up answers. We make your organisation's knowledge explicit and let it reason with open language models that can run on your own infrastructure.",
+      ctaPrimary: "Book a 30-minute call ↓",
+      ctaSecondary: "See our projects",
+    },
+    problema: {
+      eyebrow: "WHY A CHATBOT IS NOT ENOUGH",
+      titleLine1: "Using AI where",
+      titleEm: "mistakes are costly.",
+      item1: {
+        title: "Plausible answers, not always true ones",
+        body: "On its own, a language model writes convincing text even when the information is missing. In a museum, a hospital or a public office, a wrong answer weighs more than no answer.",
+      },
+      item2: {
+        title: "Data leaving the organisation",
+        body: "Many AI services process data on the provider's infrastructure, often outside the European Union. For archives, health data and administrative records this is often a constraint, not a choice.",
+      },
+      item3: {
+        title: "Compliance you must demonstrate",
+        body: "The AI Act and the GDPR ask you to know where an answer comes from and who is accountable for it. You need a system that shows its sources and reasoning, not a black box.",
+      },
+    },
+    approccio: {
+      eyebrow: "HOW ISAGOG WORKS",
+      titleLine1: "Explicit knowledge,",
+      titleEm: "open models.",
+      item1: {
+        title: "Your knowledge, made explicit",
+        body: "Documents, catalogues, archives and procedures become a [knowledge graph](onto:reasoning) organised by an [ontology](onto:) of your domain, validated by your experts.",
+      },
+      item2: {
+        title: "Answers with sources",
+        body: "Every answer is grounded in verifiable information. When a piece of information is missing, the system says so instead of inventing it.",
+      },
+      item3: {
+        title: "On your infrastructure",
+        body: "Open language models that can also run on-premise: your data stays with you, costs are predictable and you do not depend on a single provider.",
+      },
+    },
+    casi: {
+      eyebrow: "PROJECTS",
+      titleLine1: "Already at work",
+      titleEm: "with real users.",
+      readCase: "Read the case study →",
+      maxxi: {
+        tag: "MUSEUM · ROME",
+        title: "MAXXI",
+        body: "MAXXIperTUTTI: a conversational AI with specialised agents that guides visitors, tells the story of the works and rephrases content in easy-to-read language. Validated with people with cognitive disabilities, deaf people and people with visual disabilities.",
+      },
+      manifesto: {
+        tag: "PUBLISHING · HISTORICAL ARCHIVE",
+        title: "il manifesto",
+        body: "MeMa – Memoria Manifesta: 800,000 articles from an archive recognised as cultural heritage, searchable by meaning for the newsroom and linked to today's news.",
+      },
+      voicefirst: {
+        tag: "CUSTOMER SERVICE",
+        title: "Teleperformance",
+        body: "Voice First: a copilot that listens to the conversation, reasons over procedures and regulations and suggests the next action to the agent.",
+      },
+    },
+    settori: {
+      eyebrow: "WHERE IT HELPS",
+      titleLine1: "One method,",
+      titleEm: "many settings.",
+      cultura: {
+        title: "Museums and culture",
+        body: "Visitor assistants, accessible content, searchable catalogues and archives, listening to audiences.",
+      },
+      pa: {
+        title: "Public sector",
+        body: "Rules, procedures and records that offices and citizens can query, with the source of every answer.",
+      },
+      sanita: {
+        title: "Healthcare",
+        body: "Searchable guidelines, protocols and administrative procedures that tell what is documented from what is missing.",
+      },
+      editoria: {
+        title: "Publishing and media",
+        body: "Historical archives searchable by meaning, links between news and sources, tools for newsrooms.",
+      },
+      enti: {
+        title: "Companies, funds and institutions",
+        body: "Regulations, contracts and internal knowledge available to the people who work with clients, members and partners.",
+      },
+    },
+    call: {
+      eyebrow: "30 MINUTES, NO COMMITMENT",
+      titleLine1: "Let's talk about",
+      titleEm: "your case.",
+      p1: "A first conversation with our team to understand whether and where AI can help you, with which data and with which safeguards.",
+      stepsLabel: "In the call",
+      step1: "You tell us about your needs and your organisation's constraints.",
+      step2: "We show you how we approached similar cases.",
+      step3: "Together we identify the first concrete step.",
+      mailLink: "Prefer to write to us? info@isagog.com ↗",
+      formTitle: "Request the call.",
+      formSub: "We reply within one working day to set a day and time.",
+      fieldMessage: "What would you like to talk about?",
+      fieldMessagePlaceholder:
+        "For example: making our archive searchable, helping visitors find their way…",
+      mailSubject: "Isagog — request for a 30-minute call",
+    },
+  },
   meta: {
     home: {
       title: "Isagog — An AI that also knows what it doesn't know",
@@ -591,6 +699,11 @@ export default {
       title: "Work with us — Isagog",
       description:
         "Professional collaborations in Python software development, AI and data: work with Isagog on AI systems grounded in verifiable knowledge.",
+    },
+    discover: {
+      title: "An AI that answers from your sources — Isagog",
+      description:
+        "AI assistants for museums, the public sector, healthcare and publishing: answers grounded in verifiable sources, open models on your infrastructure. Book a 30-minute call.",
     },
   },
 } as const;
