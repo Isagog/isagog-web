@@ -656,8 +656,9 @@ export default {
       step1: "Ci raccontate l'esigenza e i vincoli della vostra organizzazione.",
       step2: "Vi mostriamo come abbiamo affrontato casi simili.",
       step3: "Individuiamo insieme il primo passo concreto.",
+      mailLink: "Preferite scriverci? info@isagog.com ↗",
       formTitle: "Richiedete la call.",
-      formSub: "Vi ricontattiamo per fissare giorno e ora.",
+      formSub: "Vi rispondiamo entro un giorno lavorativo per fissare giorno e ora.",
       fieldMessage: "Di che cosa vorreste parlare?",
       fieldMessagePlaceholder:
         "Ad esempio: rendere consultabile il nostro archivio, aiutare i visitatori a orientarsi…",

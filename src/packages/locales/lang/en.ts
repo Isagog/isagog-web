@@ -653,8 +653,9 @@ export default {
       step1: "You tell us about your needs and your organisation's constraints.",
       step2: "We show you how we approached similar cases.",
       step3: "Together we identify the first concrete step.",
+      mailLink: "Prefer to write to us? info@isagog.com ↗",
       formTitle: "Request the call.",
-      formSub: "We will get back to you to set a day and time.",
+      formSub: "We reply within one working day to set a day and time.",
       fieldMessage: "What would you like to talk about?",
       fieldMessagePlaceholder:
         "For example: making our archive searchable, helping visitors find their way…",

@@ -55,6 +55,13 @@ export const Call = async () => {
               </li>
             ))}
           </ol>
+
+          <a
+            href="mailto:info@isagog.com"
+            className="mt-4 inline-flex items-center gap-1.5 py-2 text-[14px] font-semibold text-forest"
+          >
+            {t("mailLink")}
+          </a>
         </div>
 
         <ContactForm
