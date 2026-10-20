@@ -565,20 +565,20 @@ export default {
       ctaSecondary: "See our projects",
     },
     problema: {
-      eyebrow: "WHY A CHATBOT IS NOT ENOUGH",
+      eyebrow: "WHAT IT REALLY TAKES",
       titleLine1: "Using AI where",
-      titleEm: "mistakes are costly.",
+      titleEm: "the quality of information matters.",
       item1: {
-        title: "Plausible answers, not always true ones",
-        body: "On its own, a language model writes convincing text even when the information is missing. In a museum, a hospital or a public office, a wrong answer weighs more than no answer.",
+        title: "Control over what the AI knows",
+        body: "The quality of an answer depends on the information it comes from. When that information is structured, organised and editable, you know where every answer comes from and can correct it at the source, item by item. A generic chatbot draws instead on what it learned elsewhere: nobody knows where an answer comes from, or how to correct it.",
       },
       item2: {
-        title: "Data leaving the organisation",
-        body: "Many AI services process data on the provider's infrastructure, often outside the European Union. For archives, health data and administrative records this is often a constraint, not a choice.",
+        title: "Your data stays with you",
+        body: "Archives, health data and administrative records cannot end up on just any provider's infrastructure. You need an AI that works where your data already is, with access rules you decide.",
       },
       item3: {
-        title: "Compliance you must demonstrate",
-        body: "The AI Act and the GDPR ask you to know where an answer comes from and who is accountable for it. You need a system that shows its sources and reasoning, not a black box.",
+        title: "Compliance you can demonstrate",
+        body: "Regulations and guidelines increasingly ask you to know where an answer comes from and who is accountable for it. You need a system that makes sources and reasoning visible, not a black box.",
       },
     },
     approccio: {
@@ -586,16 +586,16 @@ export default {
       titleLine1: "Explicit knowledge,",
       titleEm: "open models.",
       item1: {
-        title: "Your knowledge, made explicit",
-        body: "Documents, catalogues, archives and procedures become a [knowledge graph](onto:reasoning) organised by an [ontology](onto:) of your domain, validated by your experts.",
+        title: "A knowledge graph of your domain",
+        body: "Documents, catalogues, archives and procedures become a [knowledge graph](onto:reasoning) organised by an [ontology](onto:) of your domain. Your experts validate it and can keep it up to date.",
       },
       item2: {
-        title: "Answers with sources",
-        body: "Every answer is grounded in verifiable information. When a piece of information is missing, the system says so instead of inventing it.",
+        title: "The model proposes, knowledge verifies",
+        body: "The language model interprets the question and drafts the answer; the graph provides the facts and rules to check it. When a piece of information is missing, the system says so instead of inventing it.",
       },
       item3: {
-        title: "On your infrastructure",
-        body: "Open language models that can also run on-premise: your data stays with you, costs are predictable and you do not depend on a single provider.",
+        title: "Open models, on your infrastructure",
+        body: "Open-source language models that can also run on-premise: predictable costs and no dependence on a single provider.",
       },
     },
     casi: {

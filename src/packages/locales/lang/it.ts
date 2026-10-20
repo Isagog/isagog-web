@@ -568,20 +568,20 @@ export default {
       ctaSecondary: "Guardate i progetti",
     },
     problema: {
-      eyebrow: "PERCHÉ NON BASTA UN CHATBOT",
+      eyebrow: "COSA SERVE DAVVERO",
       titleLine1: "Usare l'IA dove",
-      titleEm: "un errore costa caro.",
+      titleEm: "la qualità dell'informazione conta.",
       item1: {
-        title: "Risposte plausibili, non sempre vere",
-        body: "Un modello linguistico da solo produce testi convincenti anche quando l'informazione manca. In un museo, in un ospedale o in un ufficio pubblico, una risposta sbagliata pesa più di una risposta mancata.",
+        title: "Il controllo su ciò che l'IA sa",
+        body: "La qualità di una risposta dipende dalle informazioni da cui nasce. Se sono strutturate, organizzate e modificabili, sapete da dove arriva ogni risposta e potete correggerla alla fonte, voce per voce. Un chatbot generico attinge invece a ciò che ha appreso altrove: non si sa da dove venga una risposta, né come correggerla.",
       },
       item2: {
-        title: "Dati che escono dall'organizzazione",
-        body: "Molti servizi di IA elaborano i dati sull'infrastruttura del fornitore, spesso fuori dall'Unione europea. Per archivi, dati sanitari e atti amministrativi questo è spesso un vincolo, non una scelta.",
+        title: "I dati restano a voi",
+        body: "Archivi, dati sanitari e atti amministrativi non possono finire sull'infrastruttura di un fornitore qualsiasi. Serve un'IA che lavori dove i vostri dati si trovano già, con regole di accesso decise da voi.",
       },
       item3: {
-        title: "Una conformità da dimostrare",
-        body: "AI Act e GDPR chiedono di sapere da dove arriva una risposta e chi ne è responsabile. Serve un sistema che mostri fonti e ragionamento, non una scatola nera.",
+        title: "Una conformità dimostrabile",
+        body: "Normative e linee guida chiedono sempre più spesso di sapere da dove arriva una risposta e chi ne è responsabile. Serve un sistema che renda visibili fonti e ragionamento, non una scatola nera.",
       },
     },
     approccio: {
@@ -589,16 +589,16 @@ export default {
       titleLine1: "Conoscenza esplicita,",
       titleEm: "modelli aperti.",
       item1: {
-        title: "La vostra conoscenza, resa esplicita",
-        body: "Documenti, cataloghi, archivi e procedure diventano un [grafo di conoscenza](onto:reasoning) organizzato da un'[ontologia](onto:) del vostro dominio, validata dai vostri esperti.",
+        title: "Un grafo di conoscenza del vostro dominio",
+        body: "Documenti, cataloghi, archivi e procedure diventano un [grafo di conoscenza](onto:reasoning) organizzato da un'[ontologia](onto:) del vostro dominio. I vostri esperti lo validano e possono aggiornarlo nel tempo.",
       },
       item2: {
-        title: "Risposte con le fonti",
-        body: "Ogni risposta è ancorata a informazioni verificabili. Quando un'informazione non c'è, il sistema lo dichiara invece di inventarla.",
+        title: "Il modello propone, la conoscenza verifica",
+        body: "Il modello linguistico interpreta la domanda e formula la risposta; il grafo fornisce i fatti e le regole per controllarla. Quando un'informazione manca, il sistema lo dichiara invece di inventarla.",
       },
       item3: {
-        title: "Sulla vostra infrastruttura",
-        body: "Modelli linguistici aperti, installabili anche on-premise: i dati restano a voi, i costi sono prevedibili e non dipendete da un unico fornitore.",
+        title: "Modelli aperti, sulla vostra infrastruttura",
+        body: "Modelli linguistici open source, installabili anche on-premise: costi prevedibili e nessuna dipendenza da un unico fornitore.",
       },
     },
     casi: {
