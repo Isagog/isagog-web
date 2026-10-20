@@ -43,8 +43,8 @@ else {
 // The consent choice must be present in both static entry pages, while the
 // optional Cloudflare beacon must not load before a visitor accepts.
 const consentCopy = {
-  it: ["Privacy e analisi", "Maggiori dettagli", "Non accetto: esco dal sito"],
-  en: ["Privacy and analytics", "More details", "Disagree and leave site"],
+  it: ["Privacy e analisi", "Maggiori dettagli", "Rifiuto", "Preferenze privacy"],
+  en: ["Privacy and analytics", "More details", "Decline", "Privacy preferences"],
 };
 for (const locale of LOCALES) {
   const file = join(OUT, locale, "index.html");
