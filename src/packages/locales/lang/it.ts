@@ -712,7 +712,7 @@ export default {
     discover: {
       title: "Una IA che risponde con le vostre fonti — Isagog",
       description:
-        "Assistenti di IA per musei, pubblica amministrazione, sanità ed editoria: risposte fondate su fonti verificabili, modelli aperti sulla vostra infrastruttura. Prenotate una call di 30 minuti.",
+        "Assistenti di IA con risposte fondate su fonti verificabili e modelli aperti sulla vostra infrastruttura. Prenotate una call di 30 minuti.",
     },
   },
 } as const;

@@ -707,7 +707,7 @@ export default {
     discover: {
       title: "An AI that answers from your sources — Isagog",
       description:
-        "AI assistants for museums, the public sector, healthcare and publishing: answers grounded in verifiable sources, open models on your infrastructure. Book a 30-minute call.",
+        "AI assistants with answers grounded in verifiable sources and open models on your infrastructure. Book a 30-minute call.",
     },
   },
 } as const;
