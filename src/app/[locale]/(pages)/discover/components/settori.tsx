@@ -10,6 +10,7 @@ export const Settori = async () => {
     { title: t("sanita.title"), body: t("sanita.body") },
     { title: t("editoria.title"), body: t("editoria.body") },
     { title: t("enti.title"), body: t("enti.body") },
+    { title: t("altro.title"), body: t("altro.body") },
   ];
 
   return (
