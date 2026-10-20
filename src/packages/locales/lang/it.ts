@@ -560,7 +560,6 @@ export default {
   },
   discover: {
     hero: {
-      eyebrow: "MUSEI · PUBBLICA AMMINISTRAZIONE · SANITÀ · EDITORIA",
       titleLine1: "Una IA che risponde",
       titleEm: "con le vostre fonti.",
       titleLine2: "E sa dire «non lo so».",

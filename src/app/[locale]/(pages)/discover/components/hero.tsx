@@ -17,11 +17,7 @@ export const Hero = async () => {
         className="pointer-events-none absolute -right-10 bottom-0 hidden h-[340px] w-auto object-contain opacity-15 md:block"
       />
       <div className="relative z-10 mx-auto max-w-[1224px]">
-        <span className="flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.1em] text-cream-soft">
-          <span className="h-2 w-2 shrink-0 rounded-full bg-terracotta" aria-hidden="true" />
-          {t("eyebrow")}
-        </span>
-        <h1 className="mt-6 max-w-[760px] text-[clamp(34px,4.6vw,54px)] leading-[1.1] text-cream">
+        <h1 className="max-w-[760px] text-[clamp(34px,4.6vw,54px)] leading-[1.1] text-cream">
           {t("titleLine1")}
           <br />
           <em className="not-italic text-em-dark">{t("titleEm")}</em>

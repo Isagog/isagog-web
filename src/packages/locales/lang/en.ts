@@ -557,7 +557,6 @@ export default {
   },
   discover: {
     hero: {
-      eyebrow: "MUSEUMS · PUBLIC SECTOR · HEALTHCARE · PUBLISHING",
       titleLine1: "An AI that answers",
       titleEm: "from your sources.",
       titleLine2: "And can say “I don't know”.",
