@@ -1,5 +1,6 @@
 "use client";
 
+import { reopenConsent } from "@/lib/analytics-consent";
 import { useScopedI18n } from "@/packages/locales/client";
 import { LocaleLink as Link } from "./locale-link";
 
@@ -46,6 +47,9 @@ export const Footer = ({ year }: FooterProps) => {
           <a href="mailto:info@isagog.com" className="hover:text-forest">
             {t("email")}
           </a>
+          <button type="button" onClick={reopenConsent} className="hover:text-forest">
+            {t("privacyPreferences")}
+          </button>
         </div>
       </div>
     </footer>
