@@ -58,13 +58,21 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
+    // data-scroll-behavior lets Next.js turn off the smooth scrolling set in
+    // globals.css while it changes route. Without it, Next 16 scrolls the new
+    // page during the smooth animation and leaves it 72px down, under the
+    // fixed header (and Cloudflare reports a layout shift on the body).
     <html
       lang={locale}
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${fraunces.variable} font-sans`}
     >
       <I18nProviderClient locale={locale}>
-        <BodyWrapper className="pt-[72px]">
-          <div id="site-content">
+        <BodyWrapper>
+          {/* The header offset sits here, not on <body>: the mobile menu's
+              scroll lock resets the body's padding while it is open, which
+              made the whole page jump 72px up and back. */}
+          <div id="site-content" className="pt-[72px]">
             <Providers>
               <Header />
               {children}
