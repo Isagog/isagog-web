@@ -110,6 +110,31 @@ if (analyticsBeacons.length > 0) {
   process.exit(1);
 }
 
+// Page chrome: the Isagog pages carry the Isagog header and footer. Checked
+// on visible markup only, since the inlined RSC payload carries hrefs too.
+const visibleHtml = (file) =>
+  readFileSync(file, "utf-8").replace(/<script[\s\S]*?<\/script>/g, "");
+const privacyButtonLabel = { it: "Preferenze privacy", en: "Privacy preferences" };
+const chromeErrors = [];
+for (const locale of LOCALES) {
+  const file = join(OUT, locale, "approach", "index.html");
+  if (!existsSync(file)) continue;
+  const html = visibleHtml(file);
+  const required = [
+    ["Isagog header nav", new RegExp(`href="[^"]*/${locale}/platform/"`)],
+    ["Isagog header CTA", new RegExp(`href="[^"]*/${locale}/contact/"`)],
+    ["footer privacy button", new RegExp(`<button[^>]*>${privacyButtonLabel[locale]}</button>`)],
+  ];
+  for (const [what, pattern] of required) {
+    if (!pattern.test(html)) chromeErrors.push(`${file}: missing ${what}`);
+  }
+}
+if (chromeErrors.length > 0) {
+  console.error(`check-export: ${chromeErrors.length} page chrome problem(s):`);
+  for (const error of chromeErrors) console.error(`  - ${error}`);
+  process.exit(1);
+}
+
 if (missing.length > 0) {
   console.error(`check-export: ${missing.length} expected file(s) missing:`);
   for (const file of missing) console.error(`  - ${file}`);

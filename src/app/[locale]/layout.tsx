@@ -1,7 +1,5 @@
 import { BodyWrapper } from "@/app/_components/custom/body-wrapper";
 import { AnalyticsConsent } from "@/app/_components/custom/analytics-consent";
-import { Footer } from "@/app/_components/custom/footer";
-import { Header } from "@/app/_components/custom/header";
 import { Providers } from "@/app/_components/providers";
 import { asset, SITE_URL } from "@/lib/base-path";
 import { I18nProviderClient } from "@/packages/locales/client";
@@ -45,12 +43,6 @@ const fraunces = Fraunces({
   display: "swap",
 });
 
-// Resolved once, at module load during the build's static render — not
-// per-request — so every page's footer bakes in the same year the client
-// bundle was built with. See Footer's `year` prop for why this must not
-// move into the client component.
-const buildYear = new Date().getFullYear();
-
 export default async function RootLayout({
   children,
   params,
@@ -73,11 +65,9 @@ export default async function RootLayout({
               scroll lock resets the body's padding while it is open, which
               made the whole page jump 72px up and back. */}
           <div id="site-content" className="pt-[72px]">
-            <Providers>
-              <Header />
-              {children}
-              <Footer year={buildYear} />
-            </Providers>
+            {/* The header and footer come from each route group's layout:
+                (pages) for the Isagog site, (musei) for the museum page. */}
+            <Providers>{children}</Providers>
           </div>
           <AnalyticsConsent locale={locale} />
         </BodyWrapper>
