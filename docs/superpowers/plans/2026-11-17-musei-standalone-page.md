@@ -235,7 +235,7 @@ Expected: all pass; `check-export: ok`.
 Run: `NEXT_PUBLIC_BASE_PATH=/isagog-web pnpm build && grep -o 'href="/isagog-web/it/"' out/it/musei/index.html | head -1`
 Expected: `check-export: ok`, and the grep prints `href="/isagog-web/it/"`. Then run `pnpm build` again so `out/` is a root build.
 
-- [ ] **Step 9: Check it in the browser**
+- [x] **Step 9: Check it in the browser**
 
 Run `pnpm dev` and check these at 1280px and 375px wide:
 - `/it/musei/` and `/en/musei/`: only the museum header and footer. On 375px the demo button is hidden and nothing scrolls sideways.
