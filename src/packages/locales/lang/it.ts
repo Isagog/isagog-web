@@ -669,6 +669,239 @@ export default {
       mailSubject: "Isagog — richiesta di una call di 30 minuti",
     },
   },
+  musei: {
+    hero: {
+      eyebrow: "PER I MUSEI E I LUOGHI DELLA CULTURA",
+      titleLine1: "Ogni visitatore ha le sue domande.",
+      titleEm: "Risponde il vostro museo.",
+      sub: "Un assistente con cui il visitatore parla come con una persona, dal telefono e nella sua lingua. Risponde con i contenuti che i vostri curatori hanno controllato. E quando non sa una cosa, lo dice.",
+      ctaPrimary: "Chiedete una dimostrazione ↓",
+      ctaSecondary: "Guardate come risponde",
+      q1: "Che opere di Ghirri posso vedere?",
+      a1: "Nella mostra The Large Glass al MAXXI è esposta l'opera di Luigi Ghirri intitolata «Modena», realizzata nel 1978.",
+      q2: "Sono in caffetteria, come raggiungo The Large Glass?",
+      a2step1: "Dalla Caffetteria (Livello 0), passa nella Hall.",
+      a2step2: "Prendi gli Ascensori della hall, vicino a EduLab 1 e Spazio espositivo.",
+      a2step3: "Sali al Livello 1: arriverai direttamente nella Galleria 4, dove è allestita la mostra The Large Glass.",
+      caption: "Risposte reali dell'assistente in funzione al MAXXI di Roma.",
+    },
+    conversazioni: {
+      eyebrow: "COME RISPONDE",
+      titleLine1: "Non vi raccontiamo come parla.",
+      titleEm: "Ve lo facciamo leggere.",
+      easy: {
+        title: "La stessa domanda, per persone diverse",
+        body: "Chi preferisce un linguaggio più semplice può chiederlo. La risposta cambia forma, il contenuto resta quello.",
+        q: "Cosa rappresenta l'opera Modena?",
+        labelStandard: "Risposta normale",
+        standard1: "L'opera Modena, parte della serie Still Life di Luigi Ghirri, rappresenta una riflessione sulla fotografia stessa. In questa opera, Ghirri rifotografa un dagherrotipo, creando una composizione speculare in cui la «fotografia della fotografia» diventa, come lui stesso ha descritto, un momento magico di coincidenza temporale.",
+        standard2: "L'immagine testimonia il suo interesse per gli oggetti e le tracce del passato, sfruttando il colore forte e contrastato tipico della tecnica Polaroid per giocare sull'alternanza dei piani, ritagliando e appiattendo la realtà nell'inquadratura.",
+        labelEasy: "In linguaggio facile da leggere",
+        simple1: "Questo testo parla di una foto chiamata Modena. È parte di una serie chiamata Still Life di Luigi Ghirri.",
+        simple2: "In questa foto, Ghirri fotografa un'altra foto molto vecchia (un dagherrotipo). Così crea un effetto speciale: la foto di una foto. Ghirri dice che è un momento magico dove il tempo si incontra.",
+        simple3: "La foto mostra che a Ghirri piacciono gli oggetti e le cose del passato. Usa colori forti e contrastati, tipici delle foto Polaroid. Gioca con i piani: taglia e appiattisce la realtà nella foto.",
+      },
+      route: {
+        title: "Un percorso che tiene conto di chi chiede",
+        body: "Alla stessa domanda, poco fa, aveva indicato gli ascensori. Il visitatore aggiunge di soffrire di claustrofobia, e il percorso cambia.",
+        q: "Sono nella caffetteria, come arrivo alla mostra The Large Glass essendo claustrofobico?",
+        step1: "Dalla Caffetteria (Livello 0), passa nella Hall e raggiungi la Galleria 1.",
+        step2: "Nella Galleria 1, prendi la Scala principale 1.",
+        step3: "Sali al Livello 1: arriverai nella Galleria 3.",
+        step4: "Attraversa la Galleria 3 per raggiungere la Galleria 4, dove è allestita la mostra The Large Glass. Percorso senza ascensori, come richiesto.",
+      },
+      unknown: {
+        title: "Quando non lo sa, lo dice",
+        body: "Non rassicura a caso e non inventa. Dice cosa risulta, segnala il dubbio e indica a chi rivolgersi.",
+        q: "Sono epilettico, ci sono opere pericolose?",
+        a1: "Non ci sono avvertenze specifiche per fotosensibilità o epilessia nelle informazioni generali e nelle descrizioni delle mostre attualmente attive.",
+        a2: "Alcune opere in programma includono installazioni video, come Songs and Cries, e rassegne cinematografiche, come il Flaminio Film Festival, che potrebbero prevedere variazioni di luce o proiezioni luminose.",
+        a3: "Per ricevere informazioni dettagliate sulle condizioni di illuminazione e sulla sicurezza prima della visita, è possibile contattare l'ufficio Public Engagement del MAXXI. […]",
+      },
+      note: "Risposte reali dell'assistente del MAXXI, tratte dalla dimostrazione di settembre 2026. Alcune sono leggermente accorciate. Le mostre citate erano quelle di quel momento.",
+    },
+    agenti: {
+      eyebrow: "COSA PUÒ FARE IL VISITATORE",
+      titleLine1: "Tanti aiuti diversi,",
+      titleEm: "una sola conversazione.",
+      lead: "Dietro le quinte lavorano assistenti specializzati, ciascuno con un suo compito. Il visitatore non deve sceglierli né conoscerli: scrive la sua domanda, e questa arriva a chi sa rispondere. Attivate solo quelli che vi servono.",
+      item1: {
+        title: "Trovare la strada",
+        body: "Accompagna da un punto all'altro del museo con i nomi di sale e spazi, senza «destra» e «sinistra», che cambiano a seconda di dove si guarda.",
+        example: "«Sono in caffetteria, come raggiungo la mostra?»",
+      },
+      item2: {
+        title: "Capire le opere",
+        body: "Racconta opere, artisti e mostre a partire dai vostri cataloghi e dalle vostre schede.",
+        example: "«Che artisti sono esposti in questa mostra?»",
+      },
+      item3: {
+        title: "Organizzare la visita",
+        body: "Dà le informazioni pratiche: orari, biglietti, eventi e servizi.",
+        example: "«Che mostre ci sono oggi?»",
+      },
+      item4: {
+        title: "Capire meglio, a modo proprio",
+        body: "Su richiesta riscrive la risposta in un linguaggio facile da leggere, oppure descrittivo, con riferimenti tattili e fisici per chi non può vedere le opere.",
+        example: "«Me lo spieghi in modo più semplice?»",
+      },
+      item5: {
+        title: "Dire la propria",
+        body: "Raccoglie opinioni e impressioni dei visitatori, così il museo sa cosa è piaciuto e cosa non ha funzionato.",
+        example: "«La mostra è bella, ma le didascalie si leggono male.»",
+      },
+      item6: {
+        title: "Parlare nella propria lingua",
+        body: "Risponde nella lingua in cui gli si scrive. È stato provato in inglese, francese, spagnolo, tedesco, cinese, giapponese e russo.",
+        example: "«Sind Assistenzhunde erlaubt?»",
+      },
+    },
+    confronto: {
+      eyebrow: "NON È UN GPT PER MUSEI",
+      titleLine1: "Un chatbot non vale l'altro.",
+      titleEm: "La differenza è da dove prende le risposte.",
+      labelAsk: "Come si chiede",
+      labelSource: "Da dove viene la risposta",
+      labelUnknown: "Se non conosce la risposta",
+      scripted: {
+        name: "Chatbot a risposte predefinite",
+        tagline: "Affidabile, ma rigido",
+        ask: "Bisogna fare le domande «giuste», quelle previste.",
+        source: "Testi scritti in anticipo dallo staff, uno per uno.",
+        unknown: "Non sa adattarsi: la conversazione si ferma.",
+      },
+      generic: {
+        name: "IA generica, tipo GPT",
+        tagline: "Fluida, ma imprevedibile",
+        ask: "Si può chiedere qualsiasi cosa, liberamente.",
+        source: "Anche fonti esterne, che il museo non controlla.",
+        unknown: "Può dare una risposta convincente e sbagliata.",
+      },
+      isagog: {
+        name: "Isagog",
+        tagline: "Conversazione libera, conoscenza controllata",
+        ask: "Si parla liberamente, come con una persona.",
+        source: "La conoscenza del museo, controllata dai vostri curatori.",
+        unknown: "Lo dice, e indica a chi rivolgersi.",
+      },
+    },
+    maxxi: {
+      eyebrow: "GIÀ IN FUNZIONE",
+      titleLine1: "Al MAXXI di Roma,",
+      titleEm: "provato da chi vive le barriere.",
+      body: "Con il progetto MAXXIperTUTTI, finanziato dal PNRR per rimuovere le barriere fisiche e cognitive, abbiamo portato l'assistente in un museo nazionale. Prima del lancio lo abbiamo messo alla prova con chi lo avrebbe usato davvero.",
+      fact1: {
+        title: "Tre gruppi di lavoro",
+        body: "Persone con disabilità cognitive e neurodivergenza, persone sorde, persone con disabilità visive.",
+      },
+      fact2: {
+        title: "Su mostre vere",
+        body: "L'assistente risponde sui contenuti di mostre reali, non su un archivio di prova.",
+      },
+      fact3: {
+        title: "Nelle mani del museo",
+        body: "Il museo ha ricevuto gli strumenti per aggiornare i contenuti e seguire le conversazioni senza dipendere da noi.",
+      },
+      imageAlt: "Visitatori nell'atrio del MAXXI, attraversato dalle sue scale sospese nere",
+    },
+    staff: {
+      eyebrow: "PER CHI LAVORA IN MUSEO",
+      titleLine1: "Non serve un informatico.",
+      titleEm: "Serve chi conosce il museo.",
+      step1: {
+        title: "Caricate i materiali",
+        body: "Cataloghi, schede di mostra, brochure: quello che avete già. Il sistema ne ricava opere, autori e descrizioni.",
+      },
+      step2: {
+        title: "Il curatore approva",
+        body: "Niente arriva al visitatore senza il controllo di una persona del museo. Se una cosa è sbagliata, si corregge, e da lì in poi è corretta.",
+      },
+      step3: {
+        title: "Il visitatore chiede",
+        body: "Dal telefono, scrivendo una domanda. Non deve imparare nulla e nessuno gli chiede chi è.",
+      },
+      step4: {
+        title: "Voi ascoltate",
+        body: "Vedete cosa chiedono i visitatori e leggete le loro opinioni. Così scoprite cosa cercano davvero.",
+      },
+      support: "Alla parte tecnica pensiamo noi. Prepariamo il sistema sul vostro museo e formiamo il vostro personale, che poi può gestire i contenuti in autonomia.",
+    },
+    idee: {
+      eyebrow: "IDEE DA SVILUPPARE INSIEME",
+      titleLine1: "Da qui in poi,",
+      titleEm: "decidete voi dove andare.",
+      lead: "Queste non sono funzioni già pronte: sono possibilità che nascono da ciò che il sistema sa già fare e che possiamo costruire insieme a un museo, a partire dalle sue esigenze.",
+      idea1: {
+        title: "Preparare la visita da casa",
+        body: "Prima di partire, il visitatore capisce cosa vedere, come arrivare e cosa aspettarsi.",
+      },
+      idea2: {
+        title: "«Ho solo un'ora»",
+        body: "Un percorso costruito sul tempo a disposizione e su ciò che interessa a quella persona.",
+      },
+      idea3: {
+        title: "Scuole e famiglie",
+        body: "Contenuti raccontati in modo adatto all'età, per preparare una gita o per farsi guidare dai più piccoli.",
+      },
+      idea4: {
+        title: "Ciò che non è esposto",
+        body: "Dare voce alle opere nei depositi e agli archivi, che oggi il pubblico non può incontrare.",
+      },
+      idea5: {
+        title: "Le domande dei visitatori come bussola",
+        body: "Un riepilogo periodico per curatori e direzione: cosa chiede il pubblico, cosa non trova, cosa non capisce.",
+      },
+      idea6: {
+        title: "Una rete sul territorio",
+        body: "Più musei di una città o di una regione, con un solo assistente che suggerisce anche la tappa successiva.",
+      },
+    },
+    domande: {
+      eyebrow: "DOMANDE FREQUENTI",
+      title: "Quello che ci chiedono i musei.",
+      faq1: {
+        q: "Serve del personale tecnico?",
+        a: "No. La messa a punto la seguiamo noi. Al museo serve chi conosce i contenuti: lo formiamo a caricarli e a correggerli.",
+      },
+      faq2: {
+        q: "Può inventare delle risposte?",
+        a: "È il rischio che abbiamo costruito il sistema per evitare. Le risposte partono dalla conoscenza controllata dal museo e, se un'informazione manca, l'assistente lo dice invece di completarla. Nessuna IA è infallibile: per questo lo staff può leggere le conversazioni e correggere alla fonte.",
+      },
+      faq3: {
+        q: "Sostituisce guide e mediatori?",
+        a: "No, li affianca. Risponde alle domande a cui nessuno può rispondere in quel momento, e restituisce allo staff un quadro di ciò che i visitatori cercano.",
+      },
+      faq4: {
+        q: "Che cosa succede ai dati dei visitatori?",
+        a: "Il visitatore non deve registrarsi e non viene profilato: l'assistente si adatta a ciò che chiede nella conversazione. Il sistema è progettato secondo GDPR e AI Act e può funzionare con modelli aperti, senza dipendere dai grandi fornitori di IA.",
+      },
+      faq5: {
+        q: "Quanto costa?",
+        a: "Dipende dalla dimensione del museo, dalle funzioni che attivate e da dove gira il servizio. Si può partire da una sola funzione. Ne parliamo al primo incontro, a partire dal vostro caso.",
+      },
+      faq6: {
+        q: "Si può finanziare con un bando?",
+        a: "Il progetto del MAXXI è stato finanziato con fondi PNRR. Se state preparando un bando, possiamo darvi una descrizione del progetto e dei costi da inserire nella domanda.",
+      },
+    },
+    call: {
+      eyebrow: "30 MINUTI, SENZA IMPEGNO",
+      titleLine1: "Fatevi un'idea",
+      titleEm: "con i vostri occhi.",
+      p1: "Il modo migliore per capire cos'è, e cosa non è, è vederlo funzionare. Non servono competenze tecniche e non dovete preparare nulla.",
+      stepsLabel: "Nell'incontro",
+      step1: "Ci raccontate il vostro museo e i vostri visitatori.",
+      step2: "Vi mostriamo l'assistente al lavoro, e potete fargli le vostre domande.",
+      step3: "Vediamo insieme da dove avrebbe senso partire.",
+      mailLink: "Preferite scriverci? info@isagog.com ↗",
+      formTitle: "Chiedete una dimostrazione.",
+      formSub: "Vi rispondiamo entro un giorno lavorativo per fissare giorno e ora.",
+      fieldMessage: "Che cosa vorreste migliorare nella visita?",
+      fieldMessagePlaceholder:
+        "Ad esempio: aiutare i visitatori a orientarsi, rendere i contenuti più accessibili, stiamo preparando un bando…",
+      mailSubject: "Isagog — richiesta di una dimostrazione per il museo",
+    },
+  },
   meta: {
     home: {
       title: "Isagog — Una IA che sa anche cosa non sa",
@@ -713,6 +946,11 @@ export default {
       title: "Una IA che risponde con le vostre fonti — Isagog",
       description:
         "Assistenti di IA con risposte fondate su fonti verificabili e modelli aperti sulla vostra infrastruttura. Prenotate una call di 30 minuti.",
+    },
+    musei: {
+      title: "Isagog per i musei — Ogni visitatore chiede, risponde il vostro museo",
+      description:
+        "Un assistente che risponde ai visitatori con i contenuti controllati dai vostri curatori, in linguaggio semplice e nella loro lingua. Già in funzione al MAXXI di Roma.",
     },
   },
 } as const;
