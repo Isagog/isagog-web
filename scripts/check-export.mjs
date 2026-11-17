@@ -64,6 +64,14 @@ for (const stub of OLD_URL_STUBS) {
   if (!existsSync(file)) missing.push(file);
 }
 
+// Short entry URLs outside the locale segments: /musei opens the museum
+// page in the visitor's browser language (public/musei/index.html).
+const ENTRY_STUBS = ["musei"];
+for (const stub of ENTRY_STUBS) {
+  const file = join(OUT, stub, "index.html");
+  if (!existsSync(file)) missing.push(file);
+}
+
 // Ontology IRI stubs: https://isagog.com/ontology/{top,agents,frame}[#Term]
 // forward to the ontology minisite (ontology.isagog.com).
 const IRI_STUBS = ["ontology", "ontology/top", "ontology/agents", "ontology/frame"];

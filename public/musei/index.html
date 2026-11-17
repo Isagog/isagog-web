@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Isagog per i musei</title>
+    <link rel="icon" href="../favicon.ico" />
+    <!--
+      Short entry URL for the museum page: https://isagog.com/musei opens
+      /it/musei/ or /en/musei/ in the visitor's browser language, falling
+      back to Italian. Unlike the home page, which always starts in Italian,
+      this one follows the browser, so a museum contact abroad lands on the
+      English page.
+      Client-side locale redirect: static export has no middleware. Paths
+      are relative (not absolute) and climb one level ("../") to escape
+      this /musei/ directory before descending into the locale segment,
+      so this works unmodified both at the domain root and under the
+      staging base path (e.g. /isagog-web/).
+    -->
+    <script>
+      (function () {
+        var supported = ["it", "en"];
+        var fallback = "it";
+        var lang = (navigator.language || fallback).slice(0, 2).toLowerCase();
+        var locale = supported.indexOf(lang) !== -1 ? lang : fallback;
+        window.location.replace("../" + locale + "/musei/");
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=../it/musei/" />
+    </noscript>
+  </head>
+  <body>
+    <p>Redirecting to <a href="../it/musei/">Isagog per i musei</a>…</p>
+  </body>
+</html>
