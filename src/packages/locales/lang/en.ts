@@ -898,6 +898,15 @@ export default {
         "For example: helping visitors find their way, making content more accessible, we're preparing a grant application…",
       mailSubject: "Isagog — demonstration request for a museum",
     },
+    header: {
+      tag: "for museums",
+      logoLabel: "Isagog for museums, back to top",
+      about: "About Isagog →",
+      cta: "Ask for a demo",
+    },
+    footer: {
+      site: "isagog.com",
+    },
   },
   meta: {
     home: {

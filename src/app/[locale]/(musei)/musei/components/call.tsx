@@ -1,7 +1,7 @@
 import { asset } from "@/lib/base-path";
 import { getScopedI18n } from "@/packages/locales/server";
 import Image from "next/image";
-import { ContactForm } from "../../contact/components/contact-form";
+import { ContactForm } from "@/app/[locale]/(pages)/contact/components/contact-form";
 
 const TREES = [
   { src: "/images/about-images/tree-cypress.png", className: "-left-6 h-[260px]" },

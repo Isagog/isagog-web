@@ -3,8 +3,9 @@ import { getScopedI18n, setStaticParamsLocale } from "@/packages/locales/server"
 import type { Metadata } from "next";
 import { Agenti, Call, Confronto, Conversazioni, Domande, Hero, Idee, Maxxi, Staff } from "./components";
 
-// Non-technical page for museum staff, linked from outreach emails. It stays
-// out of the header and footer, but is in the sitemap so museums can find it.
+// Non-technical page for museum staff, linked from outreach emails. It has
+// its own header and footer (see layout.tsx) and is kept out of the Isagog
+// nav, but stays in the sitemap so museums can find it.
 export async function generateMetadata({
   params,
 }: {

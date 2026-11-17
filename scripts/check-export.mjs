@@ -8,7 +8,7 @@ import { join } from "node:path";
 // build` still produced out/it/index.html, not out/isagog-web/it/index.html.
 const OUT = "out";
 const LOCALES = ["it", "en"];
-const ROUTES = ["", "approach", "platform", "project", "blog", "contact"];
+const ROUTES = ["", "approach", "platform", "project", "blog", "contact", "musei"];
 
 const SLUG_ROUTES = [
   ["project", ["maxxi-case-study", "manifesto-case-study", "teleperformance-case-study"]],
@@ -110,7 +110,9 @@ if (analyticsBeacons.length > 0) {
   process.exit(1);
 }
 
-// Page chrome: the Isagog pages carry the Isagog header and footer. Checked
+// Page chrome: the Isagog pages carry the Isagog header and footer, and the
+// museum page carries its own: no Isagog nav, one link to the main site home
+// and the privacy button the consent banner points to. Checked
 // on visible markup only, since the inlined RSC payload carries hrefs too.
 const visibleHtml = (file) =>
   readFileSync(file, "utf-8").replace(/<script[\s\S]*?<\/script>/g, "");
@@ -123,6 +125,21 @@ for (const locale of LOCALES) {
   const required = [
     ["Isagog header nav", new RegExp(`href="[^"]*/${locale}/platform/"`)],
     ["Isagog header CTA", new RegExp(`href="[^"]*/${locale}/contact/"`)],
+    ["footer privacy button", new RegExp(`<button[^>]*>${privacyButtonLabel[locale]}</button>`)],
+  ];
+  for (const [what, pattern] of required) {
+    if (!pattern.test(html)) chromeErrors.push(`${file}: missing ${what}`);
+  }
+}
+for (const locale of LOCALES) {
+  const file = join(OUT, locale, "musei", "index.html");
+  if (!existsSync(file)) continue;
+  const html = visibleHtml(file);
+  const isagogNav = new RegExp(`href="[^"]*/${locale}/(approach|platform|project|blog|careers|contact)/"`);
+  const navLink = html.match(isagogNav);
+  if (navLink) chromeErrors.push(`${file}: shows Isagog nav link ${navLink[0]}`);
+  const required = [
+    ["link to the main site home", new RegExp(`href="[^"]*/${locale}/"`)],
     ["footer privacy button", new RegExp(`<button[^>]*>${privacyButtonLabel[locale]}</button>`)],
   ];
   for (const [what, pattern] of required) {

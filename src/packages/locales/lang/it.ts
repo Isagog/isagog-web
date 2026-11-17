@@ -901,6 +901,15 @@ export default {
         "Ad esempio: aiutare i visitatori a orientarsi, rendere i contenuti più accessibili, stiamo preparando un bando…",
       mailSubject: "Isagog — richiesta di una dimostrazione per il museo",
     },
+    header: {
+      tag: "per i musei",
+      logoLabel: "Isagog per i musei, torna all'inizio",
+      about: "Chi è Isagog →",
+      cta: "Chiedete una demo",
+    },
+    footer: {
+      site: "isagog.com",
+    },
   },
   meta: {
     home: {
