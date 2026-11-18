@@ -31,9 +31,26 @@ export const Agenti = async () => {
         <p className="mt-6 max-w-[680px] text-[16.5px] leading-[1.6] text-prose-muted">{t("lead")}</p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map(({ icon: Icon, title, body, example }) => (
+          {items.map(({ icon: Icon, title, body, example }, index) => (
             <article key={title} className="flex flex-col rounded-[8px] border border-card-border bg-paper p-7">
-              <Icon size={24} strokeWidth={1.8} aria-hidden="true" className="text-olive" />
+              <div className="flex items-center gap-2.5">
+                <Icon size={24} strokeWidth={1.8} aria-hidden="true" className="text-olive" />
+                {(index === 0 || index === 1 || index === 2 || index === 3 || index === 4 || index === 5) && (
+                  <span className="text-[12px] font-semibold tracking-[0.1em] text-olive">
+                    {index === 0
+                      ? "MAGELLANO"
+                      : index === 1
+                        ? "LEONARDO"
+                        : index === 2
+                          ? "JEEVES"
+                          : index === 3
+                            ? "ESOPO"
+                            : index === 4
+                              ? "JUNG"
+                              : "SALOMONE"}
+                  </span>
+                )}
+              </div>
               <h3 className="mt-4 font-serif text-[22px] leading-[1.2] text-forest">{title}</h3>
               <p className="mt-3 flex-1 text-[15px] leading-[1.55] text-prose-muted">{body}</p>
               <p className="mt-5 border-t border-card-border pt-4 text-[14px] italic leading-[1.45] text-forest">

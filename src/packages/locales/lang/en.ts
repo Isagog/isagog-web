@@ -718,24 +718,24 @@ export default {
       note: "Real answers from the MAXXI assistant, taken from the September 2026 demonstration and translated from Italian. Some are slightly shortened. The exhibitions mentioned were those on show at the time.",
     },
     agenti: {
-      eyebrow: "WHAT VISITORS CAN DO",
-      titleLine1: "Many kinds of help,",
+      eyebrow: "HOW WE SUPPORT VISITORS",
+      titleLine1: "Many different assistants,",
       titleEm: "one conversation.",
       lead: "Behind the scenes, specialised assistants each have their own task. Visitors don't have to choose them or know about them: they write their question, and it reaches the one that can answer. You switch on only the ones you need.",
       item1: {
         title: "Finding the way",
-        body: "It guides people from one point of the museum to another using the names of rooms and spaces, not “left” and “right”, which change depending on where you are looking.",
+        body: "It guides visitors from one point of the museum to another using the names of spaces or services, while taking the guide's needs into account.",
         example: "“I'm in the café, how do I get to the exhibition?”",
       },
       item2: {
         title: "Understanding the works",
         body: "It talks about works, artists and exhibitions, starting from your catalogues and your own texts.",
-        example: "“Which artists are in this exhibition?”",
+        example: "“Which postwar artists are in this exhibition?”",
       },
       item3: {
         title: "Planning the visit",
         body: "It gives practical information: opening hours, tickets, events and services.",
-        example: "“What exhibitions are on today?”",
+        example: "“What exhibitions are on today? Can my guide dog come in?”",
       },
       item4: {
         title: "Understanding in your own way",
@@ -749,7 +749,7 @@ export default {
       },
       item6: {
         title: "Speaking your own language",
-        body: "It answers in the language it is written to. It has been tested in English, French, Spanish, German, Chinese, Japanese and Russian.",
+        body: "It replies in the language visitors write in. It has been tested in Italian, English, French, Spanish, German, Chinese, Hindi, Arabic, Japanese and many more.",
         example: "“Sind Assistenzhunde erlaubt?”",
       },
     },

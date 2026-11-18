@@ -22,9 +22,9 @@ export const Hero = async () => {
             {t("eyebrow")}
           </span>
           <h1 className="mt-5 text-[clamp(34px,4.4vw,52px)] leading-[1.1] text-cream">
-            {t("titleLine1")}
+            Ogni visitatore ha le <em className="not-italic text-em-dark">sue</em> domande.
             <br />
-            <em className="not-italic text-em-dark">{t("titleEm")}</em>
+            Risponde il <em className="not-italic text-em-dark">vostro</em> museo.
           </h1>
           <p className="mt-7 max-w-[560px] text-[17px] leading-[1.6] text-cream-soft">{t("sub")}</p>
           <div className="mt-9 flex flex-wrap gap-4">
