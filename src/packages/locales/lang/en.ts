@@ -666,6 +666,248 @@ export default {
       mailSubject: "Isagog — request for a 30-minute call",
     },
   },
+  musei: {
+    hero: {
+      eyebrow: "FOR MUSEUMS AND CULTURAL SITES",
+      titleLine1: "Every visitor has their own questions.",
+      titleEm: "Your museum answers.",
+      sub: "An assistant visitors can talk to as they would to a person, from their phone and in their own language. It answers with content your curators have checked. And when it doesn't know something, it says so.",
+      ctaPrimary: "Ask for a demonstration ↓",
+      ctaSecondary: "See how it answers",
+      q1: "Which works by Ghirri can I see?",
+      a1: "The exhibition The Large Glass at MAXXI includes Luigi Ghirri's work titled “Modena”, made in 1978.",
+      q2: "I'm in the café, how do I get to The Large Glass?",
+      a2step1: "From the Café (Level 0), go through to the Hall.",
+      a2step2: "Take the Hall lifts, near EduLab 1 and the Exhibition Space.",
+      a2step3: "Go up to Level 1: you will arrive directly in Gallery 4, where The Large Glass is on show.",
+      caption: "Real answers from the assistant in use at MAXXI in Rome, translated from Italian.",
+    },
+    conversazioni: {
+      eyebrow: "HOW IT ANSWERS",
+      titleLine1: "We won't tell you how it talks.",
+      titleEm: "We'll let you read it.",
+      easy: {
+        title: "The same question, for different people",
+        body: "Anyone who prefers simpler language can ask for it. The answer changes form, the content stays the same.",
+        q: "What does the work Modena represent?",
+        labelStandard: "Standard answer",
+        standard1: "The work Modena, part of Luigi Ghirri's Still Life series, is a reflection on photography itself. In this work, Ghirri rephotographs a daguerreotype, creating a mirrored composition in which the “photography of photography” becomes, as he himself described it, a magical moment of temporal coincidence.",
+        standard2: "The image shows his interest in objects and traces of the past, using the strong, contrasting colour typical of the Polaroid technique to play with alternating planes, cropping and flattening reality within the frame.",
+        labelEasy: "In easy-to-read language",
+        simple1: "This text is about a photo called Modena. It is part of a series called Still Life by Luigi Ghirri.",
+        simple2: "In this photo, Ghirri photographs another very old photo (a daguerreotype). This creates a special effect: a photo of a photo. Ghirri says it is a magical moment where time meets.",
+        simple3: "The photo shows that Ghirri likes objects and things from the past. He uses strong, contrasting colours, typical of Polaroid photos. He plays with planes: he cuts and flattens reality in the photo.",
+      },
+      route: {
+        title: "A route that takes account of who is asking",
+        body: "To the same question, a moment earlier, it had pointed to the lifts. The visitor adds that they are claustrophobic, and the route changes.",
+        q: "I'm in the café, how do I get to The Large Glass, given that I'm claustrophobic?",
+        step1: "From the Café (Level 0), go through the Hall to Gallery 1.",
+        step2: "In Gallery 1, take Main Staircase 1.",
+        step3: "Go up to Level 1: you will arrive in Gallery 3.",
+        step4: "Cross Gallery 3 to reach Gallery 4, where The Large Glass is on show. Route without lifts, as requested.",
+      },
+      unknown: {
+        title: "When it doesn't know, it says so",
+        body: "It doesn't reassure at random and it doesn't make things up. It says what is on record, flags the doubt and points to who can help.",
+        q: "I have epilepsy, are there any dangerous works?",
+        a1: "There are no specific warnings for photosensitivity or epilepsy in the general information and in the descriptions of the exhibitions currently on show.",
+        a2: "Some works on the programme include video installations, such as Songs and Cries, and film programmes, such as the Flaminio Film Festival, which may involve changes of light or bright projections.",
+        a3: "For detailed information on lighting conditions and safety before your visit, you can contact MAXXI's Public Engagement office. […]",
+      },
+      note: "Real answers from the MAXXI assistant, taken from the September 2026 demonstration and translated from Italian. Some are slightly shortened. The exhibitions mentioned were those on show at the time.",
+    },
+    agenti: {
+      eyebrow: "HOW WE SUPPORT VISITORS",
+      titleLine1: "Many different assistants,",
+      titleEm: "one conversation.",
+      lead: "Behind the scenes, specialised assistants each have their own task. Visitors don't have to choose them or know about them: they write their question, and it reaches the one that can answer. You switch on only the ones you need.",
+      item1: {
+        title: "Finding the way",
+        body: "It guides visitors from one point of the museum to another using the names of spaces or services, while taking the guide's needs into account.",
+        example: "“I'm in the café, how do I get to the exhibition?”",
+      },
+      item2: {
+        title: "Understanding the works",
+        body: "It talks about works, artists and exhibitions, starting from your catalogues and your own texts.",
+        example: "“Which postwar artists are in this exhibition?”",
+      },
+      item3: {
+        title: "Planning the visit",
+        body: "It gives practical information: opening hours, tickets, events and services.",
+        example: "“What exhibitions are on today? Can my guide dog come in?”",
+      },
+      item4: {
+        title: "Understanding in your own way",
+        body: "On request it rewrites the answer in easy-to-read language, or in descriptive language with tactile and physical references for people who cannot see the works.",
+        example: "“Can you explain that more simply?”",
+      },
+      item5: {
+        title: "Having your say",
+        body: "It gathers visitors' opinions and impressions, so the museum knows what they liked and what didn't work.",
+        example: "“Lovely exhibition, but the labels are hard to read.”",
+      },
+      item6: {
+        title: "Speaking your own language",
+        body: "It replies in the language visitors write in. It has been tested in Italian, English, French, Spanish, German, Chinese, Hindi, Arabic, Japanese and many more.",
+        example: "“Sind Assistenzhunde erlaubt?”",
+      },
+    },
+    confronto: {
+      eyebrow: "NOT A GPT FOR MUSEUMS",
+      titleLine1: "Not all chatbots are alike.",
+      titleEm: "The difference is where the answers come from.",
+      labelAsk: "How you ask",
+      labelSource: "Where the answer comes from",
+      labelUnknown: "If it doesn't know the answer",
+      scripted: {
+        name: "Scripted chatbot",
+        tagline: "Reliable, but rigid",
+        ask: "You have to ask the “right” questions, the ones it expects.",
+        source: "Texts written in advance by staff, one by one.",
+        unknown: "It can't adapt: the conversation stops.",
+      },
+      generic: {
+        name: "Generic AI, such as GPT",
+        tagline: "Fluent, but unpredictable",
+        ask: "You can ask anything, freely.",
+        source: "External sources too, which the museum doesn't control.",
+        unknown: "It may give a convincing, wrong answer.",
+      },
+      isagog: {
+        name: "Isagog",
+        tagline: "Free conversation, controlled knowledge",
+        ask: "You talk freely, as you would to a person.",
+        source: "The museum's knowledge, checked by your curators.",
+        unknown: "It says so, and points to who can help.",
+      },
+    },
+    maxxi: {
+      eyebrow: "ALREADY IN USE",
+      titleLine1: "At MAXXI in Rome,",
+      titleEm: "tested by people who face barriers.",
+      body: "With the MAXXIperTUTTI project, funded by Italy's recovery plan (PNRR) to remove physical and cognitive barriers, we brought the assistant to a national museum. Before launch, we put it to the test with the people who would really use it.",
+      fact1: {
+        title: "Three working groups",
+        body: "People with cognitive disabilities and neurodivergence, deaf people, people with visual impairments.",
+      },
+      fact2: {
+        title: "On real exhibitions",
+        body: "The assistant answers on the content of real exhibitions, not on a test archive.",
+      },
+      fact3: {
+        title: "In the museum's hands",
+        body: "The museum received the tools to update content and follow conversations without depending on us.",
+      },
+      imageAlt: "Visitors in the MAXXI atrium, crossed by its suspended black staircases",
+    },
+    staff: {
+      eyebrow: "FOR MUSEUM STAFF",
+      titleLine1: "You don't need an IT specialist.",
+      titleEm: "You need someone who knows the museum.",
+      step1: {
+        title: "Upload your materials",
+        body: "Catalogues, exhibition texts, brochures: what you already have. The system draws out works, authors and descriptions.",
+      },
+      step2: {
+        title: "The curator approves",
+        body: "Nothing reaches visitors without being checked by someone at the museum. If something is wrong, you fix it, and from then on it is right.",
+      },
+      step3: {
+        title: "The visitor asks",
+        body: "From their phone, by writing a question. There is nothing to learn, and nobody asks them who they are.",
+      },
+      step4: {
+        title: "You listen",
+        body: "You see what visitors ask and read their opinions. So you discover what they are really looking for.",
+      },
+      support: "We take care of the technical side. We set the system up on your museum and train your staff, who can then manage the content on their own.",
+    },
+    idee: {
+      eyebrow: "IDEAS TO DEVELOP TOGETHER",
+      titleLine1: "From here on,",
+      titleEm: "you decide where to go.",
+      lead: "These are not ready-made features: they are possibilities that grow out of what the system can already do, and that we can build together with a museum, starting from its needs.",
+      idea1: {
+        title: "Preparing the visit from home",
+        body: "Before setting off, visitors find out what to see, how to get there and what to expect.",
+      },
+      idea2: {
+        title: "“I only have an hour”",
+        body: "A route built around the time available and what interests that person.",
+      },
+      idea3: {
+        title: "Schools and families",
+        body: "Content told in a way that suits each age, to prepare a school trip or let children lead the way.",
+      },
+      idea4: {
+        title: "What isn't on display",
+        body: "Giving a voice to works in storage and to archives the public can't encounter today.",
+      },
+      idea5: {
+        title: "Visitors' questions as a compass",
+        body: "A regular summary for curators and directors: what the public asks, can't find or doesn't understand.",
+      },
+      idea6: {
+        title: "A local network",
+        body: "Several museums in a city or region, with one assistant that also suggests the next stop.",
+      },
+    },
+    domande: {
+      eyebrow: "FREQUENT QUESTIONS",
+      title: "What museums ask us.",
+      faq1: {
+        q: "Do we need technical staff?",
+        a: "No. We handle the setup. The museum needs someone who knows the content: we train them to upload and correct it.",
+      },
+      faq2: {
+        q: "Can it make up answers?",
+        a: "That is the risk we built the system to avoid. Answers start from knowledge checked by the museum and, if some information is missing, the assistant says so instead of filling the gap. No AI is infallible: that's why staff can read the conversations and correct things at the source.",
+      },
+      faq3: {
+        q: "Does it replace guides and educators?",
+        a: "No, it works alongside them. It answers the questions nobody can answer at that moment, and gives staff a picture of what visitors are looking for.",
+      },
+      faq4: {
+        q: "What happens to visitors' data?",
+        a: "Visitors don't have to register and aren't profiled: the assistant adapts to what they ask in the conversation. The system is designed in line with GDPR and the AI Act and can run on open models, without depending on the big AI providers.",
+      },
+      faq5: {
+        q: "How much does it cost?",
+        a: "It depends on the size of the museum, the features you switch on and where the service runs. You can start with a single feature. We discuss it at the first meeting, starting from your case.",
+      },
+      faq6: {
+        q: "Can it be funded through a grant?",
+        a: "The MAXXI project was funded by Italy's recovery plan. If you are preparing a grant application, we can give you a description of the project and its costs to include.",
+      },
+    },
+    call: {
+      eyebrow: "30 MINUTES, NO COMMITMENT",
+      titleLine1: "See it",
+      titleEm: "for yourselves.",
+      p1: "The best way to understand what it is, and what it isn't, is to see it working. You need no technical knowledge and nothing to prepare.",
+      stepsLabel: "In the meeting",
+      step1: "You tell us about your museum and your visitors.",
+      step2: "We show you the assistant at work, and you can ask it your own questions.",
+      step3: "Together we see where it would make sense to start.",
+      mailLink: "Prefer to write? info@isagog.com ↗",
+      formTitle: "Ask for a demonstration.",
+      formSub: "We reply within one working day to set a date and time.",
+      fieldMessage: "What would you like to improve in the visit?",
+      fieldMessagePlaceholder:
+        "For example: helping visitors find their way, making content more accessible, we're preparing a grant application…",
+      mailSubject: "Isagog — demonstration request for a museum",
+    },
+    header: {
+      tag: "for museums",
+      logoLabel: "Isagog for museums, back to top",
+      about: "About Isagog →",
+      cta: "Ask for a demo",
+    },
+    footer: {
+      site: "isagog.com",
+    },
+  },
   meta: {
     home: {
       title: "Isagog — An AI that also knows what it doesn't know",
@@ -708,6 +950,11 @@ export default {
       title: "An AI that answers from your sources — Isagog",
       description:
         "AI assistants with answers grounded in verifiable sources and open models on your infrastructure. Book a 30-minute call.",
+    },
+    musei: {
+      title: "Isagog for museums — Every visitor asks, your museum answers",
+      description:
+        "An assistant that answers visitors with content checked by your curators, in plain language and in their own language. Already in use at MAXXI in Rome.",
     },
   },
 } as const;

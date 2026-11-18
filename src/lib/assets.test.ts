@@ -5,6 +5,7 @@ const REQUIRED = [
   "public/favicon.ico",
   "public/logo-new.png",
   "public/index.html",
+  "public/musei/index.html",
   "public/images/tree.avif",
   "public/images/about-images/tree-bonsai.png",
   "public/images/about-images/tree-pine.png",

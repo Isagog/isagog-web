@@ -1,0 +1,9 @@
+export { Agenti } from "./agenti";
+export { Call } from "./call";
+export { Confronto } from "./confronto";
+export { Conversazioni } from "./conversazioni";
+export { Domande } from "./domande";
+export { Hero } from "./hero";
+export { Idee } from "./idee";
+export { Maxxi } from "./maxxi";
+export { Staff } from "./staff";

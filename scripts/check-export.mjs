@@ -8,7 +8,7 @@ import { join } from "node:path";
 // build` still produced out/it/index.html, not out/isagog-web/it/index.html.
 const OUT = "out";
 const LOCALES = ["it", "en"];
-const ROUTES = ["", "approach", "platform", "project", "blog", "contact"];
+const ROUTES = ["", "approach", "platform", "project", "blog", "contact", "musei"];
 
 const SLUG_ROUTES = [
   ["project", ["maxxi-case-study", "manifesto-case-study", "teleperformance-case-study"]],
@@ -64,6 +64,14 @@ for (const stub of OLD_URL_STUBS) {
   if (!existsSync(file)) missing.push(file);
 }
 
+// Short entry URLs outside the locale segments: /musei opens the museum
+// page in the visitor's browser language (public/musei/index.html).
+const ENTRY_STUBS = ["musei"];
+for (const stub of ENTRY_STUBS) {
+  const file = join(OUT, stub, "index.html");
+  if (!existsSync(file)) missing.push(file);
+}
+
 // Ontology IRI stubs: https://isagog.com/ontology/{top,agents,frame}[#Term]
 // forward to the ontology minisite (ontology.isagog.com).
 const IRI_STUBS = ["ontology", "ontology/top", "ontology/agents", "ontology/frame"];
@@ -99,6 +107,48 @@ if (leaks.length > 0) {
 if (analyticsBeacons.length > 0) {
   console.error(`check-export: analytics beacon loads before consent in ${analyticsBeacons.length} file(s):`);
   for (const file of analyticsBeacons) console.error(`  - ${file}`);
+  process.exit(1);
+}
+
+// Page chrome: the Isagog pages carry the Isagog header and footer, and the
+// museum page carries its own: no Isagog nav, one link to the main site home
+// and the privacy button the consent banner points to. Checked
+// on visible markup only, since the inlined RSC payload carries hrefs too.
+const visibleHtml = (file) =>
+  readFileSync(file, "utf-8").replace(/<script[\s\S]*?<\/script>/g, "");
+const privacyButtonLabel = { it: "Preferenze privacy", en: "Privacy preferences" };
+const chromeErrors = [];
+for (const locale of LOCALES) {
+  const file = join(OUT, locale, "approach", "index.html");
+  if (!existsSync(file)) continue;
+  const html = visibleHtml(file);
+  const required = [
+    ["Isagog header nav", new RegExp(`href="[^"]*/${locale}/platform/"`)],
+    ["Isagog header CTA", new RegExp(`href="[^"]*/${locale}/contact/"`)],
+    ["footer privacy button", new RegExp(`<button[^>]*>${privacyButtonLabel[locale]}</button>`)],
+  ];
+  for (const [what, pattern] of required) {
+    if (!pattern.test(html)) chromeErrors.push(`${file}: missing ${what}`);
+  }
+}
+for (const locale of LOCALES) {
+  const file = join(OUT, locale, "musei", "index.html");
+  if (!existsSync(file)) continue;
+  const html = visibleHtml(file);
+  const isagogNav = new RegExp(`href="[^"]*/${locale}/(approach|platform|project|blog|careers|contact)/"`);
+  const navLink = html.match(isagogNav);
+  if (navLink) chromeErrors.push(`${file}: shows Isagog nav link ${navLink[0]}`);
+  const required = [
+    ["link to the main site home", new RegExp(`href="[^"]*/${locale}/"`)],
+    ["footer privacy button", new RegExp(`<button[^>]*>${privacyButtonLabel[locale]}</button>`)],
+  ];
+  for (const [what, pattern] of required) {
+    if (!pattern.test(html)) chromeErrors.push(`${file}: missing ${what}`);
+  }
+}
+if (chromeErrors.length > 0) {
+  console.error(`check-export: ${chromeErrors.length} page chrome problem(s):`);
+  for (const error of chromeErrors) console.error(`  - ${error}`);
   process.exit(1);
 }
 
