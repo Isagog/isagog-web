@@ -18,7 +18,6 @@ export const Hero = async () => {
       <h1 className="mt-8 text-[clamp(34px,5vw,56px)] leading-[1.1] text-forest">
         {t("title")}
       </h1>
-      <p className="mt-4 text-[18px] text-prose-muted">{t("tagline")}</p>
     </section>
   );
 };

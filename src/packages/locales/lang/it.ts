@@ -27,8 +27,7 @@ export default {
   home: {
     hero: {
       imageAlt: "Illustrazione di un albero, Isagog",
-      title: "Una IA che sa anche cosa non sa",
-      tagline: "E sa dirtelo",
+      title: "Una AI che sa dire cosa non sa",
     },
     apertura: {
       eyebrow: "INTELLIGENZA ARTIFICIALE · CONOSCENZA ESPLICITA",

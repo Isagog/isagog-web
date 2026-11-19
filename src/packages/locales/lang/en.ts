@@ -27,8 +27,7 @@ export default {
   home: {
     hero: {
       imageAlt: "Illustration of a tree, Isagog",
-      title: "An AI that also knows what it doesn't know",
-      tagline: "And when needed can tell you so.",
+      title: "An AI that can tell you what it doesn't know",
     },
     apertura: {
       eyebrow: "ARTIFICIAL INTELLIGENCE · EXPLICIT KNOWLEDGE",
